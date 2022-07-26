@@ -3,8 +3,9 @@ var zoom1 = 0.2
 var zoom2 = 100;
 var Radius = 200;
 var strenght = -10;
-var cnv, scroll;
-
+var cnv, scroll, scrollim;
+let buttons = [];
+let images = [];
 var nodeDiameterxa;
 var nodeDiameterya;
 var nodeDiameterxb;
@@ -99,7 +100,19 @@ var nodeDiameter = 16;
 // };
 let img;
 p.preload = function() {
-  img = p.loadImage('empty-example/lorenz2.png');
+  //02
+  img1 = p.loadImage('empty-example/Planches_projets/rootsofclay.png');
+  img2 = p.loadImage('empty-example/Planches_projets/rootsofclay2.png');
+  img3 = p.loadImage('empty-example/Planches_projets/rootsofclay3.png');
+  img4 = p.loadImage('empty-example/Planches_projets/rootsofclay4.png');
+  img5 = p.loadImage('empty-example/Planches_projets/rootsofclay5.png');
+  cursor = p.loadImage('empty-example/Planches_projets/delate - 1.png');
+  delate1 = p.loadImage('empty-example/Planches_projets/delate 1.png');
+  delate2 = p.loadImage('empty-example/Planches_projets/delate 2.png');
+
+
+
+
 }
 
 //colors
@@ -110,33 +123,39 @@ p.setup = function() {
   texthide = p.color(25+5,32+10,43+35);
   textvu = p.color(248,252,191);
   // rouge = p.color(91,21,15);
-  rouge = p.color(74,54,26);
+  rouge = p.color(106,91,86);
   bleu = p.color(140,162,195)
 
   // texthideconcept = p.color(61,88,123);
   // texthideconcept = p.color(120,84,50);
   // texthideconcept = p.color(84,64,26);
-  texthideconcept = p.color(74,54,26);
+  texthideconcept = p.color(106,91,86);
   textvuconcept = p.color(bleu);
-  back = p.color(22,17,0);
+  back = p.color(20,5,7);
   p.smooth();
   p.frameRate(50);
   font1 = 'Space Grotesk'
   font2 = 'Honor';
   cnv.mouseWheel(changeSize);
   scroll = -483;
+  scrollim = -scroll-483+71+71;
   p.textAlign(p.CENTER, p.CENTER);
   console.log();
   p.noStroke();
   initNodesAndSprings();
+  for (let i = 0; i < 1; i++){
+      buttons[i] = new Button();
+    }
 };
 //scrollsetting
 var changeSize = function(event) {
 
   // if (scroll < 0 && scroll > -484) {
   if (event.deltaY > 0) {
+scrollim = scrollim -71;
     scroll = scroll - 71;
   } else {
+scrollim = scrollim +71;
     scroll = scroll + 71;
   }
 }
@@ -144,147 +163,147 @@ var changeSize = function(event) {
 var initNodesAndSprings = function() {
 
 var rad = nodeDiameterxb/2;
-nodes[0] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+nodes[0] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
 nodes[0].minX = rad;
 nodes[0].minY = rad;
 nodes[0].maxX = p.width - rad;
 nodes[0].maxY = p.height - rad;
 nodes[0].radius = Radius;
 nodes[0].strength = strenght;
-nodes[1] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+nodes[1] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
 nodes[1].minX = rad;
 nodes[1].minY = rad;
 nodes[1].maxX = p.width - rad;
     nodes[1].maxY = p.height - rad;
     nodes[1].radius = Radius;
     nodes[1].strength = strenght;
-    nodes[2] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[2] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[2].minX = rad;
     nodes[2].minY = rad;
     nodes[2].maxX = p.width - rad;
     nodes[2].maxY = p.height - rad;
     nodes[2].radius = Radius;
     nodes[2].strength = strenght;
-    nodes[3] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[3] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[3].minX = rad;
     nodes[3].minY = rad;
     nodes[3].maxX = p.width - rad;
     nodes[3].maxY = p.height - rad;
     nodes[3].radius = Radius;
     nodes[3].strength = strenght;
-    nodes[4] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100,100));
+    nodes[4] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100,100));
     nodes[4].minX = rad;
     nodes[4].minY = rad;
     nodes[4].maxX = p.width - rad;
     nodes[4].maxY = p.height - rad;
     nodes[4].radius = Radius;
     nodes[4].strength = strenght;
-    nodes[5] = new Node(p.width/2+400+p.random(-100,100), p.height/2+p.random(-100, 100));
+    nodes[5] = new Node(p.width/2+480+p.random(-100,100), p.height/2+p.random(-100, 100));
     nodes[5].minX = rad;
     nodes[5].minY = rad;
     nodes[5].maxX = p.width - rad;
     nodes[5].maxY = p.height - rad;
     nodes[5].radius = Radius;
     nodes[5].strength = strenght;
-    nodes[6] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100,100));
+    nodes[6] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100,100));
     nodes[6].minX = rad;
     nodes[6].minY = rad;
     nodes[6].maxX = p.width - rad;
     nodes[6].maxY = p.height - rad;
     nodes[6].radius = Radius;
     nodes[6].strength = strenght;
-    nodes[7] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[7] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[7].minX = rad;
     nodes[7].minY = rad;
     nodes[7].maxX = p.width - rad;
     nodes[7].maxY = p.height - rad;
     nodes[7].radius = Radius;
     nodes[7].strength = strenght;
-    nodes[8] = new Node(p.width/2+400+p.random(-100,100), p.height/2+p.random(-100, 100));
+    nodes[8] = new Node(p.width/2+480+p.random(-100,100), p.height/2+p.random(-100, 100));
     nodes[8].minX = rad;
     nodes[8].minY = rad;
     nodes[8].maxX = p.width - rad;
     nodes[8].maxY = p.height - rad;
     nodes[8].radius = Radius;
     nodes[8].strength = strenght;
-    nodes[9] = new Node(p.width/2+400+p.random(-100,100), p.height/2+p.random(-100, 100));
+    nodes[9] = new Node(p.width/2+480+p.random(-100,100), p.height/2+p.random(-100, 100));
     nodes[9].minX = rad;
     nodes[9].minY = rad;
     nodes[9].maxX = p.width - rad;
     nodes[9].maxY = p.height - rad;
     nodes[9].radius = Radius;
     nodes[9].strength = strenght;
-    nodes[10] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[10] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[10].minX = rad;
     nodes[10].minY = rad;
     nodes[10].maxX = p.width - rad;
     nodes[10].maxY = p.height - rad;
     nodes[10].radius = Radius;
     nodes[10].strength = strenght;
-    nodes[11] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[11] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[11].minX = rad;
     nodes[11].minY = rad;
     nodes[11].maxX = p.width - rad;
     nodes[11].maxY = p.height - rad;
     nodes[11].radius = Radius;
     nodes[11].strength = strenght;
-    nodes[12] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[12] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[12].minX = rad;
     nodes[12].minY = rad;
     nodes[12].maxX = p.width - rad;
     nodes[12].maxY = p.height - rad;
     nodes[12].radius = Radius;
     nodes[12].strength = strenght;
-    nodes[13] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[13] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[13].minX = rad;
     nodes[13].minY = rad;
     nodes[13].maxX = p.width - rad;
     nodes[13].maxY = p.height - rad;
     nodes[13].radius = Radius;
     nodes[13].strength = strenght;
-    nodes[14] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[14] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[14].minX = rad;
     nodes[14].minY = rad;
     nodes[14].maxX = p.width - rad;
     nodes[14].maxY = p.height - rad;
     nodes[14].radius = Radius;
     nodes[14].strength = strenght;
-    nodes[15] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[15] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[15].minX = rad;
     nodes[15].minY = rad;
     nodes[15].maxX = p.width - rad;
     nodes[15].maxY = p.height - rad;
     nodes[15].radius = Radius;
     nodes[15].strength = strenght;
-    nodes[16] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[16] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[16].minX = rad;
     nodes[16].minY = rad;
     nodes[16].maxX = p.width - rad;
     nodes[16].maxY = p.height - rad;
     nodes[16].radius = Radius;
     nodes[16].strength = strenght;
-    nodes[17] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[17] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[17].minX = rad;
     nodes[17].minY = rad;
     nodes[17].maxX = p.width - rad;
     nodes[17].maxY = p.height - rad;
     nodes[17].radius = Radius;
     nodes[17].strength = strenght;
-    nodes[18] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[18] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[18].minX = rad;
     nodes[18].minY = rad;
     nodes[18].maxX = p.width - rad;
     nodes[18].maxY = p.height - rad;
     nodes[18].radius = Radius;
     nodes[18].strength = strenght;
-    nodes[19] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[19] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[19].minX = rad;
     nodes[19].minY = rad;
     nodes[19].maxX = p.width - rad;
     nodes[19].maxY = p.height - rad;
     nodes[19].radius = Radius;
     nodes[19].strength = strenght;
-    nodes[20] = new Node(p.width/2+400+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[20] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
     nodes[20].minX = rad;
     nodes[20].minY = rad;
     nodes[20].maxX = p.width - rad;
@@ -473,6 +492,8 @@ p.draw = function() {
 p.textFont(font1);
 if (p.myBoolean) beginRecord(p.PDF, timestamp()+'.pdf');
 p.background(back);
+p.fill(0,15,80,50);
+p.rect(0,0,923,p.height);
 var gridSize = 70;
 for (var x = 12; x <= p.width+400; x += gridSize) {
 for (var y = 15; y <= p.height+400; y += gridSize) {
@@ -481,18 +502,24 @@ p.noStroke();
 p.rect(x-1, y-1, 5, 5, 72);
 }
 }
+p.cursor(cursor);
 
-p.image(img, 50, 50, 400, 200, 100, 50, 500, 500);
+// p.image(img, 50, 50, 400, 400);
+// p.image(img2, 50, 50, 800, 800);
+
+// p.image(img4, 50, 50, 400, 400);
+// p.image(img5, 50, 50, 400, 400);
+// p.image(img6, 50, 50, 400, 400);
 
 
 
 //repères
 //  p.stroke(119,138,164);
 // p.stroke(255,255,150);
-// var gauche = p.line(880, 0, 880, p.height);
+// var gauche = p.line(990, 0, 990, p.height);
 // var droite = p.line(1865, 0, 1865, p.height);
 // var haut = p.line(0, 60, p.width, 60);
-// var bas = p.line(0, 905, p.width, 905);
+// var bas = p.line(0, 1800, p.width, 1800);
 // var gauche2 = p.line(70, 0, 70, p.height);
 // var haut2 = p.line(0, 70, p.width, 70);
 // var bas2 = p.line(0, 111, p.width, 111);//+41px//+10px
@@ -501,110 +528,110 @@ p.image(img, 50, 50, 400, 200, 100, 50, 500, 500);
 
 
 // p.cadre = function () {
-var node0posX =  p.constrain(nodes[0].x, 880, 1865);
-var node0posY =  p.constrain(nodes[0].y, 60, 905);
-if (node0posX === 880 || node0posY === 60 ){ nodes[0] =  new Node(node0posX+1, node0posY+1);}
-if (node0posX === 1865 || node0posY === 905 ){ nodes[0] =  new Node(node0posX-1, node0posY-1);}
+var node0posX =  p.constrain(nodes[0].x, 990, 1865);
+var node0posY =  p.constrain(nodes[0].y, 110, 1800);
+if (node0posX === 990 || node0posY === 110 ){ nodes[0] =  new Node(node0posX+1, node0posY+1);}
+if (node0posX === 1865 || node0posY === 1800 ){ nodes[0] =  new Node(node0posX-1, node0posY-1);}
 
-var node1posX =  p.constrain(nodes[1].x, 880, 1865);
-var node1posY =  p.constrain(nodes[1].y, 60, 905);
-if (node1posX === 880 || node1posY === 60 ){ nodes[1] =  new Node(node1posX+1, node1posY+1);}
-if (node1posX === 1865 || node1posY === 905 ){ nodes[1] =  new Node(node1posX-1, node1posY-1);}
+var node1posX =  p.constrain(nodes[1].x, 990, 1865);
+var node1posY =  p.constrain(nodes[1].y, 110, 1800);
+if (node1posX === 990 || node1posY === 110 ){ nodes[1] =  new Node(node1posX+1, node1posY+1);}
+if (node1posX === 1865 || node1posY === 1800 ){ nodes[1] =  new Node(node1posX-1, node1posY-1);}
 
-var node2posX =  p.constrain(nodes[2].x, 880, 1865);
-var node2posY =  p.constrain(nodes[2].y, 60, 905);
-if (node2posX === 880 || node2posY === 60 ){ nodes[2] =  new Node(node2posX+1, node2posY+1);}
-if (node2posX === 1865 || node2posY === 905 ){ nodes[2] =  new Node(node2posX-1, node2posY-1);}
+var node2posX =  p.constrain(nodes[2].x, 990, 1865);
+var node2posY =  p.constrain(nodes[2].y, 110, 1800);
+if (node2posX === 990 || node2posY === 110 ){ nodes[2] =  new Node(node2posX+1, node2posY+1);}
+if (node2posX === 1865 || node2posY === 1800 ){ nodes[2] =  new Node(node2posX-1, node2posY-1);}
 
-var node3posX =  p.constrain(nodes[3].x, 880, 1865);
-var node3posY =  p.constrain(nodes[3].y, 60, 905);
-if (node3posX === 880 || node3posY === 60 ){ nodes[3] =  new Node(node3posX+1, node3posY+1);}
-if (node3posX === 1865 || node3posY === 905 ){ nodes[3] =  new Node(node3posX-1, node3posY-1);}
+var node3posX =  p.constrain(nodes[3].x, 990, 1865);
+var node3posY =  p.constrain(nodes[3].y, 110, 1800);
+if (node3posX === 990 || node3posY === 110 ){ nodes[3] =  new Node(node3posX+1, node3posY+1);}
+if (node3posX === 1865 || node3posY === 1800 ){ nodes[3] =  new Node(node3posX-1, node3posY-1);}
 
-var node4posX =  p.constrain(nodes[4].x, 880, 1865);
-var node4posY =  p.constrain(nodes[4].y, 60, 905);
-if (node4posX === 880 || node4posY === 60 ){ nodes[4] =  new Node(node4posX+1, node4posY+1);}
-if (node4posX === 1865 || node4posY === 905 ){ nodes[4] =  new Node(node4posX-1, node4posY-1);}
+var node4posX =  p.constrain(nodes[4].x, 990, 1865);
+var node4posY =  p.constrain(nodes[4].y, 110, 1800);
+if (node4posX === 990 || node4posY === 110 ){ nodes[4] =  new Node(node4posX+1, node4posY+1);}
+if (node4posX === 1865 || node4posY === 1800 ){ nodes[4] =  new Node(node4posX-1, node4posY-1);}
 
-var node5posX =  p.constrain(nodes[5].x, 880, 1865);
-var node5posY =  p.constrain(nodes[5].y, 60, 905);
-if (node5posX === 880 || node5posY === 60 ){ nodes[5] =  new Node(node5posX+1, node5posY+1);}
-if (node5posX === 1865 || node5posY === 905 ){ nodes[5] =  new Node(node5posX-1, node5posY-1);}
+var node5posX =  p.constrain(nodes[5].x, 990, 1865);
+var node5posY =  p.constrain(nodes[5].y, 110, 1800);
+if (node5posX === 990 || node5posY === 110 ){ nodes[5] =  new Node(node5posX+1, node5posY+1);}
+if (node5posX === 1865 || node5posY === 1800 ){ nodes[5] =  new Node(node5posX-1, node5posY-1);}
 
-var node6posX =  p.constrain(nodes[6].x, 880, 1865);
-var node6posY =  p.constrain(nodes[6].y, 60, 905);
-if (node6posX === 880 || node6posY === 60 ){ nodes[6] =  new Node(node6posX+1, node6posY+1);}
-if (node6posX === 1865 || node6posY === 905 ){ nodes[6] =  new Node(node6posX-1, node6posY-1);}
+var node6posX =  p.constrain(nodes[6].x, 990, 1865);
+var node6posY =  p.constrain(nodes[6].y, 110, 1800);
+if (node6posX === 990 || node6posY === 110 ){ nodes[6] =  new Node(node6posX+1, node6posY+1);}
+if (node6posX === 1865 || node6posY === 1800 ){ nodes[6] =  new Node(node6posX-1, node6posY-1);}
 
-var node7posX =  p.constrain(nodes[7].x, 880, 1865);
-var node7posY =  p.constrain(nodes[7].y, 60, 905);
-if (node7posX === 880 || node7posY === 60 ){ nodes[7] =  new Node(node7posX+1, node7posY+1);}
-if (node7posX === 1865 || node7posY === 905 ){ nodes[7] =  new Node(node7posX-1, node7posY-1);}
+var node7posX =  p.constrain(nodes[7].x, 990, 1865);
+var node7posY =  p.constrain(nodes[7].y, 110, 1800);
+if (node7posX === 990 || node7posY === 110 ){ nodes[7] =  new Node(node7posX+1, node7posY+1);}
+if (node7posX === 1865 || node7posY === 1800 ){ nodes[7] =  new Node(node7posX-1, node7posY-1);}
 
-var node8posX =  p.constrain(nodes[8].x, 880, 1865);
-var node8posY =  p.constrain(nodes[8].y, 60, 905);
-if (node8posX === 880 || node8posY === 60 ){ nodes[8] =  new Node(node8posX+1, node8posY+1);}
-if (node8posX === 1865 || node8posY === 905 ){ nodes[8] =  new Node(node8posX-1, node8posY-1);}
+var node8posX =  p.constrain(nodes[8].x, 990, 1865);
+var node8posY =  p.constrain(nodes[8].y, 110, 1800);
+if (node8posX === 990 || node8posY === 110 ){ nodes[8] =  new Node(node8posX+1, node8posY+1);}
+if (node8posX === 1865 || node8posY === 1800 ){ nodes[8] =  new Node(node8posX-1, node8posY-1);}
 
-var node9posX =  p.constrain(nodes[9].x, 880, 1865);
-var node9posY =  p.constrain(nodes[9].y, 60, 905);
-if (node9posX === 880 || node9posY === 60 ){ nodes[9] =  new Node(node9posX+1, node9posY+1);}
-if (node9posX === 1865 || node9posY === 905 ){ nodes[9] =  new Node(node9posX-1, node9posY-1);}
+var node9posX =  p.constrain(nodes[9].x, 990, 1865);
+var node9posY =  p.constrain(nodes[9].y, 110, 1800);
+if (node9posX === 990 || node9posY === 110 ){ nodes[9] =  new Node(node9posX+1, node9posY+1);}
+if (node9posX === 1865 || node9posY === 1800 ){ nodes[9] =  new Node(node9posX-1, node9posY-1);}
 
-var node10posX =  p.constrain(nodes[10].x, 880, 1865);
-var node10posY =  p.constrain(nodes[10].y, 60, 905);
-if (node10posX === 880 || node10posY === 60 ){ nodes[10] =  new Node(node10posX+1, node10posY+1);}
-if (node10posX === 1865 || node10posY === 905 ){ nodes[10] =  new Node(node10posX-1, node10posY-1);}
+var node10posX =  p.constrain(nodes[10].x, 990, 1865);
+var node10posY =  p.constrain(nodes[10].y, 110, 1800);
+if (node10posX === 990 || node10posY === 110 ){ nodes[10] =  new Node(node10posX+1, node10posY+1);}
+if (node10posX === 1865 || node10posY === 1800 ){ nodes[10] =  new Node(node10posX-1, node10posY-1);}
 
-var node11posX =  p.constrain(nodes[11].x, 880, 1865);
-var node11posY =  p.constrain(nodes[11].y, 60, 905);
-if (node11posX === 880 || node11posY === 60 ){ nodes[11] =  new Node(node11posX+1, node11posY+1);}
-if (node11posX === 1865 || node11posY === 905 ){ nodes[11] =  new Node(node11posX-1, node11posY-1);}
+var node11posX =  p.constrain(nodes[11].x, 990, 1865);
+var node11posY =  p.constrain(nodes[11].y, 110, 1800);
+if (node11posX === 990 || node11posY === 110 ){ nodes[11] =  new Node(node11posX+1, node11posY+1);}
+if (node11posX === 1865 || node11posY === 1800 ){ nodes[11] =  new Node(node11posX-1, node11posY-1);}
 
-var node12posX =  p.constrain(nodes[12].x, 880, 1865);
-var node12posY =  p.constrain(nodes[12].y, 60, 905);
-if (node12posX === 880 || node12posY === 60 ){ nodes[12] =  new Node(node12posX+1, node12posY+1);}
-if (node12posX === 1865 || node12posY === 905 ){ nodes[12] =  new Node(node12posX-1, node12posY-1);}
+var node12posX =  p.constrain(nodes[12].x, 990, 1865);
+var node12posY =  p.constrain(nodes[12].y, 110, 1800);
+if (node12posX === 990 || node12posY === 110 ){ nodes[12] =  new Node(node12posX+1, node12posY+1);}
+if (node12posX === 1865 || node12posY === 1800 ){ nodes[12] =  new Node(node12posX-1, node12posY-1);}
 
-var node13posX =  p.constrain(nodes[13].x, 880, 1865);
-var node13posY =  p.constrain(nodes[13].y, 60, 905);
-if (node13posX === 880 || node13posY === 60 ){ nodes[13] =  new Node(node13posX+1, node13posY+1);}
-if (node13posX === 1865 || node13posY === 905 ){ nodes[13] =  new Node(node13posX-1, node13posY-1);}
+var node13posX =  p.constrain(nodes[13].x, 990, 1865);
+var node13posY =  p.constrain(nodes[13].y, 110, 1800);
+if (node13posX === 990 || node13posY === 110 ){ nodes[13] =  new Node(node13posX+1, node13posY+1);}
+if (node13posX === 1865 || node13posY === 1800 ){ nodes[13] =  new Node(node13posX-1, node13posY-1);}
 
-var node14posX =  p.constrain(nodes[14].x, 880, 1865);
-var node14posY =  p.constrain(nodes[14].y, 60, 905);
-if (node14posX === 880 || node14posY === 60 ){ nodes[14] =  new Node(node14posX+1, node14posY+1);}
-if (node14posX === 1865 || node14posY === 905 ){ nodes[14] =  new Node(node14posX-1, node14posY-1);}
+var node14posX =  p.constrain(nodes[14].x, 990, 1865);
+var node14posY =  p.constrain(nodes[14].y, 110, 1800);
+if (node14posX === 990 || node14posY === 110 ){ nodes[14] =  new Node(node14posX+1, node14posY+1);}
+if (node14posX === 1865 || node14posY === 1800 ){ nodes[14] =  new Node(node14posX-1, node14posY-1);}
 
-var node15posX =  p.constrain(nodes[15].x, 880, 1865);
-var node15posY =  p.constrain(nodes[15].y, 60, 905);
-if (node15posX === 880 || node15posY === 60 ){ nodes[15] =  new Node(node15posX+1, node15posY+1);}
-if (node15posX === 1865 || node15posY === 905 ){ nodes[15] =  new Node(node15posX-1, node15posY-1);}
+var node15posX =  p.constrain(nodes[15].x, 990, 1865);
+var node15posY =  p.constrain(nodes[15].y, 110, 1800);
+if (node15posX === 990 || node15posY === 110 ){ nodes[15] =  new Node(node15posX+1, node15posY+1);}
+if (node15posX === 1865 || node15posY === 1800 ){ nodes[15] =  new Node(node15posX-1, node15posY-1);}
 
-var node16posX =  p.constrain(nodes[16].x, 880, 1865);
-var node16posY =  p.constrain(nodes[16].y, 60, 905);
-if (node16posX === 880 || node16posY === 60 ){ nodes[16] =  new Node(node16posX+1, node16posY+1);}
-if (node16posX === 1865 || node16posY === 905 ){ nodes[16] =  new Node(node16posX-1, node16posY-1);}
+var node16posX =  p.constrain(nodes[16].x, 990, 1865);
+var node16posY =  p.constrain(nodes[16].y, 110, 1800);
+if (node16posX === 990 || node16posY === 110 ){ nodes[16] =  new Node(node16posX+1, node16posY+1);}
+if (node16posX === 1865 || node16posY === 1800 ){ nodes[16] =  new Node(node16posX-1, node16posY-1);}
 
-var node17posX =  p.constrain(nodes[17].x, 880, 1865);
-var node17posY =  p.constrain(nodes[17].y, 60, 905);
-if (node17posX === 880 || node17posY === 60 ){ nodes[17] =  new Node(node17posX+1, node17posY+1);}
-if (node17posX === 1865 || node17posY === 905 ){ nodes[17] =  new Node(node17posX-1, node17posY-1);}
+var node17posX =  p.constrain(nodes[17].x, 990, 1865);
+var node17posY =  p.constrain(nodes[17].y, 110, 1800);
+if (node17posX === 990 || node17posY === 110 ){ nodes[17] =  new Node(node17posX+1, node17posY+1);}
+if (node17posX === 1865 || node17posY === 1800 ){ nodes[17] =  new Node(node17posX-1, node17posY-1);}
 
-var node18posX =  p.constrain(nodes[18].x, 880, 1865);
-var node18posY =  p.constrain(nodes[18].y, 60, 905);
-if (node18posX === 880 || node18posY === 60 ){ nodes[18] =  new Node(node18posX+1, node18posY+1);}
-if (node18posX === 1865 || node18posY === 905 ){ nodes[18] =  new Node(node18posX-1, node18posY-1);}
+var node18posX =  p.constrain(nodes[18].x, 990, 1865);
+var node18posY =  p.constrain(nodes[18].y, 110, 1800);
+if (node18posX === 990 || node18posY === 110 ){ nodes[18] =  new Node(node18posX+1, node18posY+1);}
+if (node18posX === 1865 || node18posY === 1800 ){ nodes[18] =  new Node(node18posX-1, node18posY-1);}
 
-var node19posX =  p.constrain(nodes[19].x, 880, 1865);
-var node19posY =  p.constrain(nodes[19].y, 60, 905);
-if (node19posX === 880 || node19posY === 60 ){ nodes[19] =  new Node(node19posX+1, node19posY+1);}
-if (node19posX === 1865 || node19posY === 905 ){ nodes[19] =  new Node(node19posX-1, node19posY-1);}
+var node19posX =  p.constrain(nodes[19].x, 990, 1865);
+var node19posY =  p.constrain(nodes[19].y, 110, 1800);
+if (node19posX === 990 || node19posY === 110 ){ nodes[19] =  new Node(node19posX+1, node19posY+1);}
+if (node19posX === 1865 || node19posY === 1800 ){ nodes[19] =  new Node(node19posX-1, node19posY-1);}
 
-var node20posX =  p.constrain(nodes[20].x, 880, 1865);
-var node20posY =  p.constrain(nodes[20].y, 60, 905);
-if (node20posX === 880 || node20posY === 60 ){ nodes[20] =  new Node(node20posX+1, node20posY+1);}
-if (node20posX === 1865 || node20posY === 905 ){ nodes[20] =  new Node(node20posX-1, node20posY-1);}
+var node20posX =  p.constrain(nodes[20].x, 990, 1865);
+var node20posY =  p.constrain(nodes[20].y, 110, 1800);
+if (node20posX === 990 || node20posY === 110 ){ nodes[20] =  new Node(node20posX+1, node20posY+1);}
+if (node20posX === 1865 || node20posY === 1800 ){ nodes[20] =  new Node(node20posX-1, node20posY-1);}
 
 
    nodes[0].attract(nodes[1]);    nodes[0].attract(nodes[2]);    nodes[0].attract(nodes[3]);    nodes[0].attract(nodes[4]);    nodes[0].attract(nodes[5]); nodes[0].attract(nodes[6]); nodes[0].attract(nodes[7]); nodes[0].attract(nodes[8]); nodes[0].attract(nodes[9]); nodes[0].attract(nodes[10]); nodes[0].attract(nodes[11]); nodes[0].attract(nodes[12]); nodes[0].attract(nodes[13]); nodes[0].attract(nodes[14]); nodes[0].attract(nodes[15]); nodes[0].attract(nodes[16]);  nodes[0].attract(nodes[17]);  nodes[0].attract(nodes[18]);  nodes[0].attract(nodes[19]);  nodes[0].attract(nodes[20]);
@@ -809,7 +836,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
 
   p.textSize(20);
   p.textFont(font1);
-  p.textAlign(p.CENTER, p.CENTER);
+  p.textAlign(p.CENTER, p.CENTE);
 
            if ((node0posX-50 < p.mouseX && node0posX+50 > p.mouseX) && (node0posY-50 < p.mouseY && node0posY+50 > p.mouseY)) {
             p.fill(textvuconcept);
@@ -817,20 +844,22 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             p.text(auxétisme, node0posX, node0posY);
             if (p.mouseIsPressed == true){
               if(p.keyIsPressed == true){
+                for (let a = 0; a < images.length; a++){
+              images.splice(a,2);
+             }
+              p.textAlign(p.LEFT);
               p.noStroke();
-              p.fill(8,16,23,500)
+              p.fill(back,500);
               p.rect(0,0,p.windowWidth,p.windowHeight);
-              p.stroke(177,60,90);
-              p.noFill();
-              p.line(85,85,115,115);
-              p.line(115,85,85,115);
-              p.ellipse(100,100,50);
+              p.image(delate2,65,65);
               p.noStroke();
               p.noLoop();
             p.fill(bleu);
-                p.text('auxétisme (anglissisme) def :',400,190);
+                p.text('Auxétisme (anglissisme) def. :',150,190);
               p.fill(textvu);
-                p.text("caractère d'un matériaux qui, contrairement aux matériaux conventionels, s'expend quand on l'étire et inversement.",900,250);
+                p.text("Caractère d'un matériaux qui, contrairement aux matériaux conventionels, s'expend quand on l'étire et inversement. En résistance des matériaux (RDM),",200,190+60);
+                p.text("on peut décrire ce comportement par le coéfficient de Poisson qui représente le rapport du rétrecissemnt transversal d'un échantillon sur son",200,190+60+30);
+                p.text("allongement longitudinal. Pour presque tout les matériaux ce coefficient est donc positif, mais pour un matériaux auxétique ce coefficient est alors négatif.",200,190+60+30+30);
               p.drawingContext.filter = 'Blur(8px)';
           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
           }
@@ -848,6 +877,27 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             p.fill(textvuconcept);
             p.textSize(textsize+10);
             p.text(tenségrité, node1posX, node1posY);
+            if (p.mouseIsPressed == true){
+              if(p.keyIsPressed == true){
+                for (let a = 0; a < images.length; a++){
+              images.splice(a,2);
+             }
+              p.textAlign(p.LEFT);
+              p.noStroke();
+              p.fill(back,500);
+              p.rect(0,0,p.windowWidth,p.windowHeight);
+              p.image(delate2,65,65);
+              p.noStroke();
+              p.noLoop();
+            p.fill(bleu);
+                p.text('tenségrité def. :',150,190);
+              p.fill(textvu);
+                p.text("Ce mot est la contraction directe de 'tension' et 'intégrité' et ainsi nous pouvons en déduire qu'une structure tensègre est une structure dont la tension interne",200,190+60);
+                p.text("assure sa propre intégrité, c'est à dire son bon fonctionnement.",200,190+60+30);
+              p.drawingContext.filter = 'Blur(8px)';
+          //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+          }
+        }
             } else {
            p.fill(texthideconcept);
            p.textSize(textsize+10);
@@ -861,6 +911,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
                p.text(jamming, node2posX, node2posY);
+               if (p.mouseIsPressed == true){
+                 if(p.keyIsPressed == true){
+                   for (let a = 0; a < images.length; a++){
+                 images.splice(a,2);
+                }
+                 p.textAlign(p.LEFT);
+                 p.noStroke();
+                 p.fill(back,500);
+                 p.rect(0,0,p.windowWidth,p.windowHeight);
+                 p.image(delate2,65,65);
+                 p.noStroke();
+                 p.noLoop();
+               p.fill(bleu);
+                   p.text('Jamming (or. anglaise) def. :',150,190);
+                 p.fill(textvu);
+                   p.text("La traduction directe de 'jamming' en français est 'confiture'. En fait cette traduction est plutôt imagaire puisque le concepte de jamming conciste à utiliser",200,190+60);
+                   p.text("une matière granulaire molle, sous vide dans une poche hermétique pour changer ces propriétés. Avec une pression normale, la poche est molle mais sous vide elle gagne",200,190+60+30);
+                   p.text("en dureté. Ceci peux s'expliquer à l'échelle des grains qui sans air ne peuvent plus se mouvoir entre eux.",200,190+60+30+30);
+                 p.drawingContext.filter = 'Blur(8px)';
+             //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+             }
+           }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -875,6 +947,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                 p.text(système, node3posX, node3posY-10);
               p.text(pneumatique, node3posX , node3posY+10);
+              if (p.mouseIsPressed == true){
+                if(p.keyIsPressed == true){
+                  for (let a = 0; a < images.length; a++){
+                images.splice(a,2);
+               }
+               p.textAlign(p.LEFT);
+                p.noStroke();
+                p.fill(back,500);
+                p.rect(0,0,p.windowWidth,p.windowHeight);
+                p.image(delate2,65,65);
+                p.noStroke();
+                p.noLoop();
+              p.fill(bleu);
+                  p.text('Système pneumatique def. :',150,190);
+                p.fill(textvu);
+                  p.text("Un sytème pneumatique est un système mécanique permétant d'exploiter l'énergie emmagasinée dans un gaz sous forme mécanique du fait qu'elle est comprimée.",200,190+60);
+                  p.text("Les avantages qu'il faut y voir sont sa grande réactivité, son efficacité mécanique qui dépasse beaucoup d'autres sources d'énergie. Aussi cette énergie",200,190+60+30);
+                  p.text("est 100% propre ce qui en fait un outil prométeur pour notre futur.",200,190+60+30+30);
+                p.drawingContext.filter = 'Blur(8px)';
+            //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+            }
+          }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -890,6 +984,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                 p.text(motif, node4posX, node4posY -10);
              p.text(procédural, node4posX , node4posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Système procédural def. :',150,190);
+               p.fill(textvu);
+                 p.text("Un système (formel) procédural est un ensemble de formes jamais identiques mais dont les lois qui régissent sa gènese sont toujours vérifiées et respéctées.",200,190+60);
+                 p.text("Ces motifs sont souvent issues de recherche des formes de génèse dans la nature. Un des précurseurs de ces systèmes reste Alan turring sur ces simulations de motifs dynamiques.",200,190+60+30);
+                 p.text("Les systèmes-L en sont aussi un bon éxemple.",200,190+60+30+30);
+               p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -902,6 +1018,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
                 p.text(mémoire, node5posX, node5posY);
+                if (p.mouseIsPressed == true){
+                  if(p.keyIsPressed == true){
+                    for (let a = 0; a < images.length; a++){
+                  images.splice(a,2);
+                 }
+                 p.textAlign(p.LEFT);
+                  p.noStroke();
+                  p.fill(back,500);
+                  p.rect(0,0,p.windowWidth,p.windowHeight);
+                  p.image(delate2,65,65);
+                  p.noStroke();
+                  p.noLoop();
+                p.fill(bleu);
+                    p.text('Bi-stabilité def. :',150,190);
+                  p.fill(textvu);
+                  p.text("La Bi-stabilité est le caractère de quelquechose qui détient, en puissance, deux états stables différents. Entre ces deux états le système passe par un état",200,190+60);
+                  p.text("instable nécessaire qui fait passer le système das un un des deux états stable. Le rythme est alors le suivant : Etat Stable A / Etat Instable / Etat Stable B ",200,190+60+30);
+                  p.text("ou inversement. C'est alors que nous pouvons tirer partie de deux modalités différentes d'un seul objet et explorer le caractère chaotique de celui-ci par le même biais.",200,190+60+30+30);
+                  p.drawingContext.filter = 'Blur(8px)';
+              //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+              }
+            }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -914,6 +1052,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                 p.text(surface, node6posX, node6posY -10);
              p.text(entension, node6posX, node6posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Tension surfacique def. :',150,190);
+               p.fill(textvu);
+               p.text("Une tension est le plus simplement illustrée entre deux points et s'imagine bien par tout le monde. C'est une tension à 1 dimension. A 2 dimensions la tension",200,190+60);
+               p.text("se décrits sur un plan ou dans le monde réel sur une surface dont la topologie et le contour est définit par cette tension interne. Alors une même surface peut",200,190+60+30);
+               p.text("présenter une infinité de profils suivant les forces de tension qui la traverse. L'équivalence à la troisième dimension peut se raprocher des modèles de tenségrité.",200,190+60+30+30);
+                p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -927,6 +1087,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                 p.text(motif, node7posX, node7posY -10);
              p.text(céllulaire, node7posX , node7posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Système céllulaire def. :',150,190);
+               p.fill(textvu);
+               p.text("Un Système céllulaire peut se voir comme un ensemble de céllules souvent jamais identiques dont les frontiéres qui les cernes s'ajuste à chacunes des cellules",200,190+60);
+               p.text("voisines. L'exemple le plus simple à comprendre et peut-être le plus connu reste le diagramme de Voronoi du mathématicien Russe Gueorgui Voronoï. Ces motifs",200,190+60+30);
+               p.text("sont souvent issues de recherches sur la génèse des formes céllulaires dans la nature.",200,190+60+30+30);
+               p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -940,6 +1122,27 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                 p.text(courbes, node8posX, node8posY -10);
              p.text(polynomiales, node8posX , node8posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Courbe polynomiale def. :',4150,190);
+               p.fill(textvu);
+               p.text("La courbe polynomiale est une objet mathématique qui pour un seul abscisse possède plusieurs ordonnées ou inversement. Ceci à pour cause de créer des courbes",200,190+60);
+               p.text("synusoidales, c'est à dire avec une ou plusieurs vagues.",200,190+60+30);
+               p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -953,6 +1156,26 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                  p.text(déformation, node9posX, node9posY -10);
              p.text(différentielle, node9posX , node9posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Déformation différenttielle def. :',150,190);
+               p.fill(textvu);
+               p.text("Déformation d'un objet causée par la différence de plusieurs forces contradictoires.",200,190+60);
+               p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -967,6 +1190,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                  p.text(matière, node10posX, node10posY -10);
              p.text(granulaire, node10posX, node10posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Matière granulaire def. :',150,190);
+               p.fill(textvu);
+               p.text("Cette dénomination englobe toutes les matières inconsistantes constituées de grains plus ou moins grands. Le sable en est le plus large représentant.",200,190+60);
+               p.text("Ces matières ont des comportements qui se raprochent des fluides sans leurs désavantages. Les matières granulaires sont concidérées comme informes à",200,190+60+30);
+               p.text("l'état naturel et protéiforme par l'interprétation humaine.",200,190+60+30+30);
+               p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -980,6 +1225,26 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
                  p.text(abrasion, node11posX, node11posY );
+                 if (p.mouseIsPressed == true){
+                   if(p.keyIsPressed == true){
+                     for (let a = 0; a < images.length; a++){
+                   images.splice(a,2);
+                  }
+                  p.textAlign(p.LEFT);
+                   p.noStroke();
+                   p.fill(back,500);
+                   p.rect(0,0,p.windowWidth,p.windowHeight);
+                   p.image(delate2,65,65);
+                   p.noStroke();
+                   p.noLoop();
+                 p.fill(bleu);
+                     p.text('Abrasion def. :',150,190);
+                   p.fill(textvu);
+                   p.text("L'abrasion est la conséquence d'un contacte répété entre une surface d'une granulométrie forte sur une surface plus lisse.",200,190+60);
+                   p.drawingContext.filter = 'Blur(8px)';
+               //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+               }
+             }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -991,6 +1256,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
                  p.text(turbulence, node12posX, node12posY);
+                 if (p.mouseIsPressed == true){
+                   if(p.keyIsPressed == true){
+                     for (let a = 0; a < images.length; a++){
+                   images.splice(a,2);
+                  }
+                  p.textAlign(p.LEFT);
+                   p.noStroke();
+                   p.fill(back,500);
+                   p.rect(0,0,p.windowWidth,p.windowHeight);
+                   p.image(delate2,65,65);
+                   p.noStroke();
+                   p.noLoop();
+                 p.fill(bleu);
+                     p.text('Perturbation def. :',150,190);
+                   p.fill(textvu);
+                   p.text("En mécanique des fluides on considère l'écoulement perturbé comme l'opposé d'un écoulement laminaire qui serait l'écoulement le plus linéaire",200,190+60);
+                   p.text("et économique énergétiquement. Une comparaison de ces opposées pourrait se faire avec l'ordre et le chaos en considérant que le chaos est le",200,190+60+30);
+                   p.text("lieux ou les plus belles choses peuvent s'y réaliser.",200,190+60+30+30);
+                   p.drawingContext.filter = 'Blur(8px)';
+               //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+               }
+             }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -1003,6 +1290,27 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
                  p.text(réflexion, node13posX, node13posY);
+                 if (p.mouseIsPressed == true){
+                   if(p.keyIsPressed == true){
+                     for (let a = 0; a < images.length; a++){
+                   images.splice(a,2);
+                  }
+                  p.textAlign(p.LEFT);
+                   p.noStroke();
+                   p.fill(back,500);
+                   p.rect(0,0,p.windowWidth,p.windowHeight);
+                   p.image(delate2,65,65);
+                   p.noStroke();
+                   p.noLoop();
+                 p.fill(bleu);
+                     p.text('Réflexion def. :',150,190);
+                   p.fill(textvu);
+                   p.text("Le phénomène de réfléxion est un phénomène physique qui se joue entre la lumière et les aspects de surface de la matière plus ou moins lisse, irrisée ou autre.",200,190+60);
+                   p.text("L'organisation des derniers élèments en surface déterminent largement l'effet de réfléxion. C'est en partie avec ce phénomène omniprésent autour de nous que le monde nous émerveille.",200,190+60+30);
+                   p.drawingContext.filter = 'Blur(8px)';
+               //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+               }
+             }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -1014,6 +1322,27 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
                  p.text(portance, node14posX, node14posY);
+                 if (p.mouseIsPressed == true){
+                   if(p.keyIsPressed == true){
+                     for (let a = 0; a < images.length; a++){
+                   images.splice(a,2);
+                  }
+                  p.textAlign(p.LEFT);
+                   p.noStroke();
+                   p.fill(back,500);
+                   p.rect(0,0,p.windowWidth,p.windowHeight);
+                   p.image(delate2,65,65);
+                   p.noStroke();
+                   p.noLoop();
+                 p.fill(bleu);
+                     p.text('Portance def. :',150,190);
+                   p.fill(textvu);
+                   p.text("Force opposée à la traction terrestre permétant d'élever dans l'air un objet. Des formes comme les profils d'ailes sont issues de l'optimisation des effets de dépressions,",200,190+60);
+                   p.text("de la minimisation des effets de trainée pour maximiser l'effet de portance. Dans le mouvement l'économie d'énergie dicte les bonnes formes à adopter.",200,190+60+30);
+                   p.drawingContext.filter = 'Blur(8px)';
+               //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+               }
+             }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -1027,6 +1356,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                  p.text(écoulement, node15posX, node15posY -10);
              p.text(laminaire, node15posX , node15posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Ecoulement laminaire def. :',150,190);
+               p.fill(textvu);
+               p.text("En mécanique des fluides on considère l'écoulement perturbé comme l'opposé d'un écoulement laminaire qui serait l'écoulement le plus linéaire",200,190+60);
+               p.text("et économique énergétiquement. Dans la nature l'écoulement laminaire est souvent recherché pour faciliter la pénétration d'un objet dans un milieux",200,190+60+30);
+               p.text("et réduire les perturbations qui coûtent en énergie.",200,190+60+30+30);
+               p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -1040,6 +1391,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.textSize(textsize+10);
                  p.text(réaction, node16posX, node16posY -10);
              p.text(chimique, node16posX , node16posY +10);
+             if (p.mouseIsPressed == true){
+               if(p.keyIsPressed == true){
+                 for (let a = 0; a < images.length; a++){
+               images.splice(a,2);
+              }
+              p.textAlign(p.LEFT);
+               p.noStroke();
+               p.fill(back,500);
+               p.rect(0,0,p.windowWidth,p.windowHeight);
+               p.image(delate2,65,65);
+               p.noStroke();
+               p.noLoop();
+             p.fill(bleu);
+                 p.text('Réaction chimique def. :',150,190);
+               p.fill(textvu);
+               p.text("Une réaction chimique est une transformation de la matière au cours de laquelle les espèces chimiques sont modifiées. Les espèces",200,190+60);
+               p.text("qui sont consommées sont appelées réactifs ; les espèces formées au cours de la réaction sont appelées produits. Depuis les travaux de Lavoisier (1777),",200,190+60+30);
+               p.text("on sait que la réaction chimique se fait sans variation mesurable de la masse : « Rien ne se perd, rien ne se crée, tout se transforme »",200,190+60+30+30);
+               p.drawingContext.filter = 'Blur(8px)';
+           //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+           }
+         }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -1052,6 +1425,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
                  p.text(réacdif, node17posX, node17posY);
+                 if (p.mouseIsPressed == true){
+                   if(p.keyIsPressed == true){
+                     for (let a = 0; a < images.length; a++){
+                   images.splice(a,2);
+                  }
+                  p.textAlign(p.LEFT);
+                   p.noStroke();
+                   p.fill(back,500);
+                   p.rect(0,0,p.windowWidth,p.windowHeight);
+                   p.image(delate2,65,65);
+                   p.noStroke();
+                   p.noLoop();
+                 p.fill(bleu);
+                     p.text('Réaction/diffusion def. :',150,190);
+                   p.fill(textvu);
+                   p.text("Un système de réaction-diffusion est un modèle mathématique qui décrit l'évolution des concentrations d'une ou plusieurs substances spatialement distribuées",200,190+60);
+                   p.text("et soumises à deux processus : un processus de réactions chimiques locales, dans lequel les différentes substances se transforment, et un processus de",200,190+60+30);
+                   p.text("diffusion qui provoque une répartition de ces substances dans l'espace. Ce modèle permet nottement de simuler des systèmes dynamiques naturels en croissance.",200,190+60+30+30);
+                   p.drawingContext.filter = 'Blur(8px)';
+               //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+               }
+             }
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
@@ -1063,6 +1458,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                   p.fill(textvuconcept);
                 p.textSize(textsize+10);
                    p.text(morphing, node20posX, node20posY);
+                   if (p.mouseIsPressed == true){
+                     if(p.keyIsPressed == true){
+                       for (let a = 0; a < images.length; a++){
+                     images.splice(a,2);
+                    }
+                    p.textAlign(p.LEFT);
+                     p.noStroke();
+                     p.fill(back,500);
+                     p.rect(0,0,p.windowWidth,p.windowHeight);
+                     p.image(delate2,65,65);
+                     p.noStroke();
+                     p.noLoop();
+                   p.fill(bleu);
+                       p.text('Morphing (or. anglaise) def. :',150,190);
+                     p.fill(textvu);
+                     p.text("Le morphing consiste dans une géométrie donnée à adapter un élèment comme un motif proportionnelemnt au cellules du maillage de la géométrie",200,190+60);
+                     p.text("qui s'en retrouve optimisée. Cela peut être utile pour garder une cohérance visuelle entre un décore et les caractéristiques formelles d'une ",200,190+60+30);
+                     p.text("forme ou pour assurer des propriétés physiques comme la répartition des forces par exemple.",200,190+60+30+30);
+                     p.drawingContext.filter = 'Blur(8px)';
+                 //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+                 }
+               }
               } else {
                 p.fill(texthideconcept);
                 p.textSize(textsize+10);
@@ -1075,6 +1492,28 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                     p.fill(textvuconcept);
                   p.textSize(textsize+10);
                      p.text(compliance, node18posX, node18posY);
+                     if (p.mouseIsPressed == true){
+                       if(p.keyIsPressed == true){
+                         for (let a = 0; a < images.length; a++){
+                       images.splice(a,2);
+                      }
+                      p.textAlign(p.LEFT);
+                       p.noStroke();
+                       p.fill(back,500);
+                       p.rect(0,0,p.windowWidth,p.windowHeight);
+                       p.image(delate2,65,65);
+                       p.noStroke();
+                       p.noLoop();
+                     p.fill(bleu);
+                         p.text('Compliance (anglissisme) def. :',150,190);
+                       p.fill(textvu);
+                       p.text("Forme de résiliance d'un objet qui accepte toutefois la déformation comme un paramètre utile. Ce caractère est souvent donnée par des jeux de densité",200,190+60);
+                       p.text("de matière, de dimensionnement ou encore d'hybridation de matières aux propriétées opposées à des points stratégiques dans la pièce. Ainsi la pièce varie",200,190+60+30);
+                       p.text("de géométrie aux endroits permis sans rompre pour s'adapter à son milieux.",200,190+60+30+30);
+                       p.drawingContext.filter = 'Blur(8px)';
+                   //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+                   }
+                 }
                 } else {
                   p.fill(texthideconcept);
                   p.textSize(textsize+10);
@@ -1086,111 +1525,37 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                       p.fill(textvuconcept);
                     p.textSize(textsize+10);
                        p.text(systmL, node19posX, node19posY);
+                       if (p.mouseIsPressed == true){
+                         if(p.keyIsPressed == true){
+                           for (let a = 0; a < images.length; a++){
+                         images.splice(a,2);
+                        }
+                        p.textAlign(p.LEFT);
+                         p.noStroke();
+                         p.fill(back,500);
+                         p.rect(0,0,p.windowWidth,p.windowHeight);
+                         p.image(delate2,65,65);
+                         p.noStroke();
+                         p.noLoop();
+                       p.fill(bleu);
+                           p.text('Système L def. :',150,190);
+                         p.fill(textvu);
+                         p.text("Grammaire formelle, inventé en 1968 par le biologiste Aristid Lindenmayer permettant de modéliser le processus de développement",200,190+60);
+                         p.text("et de prolifération de plantes ou de bactéries.",200,190+60+30);
+                         p.drawingContext.filter = 'Blur(8px)';
+                     //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
+                     }
+                   }
                   } else {
                     p.fill(texthideconcept);
                     p.textSize(textsize+10);
                       p.text(systmL, node19posX, node19posY);
                   }
 
-  //target
-p.strokeWeight(1)
-p.stroke(177,60,90);
-p.noFill();
-p.rect(62, 260, 90, 85, 10);
-p.noStroke();
-// p.stroke(textvuconcept);
-p.fill(140,162,195,100);
-p.rect(30, 275, 790, 56, 10);
 
-p.textAlign(p.LEFT);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr1, 65, 97+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('Matière entre éclats et pénombre.', 160, 78+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('Expérimentations et études autour de concepts fondamentaux.',160,103+scroll, p.width, p.height);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr2, 65, 97+71+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('La terre comme retour aux «sources».', 160, 78+71+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('Deux productions artisanales en terre cuite.',160,103+71+scroll, p.width, p.height);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr3, 65, 97+71+71+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('Équilibre intérieur et volumétrie variable.', 160, 78+71+71+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('Production d’un saladier adaptatif.',160,103+71+71+scroll, p.width, p.height);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr4, 65, 97+71+71+71+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('Faire corps avec le flux.', 160, 78+71+71+71+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('Conception d’un «hydrofoil» optimisé.',160,103+71+71+71+scroll, p.width, p.height);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr5, 65, 97+71+71+71+71+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('Du hasard au procédé.', 160, 78+71+71+71+71+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('Conception d’une table basse.',160,103+71+71+71+71+scroll, p.width, p.height);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr6, 65, 97+71+71+71+71+71+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('Réactions de matières. De l’expérience ordinaire à l’innovation.', 160, 78+71+71+71+71+71+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('Hybridation de principes technologiques innovants.',160,103+71+71+71+71+71+scroll, p.width, p.height);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr7, 65, 97+71+71+71+71+71+71+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('Une concentration de procédés.', 160, 78+71+71+71+71+71+71+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('pour une micro-architecture cinématique.',160,103+71+71+71+71+71+71+scroll, p.width, p.height);
-p.textFont(font2);
-p.fill(texthide);
-p.textSize(69);
-p.text(spr8, 65, 97+71+71+71+71+71+71+71+scroll, p.width, p.height);
-p.textFont(font1);
-p.textSize(20);
-p.fill(textvuconcept);
-p.textSize(textsize+10);
-p.text('Prométhée.', 160, 78+71+71+71+71+71+71+71+scroll, p.width, p.height);
-p.fill(rouge);
-p.text('Conception d’une assise évolutive.',160,103+71+71+71+71+71+71+71+scroll, p.width, p.height);
+
+
+
 
 
 
@@ -1823,6 +2188,38 @@ p.textFont(font2);
      }
 
 
+
+//interactivity menu
+
+
+     for (let a = 0; a < images.length; a++){
+         images[a].show();
+         p.stroke(bleu);
+         p.strokeWeight(1);
+         p.line(node12posX, node12posY, node8posX, node8posY);
+         p.noStroke();
+        p.textAlign(p.CENTER,p.CENTER);
+         p.textSize(20);
+        p.fill(textvu);
+        p.textSize(textsize2);
+        p.textFont(font2);
+        p.text(spr2,node8posX*0.5+node12posX*0.5,node8posY*0.5+node12posY*0.5);
+        p.fill(textvuconcept);
+        p.textSize(textsize+10);
+        p.textFont(font1);
+        p.text(turbulence, node12posX, node12posY);
+        p.text(courbes, node8posX, node8posY-10);
+        p.text(polynomiales, node8posX , node8posY +10);
+
+       }
+
+     for (let i = 0; i < buttons.length; i++){
+      buttons[i].showbutton();
+      }
+
+
+
+
 //identifier projet scroller
     if (scroll === -341+71 ) {
       p.stroke(bleu);
@@ -2071,18 +2468,173 @@ p.textFont(font2);
     p.text(polynomiales, node8posX, node8posY+10);
 
     }
+// p.image(cursor,p.mouseX,p.mouseY);
+//instruction UX
+
+p.stroke(177,60,90);
+p.strokeWeight(1);
+p.line(1230,35, 1230, 68);
+p.noStroke();
+p.textAlign(p.LEFT);
+p.fill(177,60,90);
+p.textSize(20);
+p.text('Presse the R key',945,43);
+p.textSize(15);
+p.text('to organize better the tessellation',945,63);
+p.textSize(20);
+p.text('Presse the CNTRL key',1260,43);
+p.textSize(15);
+p.text('and click to learn more about the words',1260,63);
+
+
 
 };
+class Image {
+  show(){
+p.image(img1, 65, 35+scrollim, 870, 786);
+p.image(img2, 65, 35+796.5+scrollim, 870, 786);
+p.image(img3, 65, 35+796.5*2+scrollim, 870, 786);
+p.image(img4, 65, 35+796.5*3+scrollim, 870, 786);
+p.image(img5, 65, 35+796.5*4+scrollim, 870, 786);
+  p.image(delate1,25,23);
+  }
+}
+class Button {
 
-// p.mouseDragged = function(){
+  showbutton(){
 
-// }
+    p.strokeWeight(2);
+    p.stroke(177,60,90);
+    p.noFill();
+    p.rect(50, 260, 102, 85,5);
+    p.noStroke();
+    p.fill(67,15,17,50);
+    p.rect(30, 275, 790, 56, 10);
+    p.strokeWeight(2);
+    p.stroke(bleu);
+    p.line(40,35,40,p.height);
+    p.noStroke();
+    p.fill(177,60,90);
+    p.rect(30, 297, 30, 10,5);
 
+    p.textAlign(p.LEFT);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr1, 65, 97+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('Matière entre éclats et pénombre.', 160, 78+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('Expérimentations et études autour de concepts fondamentaux.',160,103+scroll, p.width, p.height);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr2, 65, 97+71+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('La terre comme retour aux «sources».', 160, 78+71+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('Deux productions artisanales en terre cuite.',160,103+71+scroll, p.width, p.height);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr3, 65, 97+71+71+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('Équilibre intérieur et volumétrie variable.', 160, 78+71+71+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('Production d’un saladier adaptatif.',160,103+71+71+scroll, p.width, p.height);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr4, 65, 97+71+71+71+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('Faire corps avec le flux.', 160, 78+71+71+71+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('Conception d’un «hydrofoil» optimisé.',160,103+71+71+71+scroll, p.width, p.height);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr5, 65, 97+71+71+71+71+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('Du hasard au procédé.', 160, 78+71+71+71+71+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('Conception d’une table basse.',160,103+71+71+71+71+scroll, p.width, p.height);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr6, 65, 97+71+71+71+71+71+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('Réactions de matières. De l’expérience ordinaire à l’innovation.', 160, 78+71+71+71+71+71+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('Hybridation de principes technologiques innovants.',160,103+71+71+71+71+71+scroll, p.width, p.height);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr7, 65, 97+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('Une concentration de procédés.', 160, 78+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('pour une micro-architecture cinématique.',160,103+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.textFont(font2);
+    p.fill(texthide);
+    p.textSize(69);
+    p.text(spr8, 65, 97+71+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textvuconcept);
+    p.textSize(textsize+10);
+    p.text('Prométhée.', 160, 78+71+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.fill(rouge);
+    p.text('Conception d’une assise évolutive.',160,103+71+71+71+71+71+71+71+scroll, p.width, p.height);
 
+  }
+}
 
 p.mousePressed = function(){
-if ((75 < p.mouseX  && 125 > p.mouseX) && (75 < p.mouseY && 125 > p.mouseY)){
-      p.loop();
+  if ((30 < p.mouseX && 30+790 > p.mouseX) && (275 < p.mouseY && 275+56 > p.mouseY)){
+    if(scroll = -341){
+    images.push(new Image());
+      scroll = -341+71+71;
+      scrollim = -scroll-483+71+71+71+71;
+   for (let i = 0; i < buttons.length; i++){
+   buttons.splice(i,50);
+ }
+ }
+}
+  if ((25 < p.mouseX  && 75 > p.mouseX) && (23 < p.mouseY && 73 > p.mouseY)){
+      if(scroll = -341+71+71){
+   buttons.push(new Button());
+   scroll = -341;
+   scrollim = -scroll-483+71+71+71+71;
+   for (let a = 0; a < images.length; a++){
+ images.splice(a,50);
+}
+}
+}
+
+
+  if ((65 < p.mouseX  && 105 > p.mouseX) && (65 < p.mouseY && 105 > p.mouseY)){
+p.loop();
         p.drawingContext.filter = 'none';
     }
 
