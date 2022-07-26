@@ -117,7 +117,7 @@ p.preload = function() {
 
 //colors
 p.setup = function() {
-  cnv = p.createCanvas(1920, 965);//1076
+  cnv = p.createCanvas(1920, 1076);//1076
   textsize = p.textSize(20);
   textsize2 = p.textSize(20);
   texthide = p.color(25+5,32+10,43+35);
