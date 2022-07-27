@@ -2473,18 +2473,18 @@ p.textFont(font2);
 
 p.stroke(177,60,90);
 p.strokeWeight(1);
-p.line(1230,35, 1230, 68);
+p.line(1190,35, 1190, 68);
 p.noStroke();
 p.textAlign(p.LEFT);
 p.fill(177,60,90);
 p.textSize(20);
-p.text('Presse the R key',945,43);
+p.text('Press R',945,43);
 p.textSize(15);
-p.text('to organize better the tessellation',945,63);
+p.text('to reorganize the tessellation',945,63);
 p.textSize(20);
-p.text('Presse the CNTRL key',1260,43);
+p.text('Press CNTRL and click',1220,43);
 p.textSize(15);
-p.text('and click to learn more about the words',1260,63);
+p.text('on the words to learn more about theme',1220,63);
 
 
 
@@ -2512,7 +2512,7 @@ class Button {
     p.rect(30, 275, 790, 56, 10);
     p.strokeWeight(2);
     p.stroke(bleu);
-    p.line(40,35,40,p.height);
+    p.line(40,0,40,p.height);
     p.noStroke();
     p.fill(177,60,90);
     p.rect(30, 297, 30, 10,5);
