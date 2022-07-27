@@ -117,7 +117,7 @@ p.preload = function() {
 
 //colors
 p.setup = function() {
-  cnv = p.createCanvas(1920, 965);//1076
+  cnv = p.createCanvas(p.windowWidth, p.windowHeight);//1076
   textsize = p.textSize(20);
   textsize2 = p.textSize(20);
   texthide = p.color(25+5,32+10,43+35);
@@ -163,147 +163,147 @@ scrollim = scrollim +71;
 var initNodesAndSprings = function() {
 
 var rad = nodeDiameterxb/2;
-nodes[0] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+nodes[0] = new Node(p.width/2+510+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
 nodes[0].minX = rad;
 nodes[0].minY = rad;
 nodes[0].maxX = p.width - rad;
 nodes[0].maxY = p.height - rad;
 nodes[0].radius = Radius;
 nodes[0].strength = strenght;
-nodes[1] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+nodes[1] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
 nodes[1].minX = rad;
 nodes[1].minY = rad;
 nodes[1].maxX = p.width - rad;
     nodes[1].maxY = p.height - rad;
     nodes[1].radius = Radius;
     nodes[1].strength = strenght;
-    nodes[2] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[2] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[2].minX = rad;
     nodes[2].minY = rad;
     nodes[2].maxX = p.width - rad;
     nodes[2].maxY = p.height - rad;
     nodes[2].radius = Radius;
     nodes[2].strength = strenght;
-    nodes[3] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[3] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[3].minX = rad;
     nodes[3].minY = rad;
     nodes[3].maxX = p.width - rad;
     nodes[3].maxY = p.height - rad;
     nodes[3].radius = Radius;
     nodes[3].strength = strenght;
-    nodes[4] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100,100));
+    nodes[4] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100,100));
     nodes[4].minX = rad;
     nodes[4].minY = rad;
     nodes[4].maxX = p.width - rad;
     nodes[4].maxY = p.height - rad;
     nodes[4].radius = Radius;
     nodes[4].strength = strenght;
-    nodes[5] = new Node(p.width/2+480+p.random(-100,100), p.height/2+p.random(-100, 100));
+    nodes[5] = new Node(p.width/2+480+p.random(-100,100), p.height/2+30+p.random(-100, 100));
     nodes[5].minX = rad;
     nodes[5].minY = rad;
     nodes[5].maxX = p.width - rad;
     nodes[5].maxY = p.height - rad;
     nodes[5].radius = Radius;
     nodes[5].strength = strenght;
-    nodes[6] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100,100));
+    nodes[6] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100,100));
     nodes[6].minX = rad;
     nodes[6].minY = rad;
     nodes[6].maxX = p.width - rad;
     nodes[6].maxY = p.height - rad;
     nodes[6].radius = Radius;
     nodes[6].strength = strenght;
-    nodes[7] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[7] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[7].minX = rad;
     nodes[7].minY = rad;
     nodes[7].maxX = p.width - rad;
     nodes[7].maxY = p.height - rad;
     nodes[7].radius = Radius;
     nodes[7].strength = strenght;
-    nodes[8] = new Node(p.width/2+480+p.random(-100,100), p.height/2+p.random(-100, 100));
+    nodes[8] = new Node(p.width/2+480+p.random(-100,100), p.height/2+30+p.random(-100, 100));
     nodes[8].minX = rad;
     nodes[8].minY = rad;
     nodes[8].maxX = p.width - rad;
     nodes[8].maxY = p.height - rad;
     nodes[8].radius = Radius;
     nodes[8].strength = strenght;
-    nodes[9] = new Node(p.width/2+480+p.random(-100,100), p.height/2+p.random(-100, 100));
+    nodes[9] = new Node(p.width/2+480+p.random(-100,100), p.height/2+30+p.random(-100, 100));
     nodes[9].minX = rad;
     nodes[9].minY = rad;
     nodes[9].maxX = p.width - rad;
     nodes[9].maxY = p.height - rad;
     nodes[9].radius = Radius;
     nodes[9].strength = strenght;
-    nodes[10] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[10] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[10].minX = rad;
     nodes[10].minY = rad;
     nodes[10].maxX = p.width - rad;
     nodes[10].maxY = p.height - rad;
     nodes[10].radius = Radius;
     nodes[10].strength = strenght;
-    nodes[11] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[11] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[11].minX = rad;
     nodes[11].minY = rad;
     nodes[11].maxX = p.width - rad;
     nodes[11].maxY = p.height - rad;
     nodes[11].radius = Radius;
     nodes[11].strength = strenght;
-    nodes[12] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[12] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[12].minX = rad;
     nodes[12].minY = rad;
     nodes[12].maxX = p.width - rad;
     nodes[12].maxY = p.height - rad;
     nodes[12].radius = Radius;
     nodes[12].strength = strenght;
-    nodes[13] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[13] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[13].minX = rad;
     nodes[13].minY = rad;
     nodes[13].maxX = p.width - rad;
     nodes[13].maxY = p.height - rad;
     nodes[13].radius = Radius;
     nodes[13].strength = strenght;
-    nodes[14] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[14] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[14].minX = rad;
     nodes[14].minY = rad;
     nodes[14].maxX = p.width - rad;
     nodes[14].maxY = p.height - rad;
     nodes[14].radius = Radius;
     nodes[14].strength = strenght;
-    nodes[15] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[15] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[15].minX = rad;
     nodes[15].minY = rad;
     nodes[15].maxX = p.width - rad;
     nodes[15].maxY = p.height - rad;
     nodes[15].radius = Radius;
     nodes[15].strength = strenght;
-    nodes[16] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[16] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[16].minX = rad;
     nodes[16].minY = rad;
     nodes[16].maxX = p.width - rad;
     nodes[16].maxY = p.height - rad;
     nodes[16].radius = Radius;
     nodes[16].strength = strenght;
-    nodes[17] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[17] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[17].minX = rad;
     nodes[17].minY = rad;
     nodes[17].maxX = p.width - rad;
     nodes[17].maxY = p.height - rad;
     nodes[17].radius = Radius;
     nodes[17].strength = strenght;
-    nodes[18] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[18] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[18].minX = rad;
     nodes[18].minY = rad;
     nodes[18].maxX = p.width - rad;
     nodes[18].maxY = p.height - rad;
     nodes[18].radius = Radius;
     nodes[18].strength = strenght;
-    nodes[19] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[19] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[19].minX = rad;
     nodes[19].minY = rad;
     nodes[19].maxX = p.width - rad;
     nodes[19].maxY = p.height - rad;
     nodes[19].radius = Radius;
     nodes[19].strength = strenght;
-    nodes[20] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+p.random(-100, 100));
+    nodes[20] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
     nodes[20].minX = rad;
     nodes[20].minY = rad;
     nodes[20].maxX = p.width - rad;
@@ -312,7 +312,7 @@ nodes[1].maxX = p.width - rad;
     nodes[20].strength = strenght;
 
 if(p.key=='r' ||p.key=='R') {
-        nodes[0] = new Node(p.width/2+400+p.random(-94, 0), p.height/2+p.random(-125, 0));
+        nodes[0] = new Node(p.width/2+440+p.random(-94, 0), p.height/2+30+p.random(-125, 0));
         nodes[0].minX = rad;
         nodes[0].minY = rad;
         nodes[0].maxX = p.width - rad;
@@ -320,7 +320,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[0].radius = Radius;
         nodes[0].strength = strenght;
 
-        nodes[1] = new Node(p.width/2+400+p.random(-182, -188), p.height/2+p.random(-150, -125));
+        nodes[1] = new Node(p.width/2+440+p.random(-182, -188), p.height/2+30+p.random(-150, -125));
         nodes[1].minX = rad;
         nodes[1].minY = rad;
         nodes[1].maxX = p.width - rad;
@@ -328,7 +328,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[1].radius = Radius;
         nodes[1].strength = strenght;
 
-        nodes[2] = new Node(p.width/2+400+p.random(0, 94), p.height/2+p.random(0, 125));
+        nodes[2] = new Node(p.width/2+440+p.random(0, 94), p.height/2+30+p.random(0, 125));
         nodes[2].minX = rad;
         nodes[2].minY = rad;
         nodes[2].maxX = p.width - rad;
@@ -336,7 +336,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[2].radius = Radius;
         nodes[2].strength = strenght;
 
-        nodes[3] = new Node(p.width/2+400+p.random(282, 376), p.height/2+p.random(-150, -125));
+        nodes[3] = new Node(p.width/2+440+p.random(282, 376), p.height/2+30+p.random(-150, -125));
         nodes[3].minX = rad;
         nodes[3].minY = rad;
         nodes[3].maxX = p.width - rad;
@@ -344,7 +344,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[3].radius = Radius;
         nodes[3].strength = strenght;
 
-        nodes[4] = new Node(p.width/2+400+p.random(94, 188), p.height/2+p.random(-125, -100));
+        nodes[4] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(-125, -100));
         nodes[4].minX = rad;
         nodes[4].minY = rad;
         nodes[4].maxX = p.width - rad;
@@ -352,7 +352,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[4].radius = Radius;
         nodes[4].strength = strenght;
 
-        nodes[5] = new Node(p.width/2+400+p.random(-188,-94), p.height/2+p.random(-125, 0));
+        nodes[5] = new Node(p.width/2+440+p.random(-188,-94), p.height/2+30+p.random(-125, 0));
         nodes[5].minX = rad;
         nodes[5].minY = rad;
         nodes[5].maxX = p.width - rad;
@@ -360,7 +360,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[5].radius = Radius;
         nodes[5].strength = strenght;
 
-        nodes[6] = new Node(p.width/2+400+p.random(0, 94), p.height/2+p.random(-375,-150));
+        nodes[6] = new Node(p.width/2+440+p.random(0, 94), p.height/2+30+p.random(-375,-150));
         nodes[6].minX = rad;
         nodes[6].minY = rad;
         nodes[6].maxX = p.width - rad;
@@ -368,7 +368,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[6].radius = Radius;
         nodes[6].strength = strenght;
 
-        nodes[7] = new Node(p.width/2+400+p.random(94, 188), p.height/2+p.random(-165, -140));
+        nodes[7] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(-165, -140));
         nodes[7].minX = rad;
         nodes[7].minY = rad;
         nodes[7].maxX = p.width - rad;
@@ -376,7 +376,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[7].radius = Radius;
         nodes[7].strength = strenght;
 
-        nodes[8] = new Node(p.width/2+400+p.random(0,94), p.height/2+p.random(125, 250));
+        nodes[8] = new Node(p.width/2+440+p.random(0,94), p.height/2+30+p.random(125, 250));
         nodes[8].minX = rad;
         nodes[8].minY = rad;
         nodes[8].maxX = p.width - rad;
@@ -384,7 +384,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[8].radius = Radius;
         nodes[8].strength = strenght;
 
-        nodes[9] = new Node(p.width/2+400+p.random(-188,-94), p.height/2+p.random(0, 125));
+        nodes[9] = new Node(p.width/2+440+p.random(-188,-94), p.height/2+30+p.random(0, 125));
         nodes[9].minX = rad;
         nodes[9].minY = rad;
         nodes[9].maxX = p.width - rad;
@@ -392,7 +392,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[9].radius = Radius;
         nodes[9].strength = strenght;
 
-        nodes[10] = new Node(p.width/2+400+p.random(188, 282), p.height/2+p.random(-125, 0));
+        nodes[10] = new Node(p.width/2+440+p.random(188, 282), p.height/2+30+p.random(-125, 0));
         nodes[10].minX = rad;
         nodes[10].minY = rad;
         nodes[10].maxX = p.width - rad;
@@ -400,7 +400,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[10].radius = Radius;
         nodes[10].strength = strenght;
 
-        nodes[11] = new Node(p.width/2+400+p.random(94, 188), p.height/2+p.random(-125, 0));
+        nodes[11] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(-125, 0));
         nodes[11].minX = rad;
         nodes[11].minY = rad;
         nodes[11].maxX = p.width - rad;
@@ -408,7 +408,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[11].radius = Radius;
         nodes[11].strength = strenght;
 
-        nodes[12] = new Node(p.width/2+400+p.random(94, 188), p.height/2+p.random(188,250));
+        nodes[12] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(188,250));
         nodes[12].minX = rad;
         nodes[12].minY = rad;
         nodes[12].maxX = p.width - rad;
@@ -416,7 +416,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[12].radius = Radius;
         nodes[12].strength = strenght;
 
-        nodes[13] = new Node(p.width/2+400+p.random(94,188), p.height/2+p.random(250, 375));
+        nodes[13] = new Node(p.width/2+440+p.random(94,188), p.height/2+30+p.random(250, 375));
         nodes[13].minX = rad;
         nodes[13].minY = rad;
         nodes[13].maxX = p.width - rad;
@@ -424,7 +424,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[13].radius = Radius;
         nodes[13].strength = strenght;
 
-        nodes[14] = new Node(p.width/2+400+p.random(-182, -188), p.height/2+p.random(250, 375));
+        nodes[14] = new Node(p.width/2+440+p.random(-182, -188), p.height/2+30+p.random(250, 375));
         nodes[14].minX = rad;
         nodes[14].minY = rad;
         nodes[14].maxX = p.width - rad;
@@ -432,7 +432,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[14].radius = Radius;
         nodes[14].strength = strenght;
 
-        nodes[15] = new Node(p.width/2+400+p.random(-182, -188), p.height/2+p.random(125, 250));
+        nodes[15] = new Node(p.width/2+440+p.random(-182, -188), p.height/2+30+p.random(125, 250));
         nodes[15].minX = rad;
         nodes[15].minY = rad;
         nodes[15].maxX = p.width - rad;
@@ -440,7 +440,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[15].radius = Radius;
         nodes[15].strength = strenght;
 
-        nodes[16] = new Node(p.width/2+400+p.random(282, 376), p.height/2+p.random(125, 250));
+        nodes[16] = new Node(p.width/2+440+p.random(282, 376), p.height/2+30+p.random(125, 250));
         nodes[16].minX = rad;
         nodes[16].minY = rad;
         nodes[16].maxX = p.width - rad;
@@ -448,7 +448,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[16].radius = Radius;
         nodes[16].strength = strenght;
 
-        nodes[17] = new Node(p.width/2+400+p.random(282, 188), p.height/2+p.random(0, 125));
+        nodes[17] = new Node(p.width/2+440+p.random(282, 188), p.height/2+30+p.random(0, 125));
         nodes[17].minX = rad;
         nodes[17].minY = rad;
         nodes[17].maxX = p.width - rad;
@@ -456,7 +456,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[17].radius = Radius;
         nodes[17].strength = strenght;
 
-        nodes[18] = new Node(p.width/2+400+p.random(-376,-182), p.height/2+p.random(0, 125));
+        nodes[18] = new Node(p.width/2+440+p.random(-376,-182), p.height/2+30+p.random(0, 125));
         nodes[18].minX = rad;
         nodes[18].minY = rad;
         nodes[18].maxX = p.width - rad;
@@ -464,7 +464,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[18].radius = Radius;
         nodes[18].strength = strenght;
 
-        nodes[19] = new Node(p.width/2+400+p.random(-94, 0), p.height/2+p.random(-150,-125));
+        nodes[19] = new Node(p.width/2+440+p.random(-94, 0), p.height/2+30+p.random(-150,-125));
         nodes[19].minX = rad;
         nodes[19].minY = rad;
         nodes[19].maxX = p.width - rad;
@@ -472,7 +472,7 @@ if(p.key=='r' ||p.key=='R') {
         nodes[19].radius = Radius;
         nodes[19].strength = strenght;
 
-        nodes[20] = new Node(p.width/2+400+p.random(282, 376), p.height/2+p.random(-125, 0));
+        nodes[20] = new Node(p.width/2+440+p.random(282, 376), p.height/2+30+p.random(-125, 0));
         nodes[20].minX = rad;
         nodes[20].minY = rad;
         nodes[20].maxX = p.width - rad;
@@ -494,12 +494,13 @@ if (p.myBoolean) beginRecord(p.PDF, timestamp()+'.pdf');
 p.background(back);
 p.fill(0,15,80,50);
 p.rect(0,0,923,p.height);
-var gridSize = 70;
-for (var x = 12; x <= p.width+400; x += gridSize) {
-for (var y = 15; y <= p.height+400; y += gridSize) {
-p.fill(40,32,35);
-p.noStroke();
-p.rect(x-1, y-1, 5, 5, 72);
+var gridSize = 40;
+for (var x = 960; x <= p.width-10; x += gridSize) {
+for (var y = 30; y <= p.height-11; y += gridSize) {
+p.fill(60,52,55);
+p.rect(x-1, y-1, 4, 4,5);
+
+
 }
 }
 p.cursor(cursor);
@@ -529,109 +530,109 @@ p.cursor(cursor);
 
 // p.cadre = function () {
 var node0posX =  p.constrain(nodes[0].x, 990, 1865);
-var node0posY =  p.constrain(nodes[0].y, 110, 1800);
+var node0posY =  p.constrain(nodes[0].y, 110, p.height);
 if (node0posX === 990 || node0posY === 110 ){ nodes[0] =  new Node(node0posX+1, node0posY+1);}
-if (node0posX === 1865 || node0posY === 1800 ){ nodes[0] =  new Node(node0posX-1, node0posY-1);}
+if (node0posX === 1865 || node0posY === p.height ){ nodes[0] =  new Node(node0posX-1, node0posY-1);}
 
 var node1posX =  p.constrain(nodes[1].x, 990, 1865);
-var node1posY =  p.constrain(nodes[1].y, 110, 1800);
+var node1posY =  p.constrain(nodes[1].y, 110, p.height);
 if (node1posX === 990 || node1posY === 110 ){ nodes[1] =  new Node(node1posX+1, node1posY+1);}
-if (node1posX === 1865 || node1posY === 1800 ){ nodes[1] =  new Node(node1posX-1, node1posY-1);}
+if (node1posX === 1865 || node1posY === p.height ){ nodes[1] =  new Node(node1posX-1, node1posY-1);}
 
 var node2posX =  p.constrain(nodes[2].x, 990, 1865);
-var node2posY =  p.constrain(nodes[2].y, 110, 1800);
+var node2posY =  p.constrain(nodes[2].y, 110, p.height);
 if (node2posX === 990 || node2posY === 110 ){ nodes[2] =  new Node(node2posX+1, node2posY+1);}
-if (node2posX === 1865 || node2posY === 1800 ){ nodes[2] =  new Node(node2posX-1, node2posY-1);}
+if (node2posX === 1865 || node2posY === p.height ){ nodes[2] =  new Node(node2posX-1, node2posY-1);}
 
 var node3posX =  p.constrain(nodes[3].x, 990, 1865);
-var node3posY =  p.constrain(nodes[3].y, 110, 1800);
+var node3posY =  p.constrain(nodes[3].y, 110, p.height);
 if (node3posX === 990 || node3posY === 110 ){ nodes[3] =  new Node(node3posX+1, node3posY+1);}
-if (node3posX === 1865 || node3posY === 1800 ){ nodes[3] =  new Node(node3posX-1, node3posY-1);}
+if (node3posX === 1865 || node3posY === p.height ){ nodes[3] =  new Node(node3posX-1, node3posY-1);}
 
 var node4posX =  p.constrain(nodes[4].x, 990, 1865);
-var node4posY =  p.constrain(nodes[4].y, 110, 1800);
+var node4posY =  p.constrain(nodes[4].y, 110, p.height);
 if (node4posX === 990 || node4posY === 110 ){ nodes[4] =  new Node(node4posX+1, node4posY+1);}
-if (node4posX === 1865 || node4posY === 1800 ){ nodes[4] =  new Node(node4posX-1, node4posY-1);}
+if (node4posX === 1865 || node4posY === p.height ){ nodes[4] =  new Node(node4posX-1, node4posY-1);}
 
 var node5posX =  p.constrain(nodes[5].x, 990, 1865);
-var node5posY =  p.constrain(nodes[5].y, 110, 1800);
+var node5posY =  p.constrain(nodes[5].y, 110, p.height);
 if (node5posX === 990 || node5posY === 110 ){ nodes[5] =  new Node(node5posX+1, node5posY+1);}
-if (node5posX === 1865 || node5posY === 1800 ){ nodes[5] =  new Node(node5posX-1, node5posY-1);}
+if (node5posX === 1865 || node5posY === p.height ){ nodes[5] =  new Node(node5posX-1, node5posY-1);}
 
 var node6posX =  p.constrain(nodes[6].x, 990, 1865);
-var node6posY =  p.constrain(nodes[6].y, 110, 1800);
+var node6posY =  p.constrain(nodes[6].y, 110, p.height);
 if (node6posX === 990 || node6posY === 110 ){ nodes[6] =  new Node(node6posX+1, node6posY+1);}
-if (node6posX === 1865 || node6posY === 1800 ){ nodes[6] =  new Node(node6posX-1, node6posY-1);}
+if (node6posX === 1865 || node6posY === p.height ){ nodes[6] =  new Node(node6posX-1, node6posY-1);}
 
 var node7posX =  p.constrain(nodes[7].x, 990, 1865);
-var node7posY =  p.constrain(nodes[7].y, 110, 1800);
+var node7posY =  p.constrain(nodes[7].y, 110, p.height);
 if (node7posX === 990 || node7posY === 110 ){ nodes[7] =  new Node(node7posX+1, node7posY+1);}
-if (node7posX === 1865 || node7posY === 1800 ){ nodes[7] =  new Node(node7posX-1, node7posY-1);}
+if (node7posX === 1865 || node7posY === p.height ){ nodes[7] =  new Node(node7posX-1, node7posY-1);}
 
 var node8posX =  p.constrain(nodes[8].x, 990, 1865);
-var node8posY =  p.constrain(nodes[8].y, 110, 1800);
+var node8posY =  p.constrain(nodes[8].y, 110, p.height);
 if (node8posX === 990 || node8posY === 110 ){ nodes[8] =  new Node(node8posX+1, node8posY+1);}
-if (node8posX === 1865 || node8posY === 1800 ){ nodes[8] =  new Node(node8posX-1, node8posY-1);}
+if (node8posX === 1865 || node8posY === p.height ){ nodes[8] =  new Node(node8posX-1, node8posY-1);}
 
 var node9posX =  p.constrain(nodes[9].x, 990, 1865);
-var node9posY =  p.constrain(nodes[9].y, 110, 1800);
+var node9posY =  p.constrain(nodes[9].y, 110, p.height);
 if (node9posX === 990 || node9posY === 110 ){ nodes[9] =  new Node(node9posX+1, node9posY+1);}
-if (node9posX === 1865 || node9posY === 1800 ){ nodes[9] =  new Node(node9posX-1, node9posY-1);}
+if (node9posX === 1865 || node9posY === p.height ){ nodes[9] =  new Node(node9posX-1, node9posY-1);}
 
 var node10posX =  p.constrain(nodes[10].x, 990, 1865);
-var node10posY =  p.constrain(nodes[10].y, 110, 1800);
+var node10posY =  p.constrain(nodes[10].y, 110, p.height);
 if (node10posX === 990 || node10posY === 110 ){ nodes[10] =  new Node(node10posX+1, node10posY+1);}
-if (node10posX === 1865 || node10posY === 1800 ){ nodes[10] =  new Node(node10posX-1, node10posY-1);}
+if (node10posX === 1865 || node10posY === p.height ){ nodes[10] =  new Node(node10posX-1, node10posY-1);}
 
 var node11posX =  p.constrain(nodes[11].x, 990, 1865);
-var node11posY =  p.constrain(nodes[11].y, 110, 1800);
+var node11posY =  p.constrain(nodes[11].y, 110, p.height);
 if (node11posX === 990 || node11posY === 110 ){ nodes[11] =  new Node(node11posX+1, node11posY+1);}
-if (node11posX === 1865 || node11posY === 1800 ){ nodes[11] =  new Node(node11posX-1, node11posY-1);}
+if (node11posX === 1865 || node11posY === p.height ){ nodes[11] =  new Node(node11posX-1, node11posY-1);}
 
 var node12posX =  p.constrain(nodes[12].x, 990, 1865);
-var node12posY =  p.constrain(nodes[12].y, 110, 1800);
+var node12posY =  p.constrain(nodes[12].y, 110, p.height);
 if (node12posX === 990 || node12posY === 110 ){ nodes[12] =  new Node(node12posX+1, node12posY+1);}
-if (node12posX === 1865 || node12posY === 1800 ){ nodes[12] =  new Node(node12posX-1, node12posY-1);}
+if (node12posX === 1865 || node12posY === p.height ){ nodes[12] =  new Node(node12posX-1, node12posY-1);}
 
 var node13posX =  p.constrain(nodes[13].x, 990, 1865);
-var node13posY =  p.constrain(nodes[13].y, 110, 1800);
+var node13posY =  p.constrain(nodes[13].y, 110, p.height);
 if (node13posX === 990 || node13posY === 110 ){ nodes[13] =  new Node(node13posX+1, node13posY+1);}
-if (node13posX === 1865 || node13posY === 1800 ){ nodes[13] =  new Node(node13posX-1, node13posY-1);}
+if (node13posX === 1865 || node13posY === p.height ){ nodes[13] =  new Node(node13posX-1, node13posY-1);}
 
 var node14posX =  p.constrain(nodes[14].x, 990, 1865);
-var node14posY =  p.constrain(nodes[14].y, 110, 1800);
+var node14posY =  p.constrain(nodes[14].y, 110, p.height);
 if (node14posX === 990 || node14posY === 110 ){ nodes[14] =  new Node(node14posX+1, node14posY+1);}
-if (node14posX === 1865 || node14posY === 1800 ){ nodes[14] =  new Node(node14posX-1, node14posY-1);}
+if (node14posX === 1865 || node14posY === p.height ){ nodes[14] =  new Node(node14posX-1, node14posY-1);}
 
 var node15posX =  p.constrain(nodes[15].x, 990, 1865);
-var node15posY =  p.constrain(nodes[15].y, 110, 1800);
+var node15posY =  p.constrain(nodes[15].y, 110, p.height);
 if (node15posX === 990 || node15posY === 110 ){ nodes[15] =  new Node(node15posX+1, node15posY+1);}
-if (node15posX === 1865 || node15posY === 1800 ){ nodes[15] =  new Node(node15posX-1, node15posY-1);}
+if (node15posX === 1865 || node15posY === p.height ){ nodes[15] =  new Node(node15posX-1, node15posY-1);}
 
 var node16posX =  p.constrain(nodes[16].x, 990, 1865);
-var node16posY =  p.constrain(nodes[16].y, 110, 1800);
+var node16posY =  p.constrain(nodes[16].y, 110, p.height);
 if (node16posX === 990 || node16posY === 110 ){ nodes[16] =  new Node(node16posX+1, node16posY+1);}
-if (node16posX === 1865 || node16posY === 1800 ){ nodes[16] =  new Node(node16posX-1, node16posY-1);}
+if (node16posX === 1865 || node16posY === p.height ){ nodes[16] =  new Node(node16posX-1, node16posY-1);}
 
 var node17posX =  p.constrain(nodes[17].x, 990, 1865);
-var node17posY =  p.constrain(nodes[17].y, 110, 1800);
+var node17posY =  p.constrain(nodes[17].y, 110, p.height);
 if (node17posX === 990 || node17posY === 110 ){ nodes[17] =  new Node(node17posX+1, node17posY+1);}
-if (node17posX === 1865 || node17posY === 1800 ){ nodes[17] =  new Node(node17posX-1, node17posY-1);}
+if (node17posX === 1865 || node17posY === p.height ){ nodes[17] =  new Node(node17posX-1, node17posY-1);}
 
 var node18posX =  p.constrain(nodes[18].x, 990, 1865);
-var node18posY =  p.constrain(nodes[18].y, 110, 1800);
+var node18posY =  p.constrain(nodes[18].y, 110, p.height);
 if (node18posX === 990 || node18posY === 110 ){ nodes[18] =  new Node(node18posX+1, node18posY+1);}
-if (node18posX === 1865 || node18posY === 1800 ){ nodes[18] =  new Node(node18posX-1, node18posY-1);}
+if (node18posX === 1865 || node18posY === p.height ){ nodes[18] =  new Node(node18posX-1, node18posY-1);}
 
 var node19posX =  p.constrain(nodes[19].x, 990, 1865);
-var node19posY =  p.constrain(nodes[19].y, 110, 1800);
+var node19posY =  p.constrain(nodes[19].y, 110, p.height);
 if (node19posX === 990 || node19posY === 110 ){ nodes[19] =  new Node(node19posX+1, node19posY+1);}
-if (node19posX === 1865 || node19posY === 1800 ){ nodes[19] =  new Node(node19posX-1, node19posY-1);}
+if (node19posX === 1865 || node19posY === p.height ){ nodes[19] =  new Node(node19posX-1, node19posY-1);}
 
 var node20posX =  p.constrain(nodes[20].x, 990, 1865);
-var node20posY =  p.constrain(nodes[20].y, 110, 1800);
+var node20posY =  p.constrain(nodes[20].y, 110, p.height);
 if (node20posX === 990 || node20posY === 110 ){ nodes[20] =  new Node(node20posX+1, node20posY+1);}
-if (node20posX === 1865 || node20posY === 1800 ){ nodes[20] =  new Node(node20posX-1, node20posY-1);}
+if (node20posX === 1865 || node20posY === p.height ){ nodes[20] =  new Node(node20posX-1, node20posY-1);}
 
 
    nodes[0].attract(nodes[1]);    nodes[0].attract(nodes[2]);    nodes[0].attract(nodes[3]);    nodes[0].attract(nodes[4]);    nodes[0].attract(nodes[5]); nodes[0].attract(nodes[6]); nodes[0].attract(nodes[7]); nodes[0].attract(nodes[8]); nodes[0].attract(nodes[9]); nodes[0].attract(nodes[10]); nodes[0].attract(nodes[11]); nodes[0].attract(nodes[12]); nodes[0].attract(nodes[13]); nodes[0].attract(nodes[14]); nodes[0].attract(nodes[15]); nodes[0].attract(nodes[16]);  nodes[0].attract(nodes[17]);  nodes[0].attract(nodes[18]);  nodes[0].attract(nodes[19]);  nodes[0].attract(nodes[20]);
@@ -2230,7 +2231,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr1, 65, -173, p.width, p.height);
+      p.text(spr1, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2252,7 +2253,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr2, 65, -173, p.width, p.height);
+      p.text(spr2, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2275,7 +2276,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr3, 65, -173, p.width, p.height);
+      p.text(spr3, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2300,7 +2301,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr4, 65, -173, p.width, p.height);
+      p.text(spr4, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2330,7 +2331,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr5, 65, -173, p.width, p.height);
+      p.text(spr5, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2361,7 +2362,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr6, 65, -173, p.width, p.height);
+      p.text(spr6, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2402,7 +2403,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr7, 65, -173, p.width, p.height);
+      p.text(spr7, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2444,7 +2445,7 @@ p.textFont(font2);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
-      p.text(spr8, 65, -173, p.width, p.height);
+      p.text(spr8, 65, -173-37, p.width, 970);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
@@ -2473,14 +2474,14 @@ p.textFont(font2);
 
 p.stroke(177,60,90);
 p.strokeWeight(1);
-p.line(1190,35, 1190, 68);
+p.line(1195,35, 1195, 68);
 p.noStroke();
 p.textAlign(p.LEFT);
 p.fill(177,60,90);
 p.textSize(20);
 p.text('Press R',945,43);
 p.textSize(15);
-p.text('to reorganize the tessellation',945,63);
+p.text('to reorganize the constellation',945,63);
 p.textSize(20);
 p.text('Press CNTRL and click',1220,43);
 p.textSize(15);
@@ -2491,12 +2492,12 @@ p.text('on the words to learn more about theme',1220,63);
 };
 class Image {
   show(){
-p.image(img1, 65, 35+scrollim, 870, 786);
-p.image(img2, 65, 35+796.5+scrollim, 870, 786);
-p.image(img3, 65, 35+796.5*2+scrollim, 870, 786);
-p.image(img4, 65, 35+796.5*3+scrollim, 870, 786);
-p.image(img5, 65, 35+796.5*4+scrollim, 870, 786);
-  p.image(delate1,25,23);
+p.image(img1, 55, 35+scrollim, 870, 786);
+p.image(img2, 55, 35+796.5+scrollim, 870, 786);
+p.image(img3, 55, 35+796.5*2+scrollim, 870, 786);
+p.image(img4, 55, 35+796.5*3+scrollim, 870, 786);
+p.image(img5, 55, 35+796.5*4+scrollim, 870, 786);
+  p.image(delate1,15,23);
   }
 }
 class Button {
@@ -2506,112 +2507,112 @@ class Button {
     p.strokeWeight(2);
     p.stroke(177,60,90);
     p.noFill();
-    p.rect(50, 260, 102, 85,5);
+    p.rect(50, 260-35, 102, 85,5);
     p.noStroke();
-    p.fill(67,15,17,50);
-    p.rect(30, 275, 790, 56, 10);
+    p.fill(87,15,17,50);
+    p.rect(30, 240, 790, 56, 10);
     p.strokeWeight(2);
     p.stroke(bleu);
     p.line(40,0,40,p.height);
     p.noStroke();
     p.fill(177,60,90);
-    p.rect(30, 297, 30, 10,5);
+    p.rect(30, 297-35, 30, 10,5);
 
     p.textAlign(p.LEFT);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr1, 65, 97+scroll, p.width, p.height);
+    p.text(spr1, 65, 60+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('Matière entre éclats et pénombre.', 160, 78+scroll, p.width, p.height);
+    p.text('Matière entre éclats et pénombre.', 160, 78-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('Expérimentations et études autour de concepts fondamentaux.',160,103+scroll, p.width, p.height);
+    p.text('Expérimentations et études autour de concepts fondamentaux.',160,103-37+scroll, p.width, 970);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr2, 65, 97+71+scroll, p.width, p.height);
+    p.text(spr2, 65, 97+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('La terre comme retour aux «sources».', 160, 78+71+scroll, p.width, p.height);
+    p.text('La terre comme retour aux «sources».', 160, 78+71-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('Deux productions artisanales en terre cuite.',160,103+71+scroll, p.width, p.height);
+    p.text('Deux productions artisanales en terre cuite.',160,103+71-37+scroll, p.width, 970);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr3, 65, 97+71+71+scroll, p.width, p.height);
+    p.text(spr3, 65, 97+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('Équilibre intérieur et volumétrie variable.', 160, 78+71+71+scroll, p.width, p.height);
+    p.text('Équilibre intérieur et volumétrie variable.', 160, 78+71+71-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('Production d’un saladier adaptatif.',160,103+71+71+scroll, p.width, p.height);
+    p.text('Production d’un saladier adaptatif.',160,103+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr4, 65, 97+71+71+71+scroll, p.width, p.height);
+    p.text(spr4, 65, 97+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('Faire corps avec le flux.', 160, 78+71+71+71+scroll, p.width, p.height);
+    p.text('Faire corps avec le flux.', 160, 78+71+71+71-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('Conception d’un «hydrofoil» optimisé.',160,103+71+71+71+scroll, p.width, p.height);
+    p.text('Conception d’un «hydrofoil» optimisé.',160,103+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr5, 65, 97+71+71+71+71+scroll, p.width, p.height);
+    p.text(spr5, 65, 97+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('Du hasard au procédé.', 160, 78+71+71+71+71+scroll, p.width, p.height);
+    p.text('Du hasard au procédé.', 160, 78+71+71+71+71-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('Conception d’une table basse.',160,103+71+71+71+71+scroll, p.width, p.height);
+    p.text('Conception d’une table basse.',160,103+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr6, 65, 97+71+71+71+71+71+scroll, p.width, p.height);
+    p.text(spr6, 65, 97+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('Réactions de matières. De l’expérience ordinaire à l’innovation.', 160, 78+71+71+71+71+71+scroll, p.width, p.height);
+    p.text('Réactions de matières. De l’expérience ordinaire à l’innovation.', 160, 78+71+71+71+71+71-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('Hybridation de principes technologiques innovants.',160,103+71+71+71+71+71+scroll, p.width, p.height);
+    p.text('Hybridation de principes technologiques innovants.',160,103+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr7, 65, 97+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.text(spr7, 65, 97+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('Une concentration de procédés.', 160, 78+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.text('Une concentration de procédés.', 160, 78+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('pour une micro-architecture cinématique.',160,103+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.text('pour une micro-architecture cinématique.',160,103+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
     p.fill(texthide);
     p.textSize(69);
-    p.text(spr8, 65, 97+71+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.text(spr8, 65, 97+71+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
     p.fill(textvuconcept);
     p.textSize(textsize+10);
-    p.text('Prométhée.', 160, 78+71+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.text('Prométhée.', 160, 78+71+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.fill(rouge);
-    p.text('Conception d’une assise évolutive.',160,103+71+71+71+71+71+71+71+scroll, p.width, p.height);
+    p.text('Conception d’une assise évolutive.',160,103+71+71+71+71+71+71+71-37+scroll, p.width, 970);
 
   }
 }
 
 p.mousePressed = function(){
-  if ((30 < p.mouseX && 30+790 > p.mouseX) && (275 < p.mouseY && 275+56 > p.mouseY)){
+  if ((30 < p.mouseX && 30+790 > p.mouseX) && (240 < p.mouseY && 240+56 > p.mouseY)){
     if(scroll = -341){
     images.push(new Image());
       scroll = -341+71+71;
@@ -2621,7 +2622,7 @@ p.mousePressed = function(){
  }
  }
 }
-  if ((25 < p.mouseX  && 75 > p.mouseX) && (23 < p.mouseY && 73 > p.mouseY)){
+  if ((15 < p.mouseX  && 65 > p.mouseX) && (23 < p.mouseY && 73 > p.mouseY)){
       if(scroll = -341+71+71){
    buttons.push(new Button());
    scroll = -341;
@@ -2669,10 +2670,14 @@ myBoolean = true;
 p.println('saving to pdf - starting (this may take some time)');
 }
 if (p.key == 'r' || p.key == 'R') {
-p.background(255);
 initNodesAndSprings();
 }
 };
+p.windowResized = function() {
+  p.resizeCanvas(p.windowWidth, p.windowHeight);
+
+}
+
 };
 
 var myp5 = new p5(sketch);
