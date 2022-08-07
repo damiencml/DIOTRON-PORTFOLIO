@@ -6,6 +6,8 @@ var strenght = -10;
 var cnv, scroll, scrollim;
 let buttons = [];
 let images = [];
+let intro = [];
+let imageintro = [];
 var nodeDiameterxa;
 var nodeDiameterya;
 var nodeDiameterxb;
@@ -100,38 +102,47 @@ var nodeDiameter = 16;
 // };
 let img;
 p.preload = function() {
-  //02
   img1 = p.loadImage('empty-example/Planches_projets/rootsofclay.png');
   img2 = p.loadImage('empty-example/Planches_projets/rootsofclay2.png');
   img3 = p.loadImage('empty-example/Planches_projets/rootsofclay3.png');
   img4 = p.loadImage('empty-example/Planches_projets/rootsofclay4.png');
   img5 = p.loadImage('empty-example/Planches_projets/rootsofclay5.png');
+  img6 = p.loadImage('empty-example/Planches_projets/anisotropy in iteration.png');
+  img7 = p.loadImage('empty-example/Planches_projets/anisotropy in iteration2.png');
+  img8 = p.loadImage('empty-example/Planches_projets/anisotropy in iteration3.png');
+  img9 = p.loadImage('empty-example/Planches_projets/anisotropy in iteration4.png');
+  img10 = p.loadImage('empty-example/Planches_projets/anisotropy in iteration5.png');
+  img11 = p.loadImage('empty-example/Planches_projets/anisotropy in iteration6.png');
+  img12 = p.loadImage('empty-example/Planches_projets/anisotropy in iteration7.png');
+
+
   cursor = p.loadImage('empty-example/Planches_projets/delate - 1.png');
   delate1 = p.loadImage('empty-example/Planches_projets/delate 1.png');
   delate2 = p.loadImage('empty-example/Planches_projets/delate 2.png');
-
-
+  imglogo = p.loadImage('empty-example/Planches_projets/monogram.png');
+  imgintro = p.loadImage('empty-example/Planches_projets/pagedegarde3.png');
 
 
 }
 
 //colors
 p.setup = function() {
-  cnv = p.createCanvas(p.windowWidth, p.windowHeight);//1076
+  cnv = p.createCanvas(p.windowWidth,p.windowHeight);//1920x969
   textsize = p.textSize(20);
-  textsize2 = p.textSize(20);
-  texthide = p.color(25+5,32+10,43+35);
-  textvu = p.color(248,252,191);
+  textsize2 = 20;
+  textsize3= 30;
+  texthide = p.color(45,55,66);//25+5,32+10,43+35
+  textvu = p.color(177,60,90);//248,252,191
   // rouge = p.color(91,21,15);
-  rouge = p.color(106,91,86);
-  bleu = p.color(140,162,195)
-
+  rouge = p.color(132,113,107);
+  bleu = p.color(140*1.2,162*1.2,195*1.2)
   // texthideconcept = p.color(61,88,123);
   // texthideconcept = p.color(120,84,50);
   // texthideconcept = p.color(84,64,26);
-  texthideconcept = p.color(106,91,86);
+  texthideconcept = p.color(91,85,83);
   textvuconcept = p.color(bleu);
-  back = p.color(20,5,7);
+  textsoustitre = p.color(190,175,172)
+  back = p.color(21,6,0);
   p.smooth();
   p.frameRate(50);
   font1 = 'Space Grotesk'
@@ -146,10 +157,13 @@ p.setup = function() {
   for (let i = 0; i < 1; i++){
       buttons[i] = new Button();
     }
+  for (let i = 0; i < 1; i++){
+        intro[i] = new Buttonintro();
+    }
 };
+
 //scrollsetting
 var changeSize = function(event) {
-
   // if (scroll < 0 && scroll > -484) {
   if (event.deltaY > 0) {
 scrollim = scrollim -71;
@@ -159,332 +173,69 @@ scrollim = scrollim +71;
     scroll = scroll + 71;
   }
 }
+
 //initialise
 var initNodesAndSprings = function() {
 
-var rad = nodeDiameterxb/2;
-nodes[0] = new Node(p.width/2+510+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-nodes[0].minX = rad;
-nodes[0].minY = rad;
-nodes[0].maxX = p.width - rad;
-nodes[0].maxY = p.height - rad;
-nodes[0].radius = Radius;
-nodes[0].strength = strenght;
-nodes[1] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-nodes[1].minX = rad;
-nodes[1].minY = rad;
-nodes[1].maxX = p.width - rad;
-    nodes[1].maxY = p.height - rad;
-    nodes[1].radius = Radius;
-    nodes[1].strength = strenght;
-    nodes[2] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[2].minX = rad;
-    nodes[2].minY = rad;
-    nodes[2].maxX = p.width - rad;
-    nodes[2].maxY = p.height - rad;
-    nodes[2].radius = Radius;
-    nodes[2].strength = strenght;
-    nodes[3] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[3].minX = rad;
-    nodes[3].minY = rad;
-    nodes[3].maxX = p.width - rad;
-    nodes[3].maxY = p.height - rad;
-    nodes[3].radius = Radius;
-    nodes[3].strength = strenght;
-    nodes[4] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100,100));
-    nodes[4].minX = rad;
-    nodes[4].minY = rad;
-    nodes[4].maxX = p.width - rad;
-    nodes[4].maxY = p.height - rad;
-    nodes[4].radius = Radius;
-    nodes[4].strength = strenght;
-    nodes[5] = new Node(p.width/2+480+p.random(-100,100), p.height/2+30+p.random(-100, 100));
-    nodes[5].minX = rad;
-    nodes[5].minY = rad;
-    nodes[5].maxX = p.width - rad;
-    nodes[5].maxY = p.height - rad;
-    nodes[5].radius = Radius;
-    nodes[5].strength = strenght;
-    nodes[6] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100,100));
-    nodes[6].minX = rad;
-    nodes[6].minY = rad;
-    nodes[6].maxX = p.width - rad;
-    nodes[6].maxY = p.height - rad;
-    nodes[6].radius = Radius;
-    nodes[6].strength = strenght;
-    nodes[7] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[7].minX = rad;
-    nodes[7].minY = rad;
-    nodes[7].maxX = p.width - rad;
-    nodes[7].maxY = p.height - rad;
-    nodes[7].radius = Radius;
-    nodes[7].strength = strenght;
-    nodes[8] = new Node(p.width/2+480+p.random(-100,100), p.height/2+30+p.random(-100, 100));
-    nodes[8].minX = rad;
-    nodes[8].minY = rad;
-    nodes[8].maxX = p.width - rad;
-    nodes[8].maxY = p.height - rad;
-    nodes[8].radius = Radius;
-    nodes[8].strength = strenght;
-    nodes[9] = new Node(p.width/2+480+p.random(-100,100), p.height/2+30+p.random(-100, 100));
-    nodes[9].minX = rad;
-    nodes[9].minY = rad;
-    nodes[9].maxX = p.width - rad;
-    nodes[9].maxY = p.height - rad;
-    nodes[9].radius = Radius;
-    nodes[9].strength = strenght;
-    nodes[10] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[10].minX = rad;
-    nodes[10].minY = rad;
-    nodes[10].maxX = p.width - rad;
-    nodes[10].maxY = p.height - rad;
-    nodes[10].radius = Radius;
-    nodes[10].strength = strenght;
-    nodes[11] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[11].minX = rad;
-    nodes[11].minY = rad;
-    nodes[11].maxX = p.width - rad;
-    nodes[11].maxY = p.height - rad;
-    nodes[11].radius = Radius;
-    nodes[11].strength = strenght;
-    nodes[12] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[12].minX = rad;
-    nodes[12].minY = rad;
-    nodes[12].maxX = p.width - rad;
-    nodes[12].maxY = p.height - rad;
-    nodes[12].radius = Radius;
-    nodes[12].strength = strenght;
-    nodes[13] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[13].minX = rad;
-    nodes[13].minY = rad;
-    nodes[13].maxX = p.width - rad;
-    nodes[13].maxY = p.height - rad;
-    nodes[13].radius = Radius;
-    nodes[13].strength = strenght;
-    nodes[14] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[14].minX = rad;
-    nodes[14].minY = rad;
-    nodes[14].maxX = p.width - rad;
-    nodes[14].maxY = p.height - rad;
-    nodes[14].radius = Radius;
-    nodes[14].strength = strenght;
-    nodes[15] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[15].minX = rad;
-    nodes[15].minY = rad;
-    nodes[15].maxX = p.width - rad;
-    nodes[15].maxY = p.height - rad;
-    nodes[15].radius = Radius;
-    nodes[15].strength = strenght;
-    nodes[16] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[16].minX = rad;
-    nodes[16].minY = rad;
-    nodes[16].maxX = p.width - rad;
-    nodes[16].maxY = p.height - rad;
-    nodes[16].radius = Radius;
-    nodes[16].strength = strenght;
-    nodes[17] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[17].minX = rad;
-    nodes[17].minY = rad;
-    nodes[17].maxX = p.width - rad;
-    nodes[17].maxY = p.height - rad;
-    nodes[17].radius = Radius;
-    nodes[17].strength = strenght;
-    nodes[18] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[18].minX = rad;
-    nodes[18].minY = rad;
-    nodes[18].maxX = p.width - rad;
-    nodes[18].maxY = p.height - rad;
-    nodes[18].radius = Radius;
-    nodes[18].strength = strenght;
-    nodes[19] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[19].minX = rad;
-    nodes[19].minY = rad;
-    nodes[19].maxX = p.width - rad;
-    nodes[19].maxY = p.height - rad;
-    nodes[19].radius = Radius;
-    nodes[19].strength = strenght;
-    nodes[20] = new Node(p.width/2+480+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
-    nodes[20].minX = rad;
-    nodes[20].minY = rad;
-    nodes[20].maxX = p.width - rad;
-    nodes[20].maxY = p.height - rad;
-    nodes[20].radius = Radius;
-    nodes[20].strength = strenght;
-
-if(p.key=='r' ||p.key=='R') {
-        nodes[0] = new Node(p.width/2+440+p.random(-94, 0), p.height/2+30+p.random(-125, 0));
-        nodes[0].minX = rad;
-        nodes[0].minY = rad;
-        nodes[0].maxX = p.width - rad;
-        nodes[0].maxY = p.height - rad;
-        nodes[0].radius = Radius;
-        nodes[0].strength = strenght;
-
-        nodes[1] = new Node(p.width/2+440+p.random(-182, -188), p.height/2+30+p.random(-150, -125));
-        nodes[1].minX = rad;
-        nodes[1].minY = rad;
-        nodes[1].maxX = p.width - rad;
-        nodes[1].maxY = p.height - rad;
-        nodes[1].radius = Radius;
-        nodes[1].strength = strenght;
-
-        nodes[2] = new Node(p.width/2+440+p.random(0, 94), p.height/2+30+p.random(0, 125));
-        nodes[2].minX = rad;
-        nodes[2].minY = rad;
-        nodes[2].maxX = p.width - rad;
-        nodes[2].maxY = p.height - rad;
-        nodes[2].radius = Radius;
-        nodes[2].strength = strenght;
-
-        nodes[3] = new Node(p.width/2+440+p.random(282, 376), p.height/2+30+p.random(-150, -125));
-        nodes[3].minX = rad;
-        nodes[3].minY = rad;
-        nodes[3].maxX = p.width - rad;
-        nodes[3].maxY = p.height - rad;
-        nodes[3].radius = Radius;
-        nodes[3].strength = strenght;
-
-        nodes[4] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(-125, -100));
-        nodes[4].minX = rad;
-        nodes[4].minY = rad;
-        nodes[4].maxX = p.width - rad;
-        nodes[4].maxY = p.height - rad;
-        nodes[4].radius = Radius;
-        nodes[4].strength = strenght;
-
-        nodes[5] = new Node(p.width/2+440+p.random(-188,-94), p.height/2+30+p.random(-125, 0));
-        nodes[5].minX = rad;
-        nodes[5].minY = rad;
-        nodes[5].maxX = p.width - rad;
-        nodes[5].maxY = p.height - rad;
-        nodes[5].radius = Radius;
-        nodes[5].strength = strenght;
-
-        nodes[6] = new Node(p.width/2+440+p.random(0, 94), p.height/2+30+p.random(-375,-150));
-        nodes[6].minX = rad;
-        nodes[6].minY = rad;
-        nodes[6].maxX = p.width - rad;
-        nodes[6].maxY = p.height - rad;
-        nodes[6].radius = Radius;
-        nodes[6].strength = strenght;
-
-        nodes[7] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(-165, -140));
-        nodes[7].minX = rad;
-        nodes[7].minY = rad;
-        nodes[7].maxX = p.width - rad;
-        nodes[7].maxY = p.height - rad;
-        nodes[7].radius = Radius;
-        nodes[7].strength = strenght;
-
-        nodes[8] = new Node(p.width/2+440+p.random(0,94), p.height/2+30+p.random(125, 250));
-        nodes[8].minX = rad;
-        nodes[8].minY = rad;
-        nodes[8].maxX = p.width - rad;
-        nodes[8].maxY = p.height - rad;
-        nodes[8].radius = Radius;
-        nodes[8].strength = strenght;
-
-        nodes[9] = new Node(p.width/2+440+p.random(-188,-94), p.height/2+30+p.random(0, 125));
-        nodes[9].minX = rad;
-        nodes[9].minY = rad;
-        nodes[9].maxX = p.width - rad;
-        nodes[9].maxY = p.height - rad;
-        nodes[9].radius = Radius;
-        nodes[9].strength = strenght;
-
-        nodes[10] = new Node(p.width/2+440+p.random(188, 282), p.height/2+30+p.random(-125, 0));
-        nodes[10].minX = rad;
-        nodes[10].minY = rad;
-        nodes[10].maxX = p.width - rad;
-        nodes[10].maxY = p.height - rad;
-        nodes[10].radius = Radius;
-        nodes[10].strength = strenght;
-
-        nodes[11] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(-125, 0));
-        nodes[11].minX = rad;
-        nodes[11].minY = rad;
-        nodes[11].maxX = p.width - rad;
-        nodes[11].maxY = p.height - rad;
-        nodes[11].radius = Radius;
-        nodes[11].strength = strenght;
-
-        nodes[12] = new Node(p.width/2+440+p.random(94, 188), p.height/2+30+p.random(188,250));
-        nodes[12].minX = rad;
-        nodes[12].minY = rad;
-        nodes[12].maxX = p.width - rad;
-        nodes[12].maxY = p.height - rad;
-        nodes[12].radius = Radius;
-        nodes[12].strength = strenght;
-
-        nodes[13] = new Node(p.width/2+440+p.random(94,188), p.height/2+30+p.random(250, 375));
-        nodes[13].minX = rad;
-        nodes[13].minY = rad;
-        nodes[13].maxX = p.width - rad;
-        nodes[13].maxY = p.height - rad;
-        nodes[13].radius = Radius;
-        nodes[13].strength = strenght;
-
-        nodes[14] = new Node(p.width/2+440+p.random(-182, -188), p.height/2+30+p.random(250, 375));
-        nodes[14].minX = rad;
-        nodes[14].minY = rad;
-        nodes[14].maxX = p.width - rad;
-        nodes[14].maxY = p.height - rad;
-        nodes[14].radius = Radius;
-        nodes[14].strength = strenght;
-
-        nodes[15] = new Node(p.width/2+440+p.random(-182, -188), p.height/2+30+p.random(125, 250));
-        nodes[15].minX = rad;
-        nodes[15].minY = rad;
-        nodes[15].maxX = p.width - rad;
-        nodes[15].maxY = p.height - rad;
-        nodes[15].radius = Radius;
-        nodes[15].strength = strenght;
-
-        nodes[16] = new Node(p.width/2+440+p.random(282, 376), p.height/2+30+p.random(125, 250));
-        nodes[16].minX = rad;
-        nodes[16].minY = rad;
-        nodes[16].maxX = p.width - rad;
-        nodes[16].maxY = p.height - rad;
-        nodes[16].radius = Radius;
-        nodes[16].strength = strenght;
-
-        nodes[17] = new Node(p.width/2+440+p.random(282, 188), p.height/2+30+p.random(0, 125));
-        nodes[17].minX = rad;
-        nodes[17].minY = rad;
-        nodes[17].maxX = p.width - rad;
-        nodes[17].maxY = p.height - rad;
-        nodes[17].radius = Radius;
-        nodes[17].strength = strenght;
-
-        nodes[18] = new Node(p.width/2+440+p.random(-376,-182), p.height/2+30+p.random(0, 125));
-        nodes[18].minX = rad;
-        nodes[18].minY = rad;
-        nodes[18].maxX = p.width - rad;
-        nodes[18].maxY = p.height - rad;
-        nodes[18].radius = Radius;
-        nodes[18].strength = strenght;
-
-        nodes[19] = new Node(p.width/2+440+p.random(-94, 0), p.height/2+30+p.random(-150,-125));
-        nodes[19].minX = rad;
-        nodes[19].minY = rad;
-        nodes[19].maxX = p.width - rad;
-        nodes[19].maxY = p.height - rad;
-        nodes[19].radius = Radius;
-        nodes[19].strength = strenght;
-
-        nodes[20] = new Node(p.width/2+440+p.random(282, 376), p.height/2+30+p.random(-125, 0));
-        nodes[20].minX = rad;
-        nodes[20].minY = rad;
-        nodes[20].maxX = p.width - rad;
-        nodes[20].maxY = p.height - rad;
-        nodes[20].radius = Radius;
-        nodes[20].strength = strenght;
-
-
-      }
-
-
-
+nodes = [];
+var rad = nodeDiameter / 2;
+for (var i = 0; i < nodeCount; i++) {
+  var newNode = new Node(p.width/2+510+p.random(-100, 100), p.height/2+30+p.random(-100, 100));
+  newNode.minX =990;
+  newNode.minY = 110;
+  newNode.maxX = 1865;
+  newNode.maxY = p.height;
+  newNode.radius = 250;
+  newNode.strength = -50;
+  nodes.push(newNode);
+}
+      // set springs randomly
+      var newSpring = [];
+      newSpring[0] = new Spring(nodes[0], nodes[1]);
+      newSpring[1]  = new Spring(nodes[0], nodes[2]);
+      newSpring[2]  = new Spring(nodes[0], nodes[3]);
+      newSpring[3]  = new Spring(nodes[0], nodes[4]);
+      newSpring[4]  = new Spring(nodes[0], nodes[5]);
+      newSpring[5]  = new Spring(nodes[1], nodes[6]);
+      newSpring[6]  = new Spring(nodes[4], nodes[7]);
+      newSpring[7]  = new Spring(nodes[6], nodes[7]);
+      newSpring[8]    = new Spring(nodes[3], nodes[6]);
+      newSpring[9]    = new Spring(nodes[1], nodes[5]);
+      newSpring[10]    = new Spring(nodes[2], nodes[8]);
+      newSpring[11]    = new Spring(nodes[1], nodes[9]);
+      newSpring[12]    = new Spring(nodes[5], nodes[9]);
+      newSpring[13]    = new Spring(nodes[2], nodes[9]);
+      newSpring[14]    = new Spring(nodes[8], nodes[9]);
+      newSpring[15]    = new Spring(nodes[2], nodes[10]);
+      newSpring[16]    = new Spring(nodes[10], nodes[11]);
+      newSpring[17]    = new Spring(nodes[8], nodes[12]);
+      newSpring[18]    = new Spring(nodes[12], nodes[13]);
+      newSpring[19]    = new Spring(nodes[8], nodes[14]);
+      newSpring[20]    = new Spring(nodes[14], nodes[15]);
+      newSpring[21]    = new Spring(nodes[8], nodes[15]);
+      newSpring[22]    = new Spring(nodes[12], nodes[16]);
+      newSpring[23]    = new Spring(nodes[13], nodes[16]);
+      newSpring[24]    = new Spring(nodes[12], nodes[17]);
+      newSpring[25]    = new Spring(nodes[20], nodes[17]);
+      newSpring[26]    = new Spring(nodes[20], nodes[4]);
+      newSpring[27]    = new Spring(nodes[20], nodes[7]);
+      newSpring[28]    = new Spring(nodes[18], nodes[1]);
+      newSpring[29]    = new Spring(nodes[18], nodes[8]);
+      newSpring[30]    = new Spring(nodes[18], nodes[5]);
+      newSpring[31]    = new Spring(nodes[19], nodes[4]);
+      newSpring[32]    = new Spring(nodes[4], nodes[5]);
+      newSpring[33]    = new Spring(nodes[6], nodes[8]);
+      newSpring[34]    = new Spring(nodes[3], nodes[8]);
+      newSpring[35]    = new Spring(nodes[4], nodes[8]);
+      newSpring[36]    = new Spring(nodes[9], nodes[3]);
+      newSpring[37]    = new Spring(nodes[6], nodes[9]);
+      newSpring[38]    = new Spring(nodes[4], nodes[3]);
+      newSpring[39]    = new Spring(nodes[5], nodes[8]);
+          for (i = 0; i<=39; i++){
+          newSpring[i].length = 50;
+          newSpring[i].stiffness = 0.3;
+          springs.push(newSpring[i]);
+        }
   };
 
 
@@ -492,17 +243,68 @@ p.draw = function() {
 p.textFont(font1);
 if (p.myBoolean) beginRecord(p.PDF, timestamp()+'.pdf');
 p.background(back);
-p.fill(0,15,80,50);
-p.rect(0,0,923,p.height);
-var gridSize = 40;
-for (var x = 960; x <= p.width-10; x += gridSize) {
-for (var y = 30; y <= p.height-11; y += gridSize) {
-p.fill(60,52,55);
-p.rect(x-1, y-1, 4, 4,5);
-
-
+if (p.mouseX < p.width-1100){
+let spacing =30;
+for (let k = spacing/2; k <= p.width-1100 ; k += spacing) {
+  for (let l = spacing/2; l <= p.height; l += spacing) {
+    let mx =p.mouseX*1.5;
+    let my =p.mouseY*1.5;
+    let d = p.dist(mx, my, k, l);
+    p.noStroke();
+    p.fill(8*3,26*3,73*3,d*0.005);
+    p.ellipse(k, l, 300);
 }
 }
+}else{
+  let spacing =30;
+  for (let k = spacing/2; k <= p.width-1100 ; k += spacing) {
+    for (let l = spacing/2; l <= p.height; l += spacing) {
+      let d = p.dist(700, 800, k, l);
+      p.noStroke();
+      p.fill(8*3,26*3,73*3,d*0.005);
+      p.ellipse(k, l, 300);
+  }
+  }
+}
+// let spacing =25;
+// for (let k = spacing/2; k <= p.width-1000 ; k += spacing) {
+//   for (let l = spacing/2; l <= p.height; l += spacing) {
+//
+//           let pnoiseVal = p.noise(k * 0.02,  l * 0.02, p.frameCount * 0.01);
+//            p.noStroke();
+//           p.fill(8*3,26*3,73*3,pnoiseVal*20);
+//           p.ellipse(k, l, 100);
+// }
+// }
+// p.fill(0,15,80,50);
+// p.rect(0,0,923,p.height);
+
+// var gridSize = 40;
+// for (var x = 960; x <= p.width-10; x += gridSize) {
+// for (var y = 30; y <= p.height-11; y += gridSize) {
+// p.fill(texthide);
+// p.rect(x-1, y-1, 4, 4,5);
+var gridSize = 20;
+for (let x = 960; x <= p.width-10; x += gridSize) {
+for (let y = 30; y <= p.height-11; y += gridSize) {
+  // if ((p.mouseX<p.width && p.mouseX>p.width-1000)&&(p.mouseY<p.height)){
+//   let o = p.dist(p.mouseX,p.mouseY, x, y);
+// let q =1000-1.5*o;
+//   p.noStroke();
+//   p.fill(texthide);
+//   p.ellipse(x, y, q*0.007);
+// }else {
+  let o = p.dist(p.width/2+480,p.height/2, x, y);
+let q =1000-1.5*o;
+  p.noStroke();
+  p.fill(texthide);
+  p.ellipse(x, y, q*0.007);
+  // p.fill(45*3,55*3,66*3);
+  // p.ellipse(x, y, q*0.002);
+// }
+}
+}
+
 p.cursor(cursor);
 
 // p.image(img, 50, 50, 400, 400);
@@ -525,145 +327,15 @@ p.cursor(cursor);
 // var haut2 = p.line(0, 70, p.width, 70);
 // var bas2 = p.line(0, 111, p.width, 111);//+41px//+10px
 
-
-
-
-// p.cadre = function () {
-var node0posX =  p.constrain(nodes[0].x, 990, 1865);
-var node0posY =  p.constrain(nodes[0].y, 110, p.height);
-if (node0posX === 990 || node0posY === 110 ){ nodes[0] =  new Node(node0posX+1, node0posY+1);}
-if (node0posX === 1865 || node0posY === p.height ){ nodes[0] =  new Node(node0posX-1, node0posY-1);}
-
-var node1posX =  p.constrain(nodes[1].x, 990, 1865);
-var node1posY =  p.constrain(nodes[1].y, 110, p.height);
-if (node1posX === 990 || node1posY === 110 ){ nodes[1] =  new Node(node1posX+1, node1posY+1);}
-if (node1posX === 1865 || node1posY === p.height ){ nodes[1] =  new Node(node1posX-1, node1posY-1);}
-
-var node2posX =  p.constrain(nodes[2].x, 990, 1865);
-var node2posY =  p.constrain(nodes[2].y, 110, p.height);
-if (node2posX === 990 || node2posY === 110 ){ nodes[2] =  new Node(node2posX+1, node2posY+1);}
-if (node2posX === 1865 || node2posY === p.height ){ nodes[2] =  new Node(node2posX-1, node2posY-1);}
-
-var node3posX =  p.constrain(nodes[3].x, 990, 1865);
-var node3posY =  p.constrain(nodes[3].y, 110, p.height);
-if (node3posX === 990 || node3posY === 110 ){ nodes[3] =  new Node(node3posX+1, node3posY+1);}
-if (node3posX === 1865 || node3posY === p.height ){ nodes[3] =  new Node(node3posX-1, node3posY-1);}
-
-var node4posX =  p.constrain(nodes[4].x, 990, 1865);
-var node4posY =  p.constrain(nodes[4].y, 110, p.height);
-if (node4posX === 990 || node4posY === 110 ){ nodes[4] =  new Node(node4posX+1, node4posY+1);}
-if (node4posX === 1865 || node4posY === p.height ){ nodes[4] =  new Node(node4posX-1, node4posY-1);}
-
-var node5posX =  p.constrain(nodes[5].x, 990, 1865);
-var node5posY =  p.constrain(nodes[5].y, 110, p.height);
-if (node5posX === 990 || node5posY === 110 ){ nodes[5] =  new Node(node5posX+1, node5posY+1);}
-if (node5posX === 1865 || node5posY === p.height ){ nodes[5] =  new Node(node5posX-1, node5posY-1);}
-
-var node6posX =  p.constrain(nodes[6].x, 990, 1865);
-var node6posY =  p.constrain(nodes[6].y, 110, p.height);
-if (node6posX === 990 || node6posY === 110 ){ nodes[6] =  new Node(node6posX+1, node6posY+1);}
-if (node6posX === 1865 || node6posY === p.height ){ nodes[6] =  new Node(node6posX-1, node6posY-1);}
-
-var node7posX =  p.constrain(nodes[7].x, 990, 1865);
-var node7posY =  p.constrain(nodes[7].y, 110, p.height);
-if (node7posX === 990 || node7posY === 110 ){ nodes[7] =  new Node(node7posX+1, node7posY+1);}
-if (node7posX === 1865 || node7posY === p.height ){ nodes[7] =  new Node(node7posX-1, node7posY-1);}
-
-var node8posX =  p.constrain(nodes[8].x, 990, 1865);
-var node8posY =  p.constrain(nodes[8].y, 110, p.height);
-if (node8posX === 990 || node8posY === 110 ){ nodes[8] =  new Node(node8posX+1, node8posY+1);}
-if (node8posX === 1865 || node8posY === p.height ){ nodes[8] =  new Node(node8posX-1, node8posY-1);}
-
-var node9posX =  p.constrain(nodes[9].x, 990, 1865);
-var node9posY =  p.constrain(nodes[9].y, 110, p.height);
-if (node9posX === 990 || node9posY === 110 ){ nodes[9] =  new Node(node9posX+1, node9posY+1);}
-if (node9posX === 1865 || node9posY === p.height ){ nodes[9] =  new Node(node9posX-1, node9posY-1);}
-
-var node10posX =  p.constrain(nodes[10].x, 990, 1865);
-var node10posY =  p.constrain(nodes[10].y, 110, p.height);
-if (node10posX === 990 || node10posY === 110 ){ nodes[10] =  new Node(node10posX+1, node10posY+1);}
-if (node10posX === 1865 || node10posY === p.height ){ nodes[10] =  new Node(node10posX-1, node10posY-1);}
-
-var node11posX =  p.constrain(nodes[11].x, 990, 1865);
-var node11posY =  p.constrain(nodes[11].y, 110, p.height);
-if (node11posX === 990 || node11posY === 110 ){ nodes[11] =  new Node(node11posX+1, node11posY+1);}
-if (node11posX === 1865 || node11posY === p.height ){ nodes[11] =  new Node(node11posX-1, node11posY-1);}
-
-var node12posX =  p.constrain(nodes[12].x, 990, 1865);
-var node12posY =  p.constrain(nodes[12].y, 110, p.height);
-if (node12posX === 990 || node12posY === 110 ){ nodes[12] =  new Node(node12posX+1, node12posY+1);}
-if (node12posX === 1865 || node12posY === p.height ){ nodes[12] =  new Node(node12posX-1, node12posY-1);}
-
-var node13posX =  p.constrain(nodes[13].x, 990, 1865);
-var node13posY =  p.constrain(nodes[13].y, 110, p.height);
-if (node13posX === 990 || node13posY === 110 ){ nodes[13] =  new Node(node13posX+1, node13posY+1);}
-if (node13posX === 1865 || node13posY === p.height ){ nodes[13] =  new Node(node13posX-1, node13posY-1);}
-
-var node14posX =  p.constrain(nodes[14].x, 990, 1865);
-var node14posY =  p.constrain(nodes[14].y, 110, p.height);
-if (node14posX === 990 || node14posY === 110 ){ nodes[14] =  new Node(node14posX+1, node14posY+1);}
-if (node14posX === 1865 || node14posY === p.height ){ nodes[14] =  new Node(node14posX-1, node14posY-1);}
-
-var node15posX =  p.constrain(nodes[15].x, 990, 1865);
-var node15posY =  p.constrain(nodes[15].y, 110, p.height);
-if (node15posX === 990 || node15posY === 110 ){ nodes[15] =  new Node(node15posX+1, node15posY+1);}
-if (node15posX === 1865 || node15posY === p.height ){ nodes[15] =  new Node(node15posX-1, node15posY-1);}
-
-var node16posX =  p.constrain(nodes[16].x, 990, 1865);
-var node16posY =  p.constrain(nodes[16].y, 110, p.height);
-if (node16posX === 990 || node16posY === 110 ){ nodes[16] =  new Node(node16posX+1, node16posY+1);}
-if (node16posX === 1865 || node16posY === p.height ){ nodes[16] =  new Node(node16posX-1, node16posY-1);}
-
-var node17posX =  p.constrain(nodes[17].x, 990, 1865);
-var node17posY =  p.constrain(nodes[17].y, 110, p.height);
-if (node17posX === 990 || node17posY === 110 ){ nodes[17] =  new Node(node17posX+1, node17posY+1);}
-if (node17posX === 1865 || node17posY === p.height ){ nodes[17] =  new Node(node17posX-1, node17posY-1);}
-
-var node18posX =  p.constrain(nodes[18].x, 990, 1865);
-var node18posY =  p.constrain(nodes[18].y, 110, p.height);
-if (node18posX === 990 || node18posY === 110 ){ nodes[18] =  new Node(node18posX+1, node18posY+1);}
-if (node18posX === 1865 || node18posY === p.height ){ nodes[18] =  new Node(node18posX-1, node18posY-1);}
-
-var node19posX =  p.constrain(nodes[19].x, 990, 1865);
-var node19posY =  p.constrain(nodes[19].y, 110, p.height);
-if (node19posX === 990 || node19posY === 110 ){ nodes[19] =  new Node(node19posX+1, node19posY+1);}
-if (node19posX === 1865 || node19posY === p.height ){ nodes[19] =  new Node(node19posX-1, node19posY-1);}
-
-var node20posX =  p.constrain(nodes[20].x, 990, 1865);
-var node20posY =  p.constrain(nodes[20].y, 110, p.height);
-if (node20posX === 990 || node20posY === 110 ){ nodes[20] =  new Node(node20posX+1, node20posY+1);}
-if (node20posX === 1865 || node20posY === p.height ){ nodes[20] =  new Node(node20posX-1, node20posY-1);}
-
-
-   nodes[0].attract(nodes[1]);    nodes[0].attract(nodes[2]);    nodes[0].attract(nodes[3]);    nodes[0].attract(nodes[4]);    nodes[0].attract(nodes[5]); nodes[0].attract(nodes[6]); nodes[0].attract(nodes[7]); nodes[0].attract(nodes[8]); nodes[0].attract(nodes[9]); nodes[0].attract(nodes[10]); nodes[0].attract(nodes[11]); nodes[0].attract(nodes[12]); nodes[0].attract(nodes[13]); nodes[0].attract(nodes[14]); nodes[0].attract(nodes[15]); nodes[0].attract(nodes[16]);  nodes[0].attract(nodes[17]);  nodes[0].attract(nodes[18]);  nodes[0].attract(nodes[19]);  nodes[0].attract(nodes[20]);
-   nodes[1].attract(nodes[0]);    nodes[1].attract(nodes[2]);    nodes[1].attract(nodes[3]);    nodes[1].attract(nodes[4]);    nodes[1].attract(nodes[5]); nodes[1].attract(nodes[6]); nodes[1].attract(nodes[7]); nodes[1].attract(nodes[8]); nodes[1].attract(nodes[9]); nodes[1].attract(nodes[10]); nodes[1].attract(nodes[11]); nodes[1].attract(nodes[12]); nodes[1].attract(nodes[13]); nodes[1].attract(nodes[14]); nodes[1].attract(nodes[15]);  nodes[1].attract(nodes[16]);  nodes[1].attract(nodes[17]);  nodes[1].attract(nodes[18]);  nodes[1].attract(nodes[19]);  nodes[1].attract(nodes[20]);
-   nodes[2].attract(nodes[0]);    nodes[2].attract(nodes[1]);    nodes[2].attract(nodes[3]);    nodes[2].attract(nodes[4]);    nodes[2].attract(nodes[5]); nodes[2].attract(nodes[6]); nodes[2].attract(nodes[7]); nodes[2].attract(nodes[8]); nodes[2].attract(nodes[9]); nodes[2].attract(nodes[10]); nodes[2].attract(nodes[11]); nodes[2].attract(nodes[12]); nodes[2].attract(nodes[13]); nodes[2].attract(nodes[14]); nodes[2].attract(nodes[15]);  nodes[2].attract(nodes[16]);  nodes[2].attract(nodes[17]);  nodes[2].attract(nodes[18]);  nodes[2].attract(nodes[19]);  nodes[2].attract(nodes[20]);
-   nodes[3].attract(nodes[0]);    nodes[3].attract(nodes[1]);    nodes[3].attract(nodes[2]);    nodes[3].attract(nodes[4]);    nodes[3].attract(nodes[5]); nodes[3].attract(nodes[6]); nodes[3].attract(nodes[7]); nodes[3].attract(nodes[8]); nodes[3].attract(nodes[9]); nodes[3].attract(nodes[10]); nodes[3].attract(nodes[11]); nodes[3].attract(nodes[12]); nodes[3].attract(nodes[13]); nodes[3].attract(nodes[14]); nodes[3].attract(nodes[15]); nodes[3].attract(nodes[16]);   nodes[3].attract(nodes[17]); nodes[3].attract(nodes[18]); nodes[3].attract(nodes[19]); nodes[3].attract(nodes[20]);
-   nodes[4].attract(nodes[0]);    nodes[4].attract(nodes[1]);    nodes[4].attract(nodes[2]);    nodes[4].attract(nodes[3]);    nodes[4].attract(nodes[5]); nodes[4].attract(nodes[6]); nodes[4].attract(nodes[7]); nodes[4].attract(nodes[8]); nodes[4].attract(nodes[9]); nodes[4].attract(nodes[10]); nodes[4].attract(nodes[11]); nodes[4].attract(nodes[12]); nodes[4].attract(nodes[13]); nodes[4].attract(nodes[14]); nodes[4].attract(nodes[15]); nodes[4].attract(nodes[16]);   nodes[4].attract(nodes[17]); nodes[4].attract(nodes[18]); nodes[4].attract(nodes[19]); nodes[4].attract(nodes[20]);
-   nodes[5].attract(nodes[0]);    nodes[5].attract(nodes[1]);    nodes[5].attract(nodes[2]);    nodes[5].attract(nodes[3]);    nodes[5].attract(nodes[4]); nodes[5].attract(nodes[6]); nodes[5].attract(nodes[7]); nodes[5].attract(nodes[8]); nodes[5].attract(nodes[9]); nodes[5].attract(nodes[10]); nodes[5].attract(nodes[11]); nodes[5].attract(nodes[12]); nodes[5].attract(nodes[13]); nodes[5].attract(nodes[14]); nodes[5].attract(nodes[15]); nodes[5].attract(nodes[16]);   nodes[5].attract(nodes[17]); nodes[5].attract(nodes[18]); nodes[5].attract(nodes[19]); nodes[5].attract(nodes[20]);
-   nodes[6].attract(nodes[0]);    nodes[6].attract(nodes[1]);    nodes[6].attract(nodes[2]);    nodes[6].attract(nodes[3]);    nodes[6].attract(nodes[4]); nodes[6].attract(nodes[5]); nodes[6].attract(nodes[7]); nodes[6].attract(nodes[8]); nodes[6].attract(nodes[9]); nodes[6].attract(nodes[10]); nodes[6].attract(nodes[11]); nodes[6].attract(nodes[12]); nodes[6].attract(nodes[13]); nodes[6].attract(nodes[14]); nodes[6].attract(nodes[15]);  nodes[6].attract(nodes[16]);  nodes[6].attract(nodes[17]); nodes[6].attract(nodes[18]);  nodes[6].attract(nodes[19]);  nodes[6].attract(nodes[20]);
-   nodes[7].attract(nodes[0]);    nodes[7].attract(nodes[1]);    nodes[7].attract(nodes[2]);    nodes[7].attract(nodes[3]);    nodes[7].attract(nodes[4]); nodes[7].attract(nodes[5]); nodes[7].attract(nodes[6]); nodes[7].attract(nodes[8]); nodes[7].attract(nodes[9]); nodes[7].attract(nodes[10]); nodes[7].attract(nodes[11]); nodes[7].attract(nodes[12]); nodes[7].attract(nodes[13]); nodes[7].attract(nodes[14]); nodes[7].attract(nodes[15]); nodes[7].attract(nodes[16]);   nodes[7].attract(nodes[17]); nodes[7].attract(nodes[18]); nodes[7].attract(nodes[19]); nodes[7].attract(nodes[20]);
-   nodes[8].attract(nodes[0]);    nodes[8].attract(nodes[1]);    nodes[8].attract(nodes[2]);    nodes[8].attract(nodes[3]);    nodes[8].attract(nodes[4]); nodes[8].attract(nodes[5]); nodes[8].attract(nodes[6]); nodes[8].attract(nodes[7]); nodes[8].attract(nodes[9]); nodes[8].attract(nodes[10]); nodes[8].attract(nodes[11]); nodes[8].attract(nodes[12]); nodes[8].attract(nodes[13]); nodes[8].attract(nodes[14]); nodes[8].attract(nodes[15]); nodes[8].attract(nodes[16]);   nodes[8].attract(nodes[17]); nodes[8].attract(nodes[18]); nodes[8].attract(nodes[19]); nodes[8].attract(nodes[20]);
-   nodes[9].attract(nodes[0]);    nodes[9].attract(nodes[1]);    nodes[9].attract(nodes[2]);    nodes[9].attract(nodes[3]);    nodes[9].attract(nodes[4]); nodes[9].attract(nodes[5]); nodes[9].attract(nodes[6]); nodes[9].attract(nodes[7]); nodes[9].attract(nodes[8]); nodes[9].attract(nodes[10]); nodes[9].attract(nodes[11]); nodes[9].attract(nodes[12]); nodes[9].attract(nodes[13]); nodes[9].attract(nodes[14]); nodes[9].attract(nodes[15]); nodes[9].attract(nodes[16]);   nodes[9].attract(nodes[17]); nodes[9].attract(nodes[18]); nodes[9].attract(nodes[19]); nodes[9].attract(nodes[20]);
-   nodes[10].attract(nodes[0]);    nodes[10].attract(nodes[1]);    nodes[10].attract(nodes[2]);    nodes[10].attract(nodes[3]);    nodes[10].attract(nodes[4]); nodes[10].attract(nodes[5]); nodes[10].attract(nodes[6]); nodes[10].attract(nodes[7]); nodes[10].attract(nodes[8]); nodes[10].attract(nodes[9]); nodes[10].attract(nodes[11]); nodes[10].attract(nodes[12]); nodes[10].attract(nodes[13]); nodes[10].attract(nodes[14]); nodes[10].attract(nodes[15]);  nodes[10].attract(nodes[16]);  nodes[10].attract(nodes[17]);  nodes[10].attract(nodes[18]);  nodes[10].attract(nodes[19]);  nodes[10].attract(nodes[20]);
-   nodes[11].attract(nodes[0]);    nodes[11].attract(nodes[1]);    nodes[11].attract(nodes[2]);    nodes[11].attract(nodes[3]);    nodes[11].attract(nodes[4]); nodes[11].attract(nodes[5]); nodes[11].attract(nodes[6]); nodes[11].attract(nodes[7]); nodes[11].attract(nodes[8]); nodes[11].attract(nodes[9]); nodes[11].attract(nodes[10]); nodes[11].attract(nodes[12]); nodes[11].attract(nodes[13]); nodes[11].attract(nodes[14]); nodes[11].attract(nodes[15]); nodes[11].attract(nodes[16]); nodes[11].attract(nodes[17]); nodes[11].attract(nodes[18]); nodes[11].attract(nodes[19]); nodes[11].attract(nodes[20]);
-   nodes[12].attract(nodes[0]);    nodes[12].attract(nodes[1]);    nodes[12].attract(nodes[2]);    nodes[12].attract(nodes[3]);    nodes[12].attract(nodes[4]); nodes[12].attract(nodes[5]); nodes[12].attract(nodes[6]); nodes[12].attract(nodes[7]); nodes[12].attract(nodes[8]); nodes[12].attract(nodes[9]); nodes[12].attract(nodes[10]); nodes[12].attract(nodes[11]); nodes[12].attract(nodes[13]); nodes[12].attract(nodes[14]); nodes[12].attract(nodes[15]); nodes[12].attract(nodes[16]); nodes[12].attract(nodes[17]); nodes[12].attract(nodes[18]); nodes[12].attract(nodes[19]); nodes[12].attract(nodes[20]);
-   nodes[13].attract(nodes[0]);    nodes[13].attract(nodes[1]);    nodes[13].attract(nodes[2]);    nodes[13].attract(nodes[3]);    nodes[13].attract(nodes[4]); nodes[13].attract(nodes[5]); nodes[13].attract(nodes[6]); nodes[13].attract(nodes[7]); nodes[13].attract(nodes[8]); nodes[13].attract(nodes[9]); nodes[13].attract(nodes[10]); nodes[13].attract(nodes[11]); nodes[13].attract(nodes[12]); nodes[13].attract(nodes[14]); nodes[13].attract(nodes[15]); nodes[13].attract(nodes[16]); nodes[13].attract(nodes[17]); nodes[13].attract(nodes[18]); nodes[13].attract(nodes[19]); nodes[13].attract(nodes[20]);
-   nodes[14].attract(nodes[0]);    nodes[14].attract(nodes[1]);    nodes[14].attract(nodes[2]);    nodes[14].attract(nodes[3]);    nodes[14].attract(nodes[4]); nodes[14].attract(nodes[5]); nodes[14].attract(nodes[6]); nodes[14].attract(nodes[7]); nodes[14].attract(nodes[8]); nodes[14].attract(nodes[9]); nodes[14].attract(nodes[10]); nodes[14].attract(nodes[11]); nodes[14].attract(nodes[12]); nodes[14].attract(nodes[13]); nodes[14].attract(nodes[15]); nodes[14].attract(nodes[16]); nodes[14].attract(nodes[17]); nodes[14].attract(nodes[18]); nodes[14].attract(nodes[19]); nodes[14].attract(nodes[20]);
-   nodes[15].attract(nodes[0]);    nodes[15].attract(nodes[1]);    nodes[15].attract(nodes[2]);    nodes[15].attract(nodes[3]);    nodes[15].attract(nodes[4]); nodes[15].attract(nodes[5]); nodes[15].attract(nodes[6]); nodes[15].attract(nodes[7]); nodes[15].attract(nodes[8]); nodes[15].attract(nodes[9]); nodes[15].attract(nodes[10]); nodes[15].attract(nodes[11]); nodes[15].attract(nodes[12]); nodes[15].attract(nodes[13]); nodes[15].attract(nodes[14]);  nodes[15].attract(nodes[16]);  nodes[15].attract(nodes[17]);  nodes[15].attract(nodes[18]);  nodes[15].attract(nodes[19]);  nodes[15].attract(nodes[20]);
-   nodes[16].attract(nodes[0]);    nodes[16].attract(nodes[1]);    nodes[16].attract(nodes[2]);    nodes[16].attract(nodes[3]);    nodes[16].attract(nodes[4]); nodes[16].attract(nodes[5]); nodes[16].attract(nodes[6]); nodes[16].attract(nodes[7]); nodes[16].attract(nodes[8]); nodes[16].attract(nodes[9]); nodes[16].attract(nodes[10]); nodes[16].attract(nodes[11]); nodes[16].attract(nodes[12]); nodes[16].attract(nodes[13]); nodes[16].attract(nodes[14]); nodes[16].attract(nodes[15]); nodes[16].attract(nodes[17]); nodes[16].attract(nodes[18]); nodes[16].attract(nodes[19]); nodes[16].attract(nodes[20]);
-   nodes[17].attract(nodes[0]);    nodes[17].attract(nodes[1]);    nodes[17].attract(nodes[2]);    nodes[17].attract(nodes[3]);    nodes[17].attract(nodes[4]); nodes[17].attract(nodes[5]); nodes[17].attract(nodes[6]); nodes[17].attract(nodes[7]); nodes[17].attract(nodes[8]); nodes[17].attract(nodes[9]); nodes[17].attract(nodes[10]); nodes[17].attract(nodes[11]); nodes[17].attract(nodes[12]); nodes[17].attract(nodes[13]); nodes[17].attract(nodes[14]); nodes[17].attract(nodes[15]); nodes[17].attract(nodes[16]); nodes[17].attract(nodes[18]); nodes[17].attract(nodes[19]); nodes[17].attract(nodes[20]);
-   nodes[18].attract(nodes[0]);    nodes[18].attract(nodes[1]);    nodes[18].attract(nodes[2]);    nodes[18].attract(nodes[3]);    nodes[18].attract(nodes[4]); nodes[18].attract(nodes[5]); nodes[18].attract(nodes[6]); nodes[18].attract(nodes[7]); nodes[18].attract(nodes[8]); nodes[18].attract(nodes[9]); nodes[18].attract(nodes[10]); nodes[18].attract(nodes[11]); nodes[18].attract(nodes[12]); nodes[18].attract(nodes[13]); nodes[18].attract(nodes[14]); nodes[18].attract(nodes[15]); nodes[18].attract(nodes[16]); nodes[18].attract(nodes[17]); nodes[18].attract(nodes[19]); nodes[18].attract(nodes[20]);
-   nodes[19].attract(nodes[0]);    nodes[19].attract(nodes[1]);    nodes[19].attract(nodes[2]);    nodes[19].attract(nodes[3]);    nodes[19].attract(nodes[4]); nodes[19].attract(nodes[5]); nodes[19].attract(nodes[6]); nodes[19].attract(nodes[7]); nodes[19].attract(nodes[8]); nodes[19].attract(nodes[9]); nodes[19].attract(nodes[10]); nodes[19].attract(nodes[11]); nodes[19].attract(nodes[12]); nodes[19].attract(nodes[13]); nodes[19].attract(nodes[14]); nodes[19].attract(nodes[15]); nodes[19].attract(nodes[16]); nodes[19].attract(nodes[17]); nodes[19].attract(nodes[18]); nodes[19].attract(nodes[20]);
-   nodes[20].attract(nodes[0]);    nodes[20].attract(nodes[1]);    nodes[20].attract(nodes[2]);    nodes[20].attract(nodes[3]);    nodes[20].attract(nodes[4]); nodes[20].attract(nodes[5]); nodes[20].attract(nodes[6]); nodes[20].attract(nodes[7]); nodes[20].attract(nodes[8]); nodes[20].attract(nodes[9]); nodes[20].attract(nodes[10]); nodes[20].attract(nodes[11]); nodes[20].attract(nodes[12]); nodes[20].attract(nodes[13]); nodes[20].attract(nodes[14]); nodes[20].attract(nodes[15]); nodes[20].attract(nodes[16]); nodes[20].attract(nodes[17]); nodes[20].attract(nodes[18]); nodes[20].attract(nodes[19]);
-
-
+ for (var i = 0; i < 21; i++) {
+     nodes[i].attractNodes(nodes);
+   }
  for (var i = 0 ; i < 21; i++) {
    nodes[i].update();
  }
- // for (var i = 0; i < springs.length; i++) {
- //   springs[i].update();
- // }
+ for (var i = 0; i < springs.length; i++) {
+   springs[i].update();
+ }
  if (selectedNode != null) {
     // if (p.key == 'E'|| p.key == 'e') {
    selectedNode.x = p.mouseX;
@@ -672,51 +344,52 @@ if (node20posX === 1865 || node20posY === p.height ){ nodes[20] =  new Node(node
 }
 
 
- p.stroke(29,32,45)
-    p.strokeWeight(1);
-  var line1 = p.line(node0posX, node0posY, node1posX, node1posY);
-  var line2 = p.line(node0posX, node0posY, node2posX, node2posY);
-  var line3 = p.line(node0posX, node0posY, node3posX, node3posY);
-  var line4 = p.line(node0posX, node0posY, node4posX, node4posY);
-  var line5 = p.line(node0posX, node0posY, node5posX, node5posY);
-  var line6 = p.line(node1posX, node1posY, node6posX, node6posY);
-  var line7 = p.line(node4posX, node4posY, node7posX, node7posY);
-  var line8 = p.line(node6posX, node6posY, node7posX, node7posY);
-  var line9 = p.line(node3posX, node3posY, node6posX, node6posY);
-  var line10 = p.line(node1posX, node1posY, node5posX, node5posY);
-  var line11 = p.line(node2posX, node2posY, node8posX, node8posY);
-  var line12 = p.line(node1posX, node1posY, node9posX, node9posY);
-  var line12 = p.line(node5posX, node5posY, node9posX, node9posY);
-  var line14 = p.line(node2posX, node2posY, node9posX, node9posY);
-  var line15 = p.line(node8posX, node8posY, node9posX, node9posY);
-  var line16 = p.line(node2posX, node2posY, node10posX, node10posY);
-  var line17 = p.line(node10posX, node10posY, node11posX, node11posY);
-  var line18 = p.line(node8posX, node8posY, node12posX, node12posY);
-  var line19 = p.line(node12posX, node12posY, node13posX, node13posY);
-  var line20 = p.line(node8posX, node8posY, node14posX, node14posY);
-  var line21 = p.line(node14posX, node14posY, node15posX, node15posY);
-  var line22 = p.line(node8posX, node8posY, node15posX, node15posY);
-  var line23 = p.line(node12posX, node12posY, node16posX, node16posY);
-  var line24 = p.line(node13posX, node13posY, node16posX, node16posY);
-  var line25 = p.line(node12posX, node12posY, node17posX, node17posY);
-  var line26 = p.line(node20posX, node20posY, node17posX, node17posY);
-  var line27 = p.line(node20posX, node20posY, node4posX, node4posY);
-  var line28 = p.line(node20posX, node20posY, node7posX, node7posY);
-  var line29 = p.line(node18posX, node18posY, node1posX, node1posY);
-  var line30 = p.line(node18posX, node18posY, node8posX, node8posY);
-  var line30 = p.line(node18posX, node18posY, node5posX, node5posY);
-  var line31 = p.line(node19posX, node19posY, node4posX, node4posY);
-  var line32 = p.line(node4posX, node4posY, node5posX, node5posY);
-  var line33 = p.line(node6posX, node6posY, node8posX, node8posY);
-  var line34 = p.line(node3posX, node3posY, node8posX, node8posY);
-  var line35 = p.line(node4posX, node4posY, node8posX, node8posY);
-  var line36 = p.line(node9posX, node9posY, node3posX, node3posY);
-  var line32 = p.line(node6posX, node6posY, node9posX, node9posY);
-  var line33 = p.line(node4posX, node4posY, node3posX, node3posY);
-  var line34 = p.line(node5posX, node5posY, node8posX, node8posY);
+ p.stroke(texthide);
+    p.strokeWeight(2);
+    p.line(nodes[0].x, nodes[0].y, nodes[1].x, nodes[1].y);
+    p.line(nodes[0].x, nodes[0].y, nodes[2].x, nodes[2].y);
+    p.line(nodes[0].x, nodes[0].y, nodes[3].x, nodes[3].y);
+    p.line(nodes[0].x, nodes[0].y, nodes[4].x, nodes[4].y);
+    p.line(nodes[0].x, nodes[0].y, nodes[5].x, nodes[5].y);
+   p.line(nodes[1].x, nodes[1].y, nodes[6].x, nodes[6].y);
+    p.line(nodes[4].x, nodes[4].y, nodes[7].x, nodes[7].y);
+    p.line(nodes[6].x, nodes[6].y, nodes[7].x, nodes[7].y);
+    p.line(nodes[3].x, nodes[3].y, nodes[6].x, nodes[6].y);
+    p.line(nodes[1].x, nodes[1].y, nodes[5].x, nodes[5].y);
+    p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+    p.line(nodes[1].x, nodes[1].y, nodes[9].x, nodes[9].y);
+    p.line(nodes[5].x, nodes[5].y, nodes[9].x, nodes[9].y);
+    p.line(nodes[2].x, nodes[2].y, nodes[9].x, nodes[9].y);
+    p.line(nodes[8].x, nodes[8].y, nodes[9].x, nodes[9].y);
+    p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+    p.line(nodes[10].x, nodes[10].y, nodes[11].x, nodes[11].y);
+   p.line(nodes[8].x, nodes[8].y, nodes[12].x, nodes[12].y);
+    p.line(nodes[12].x, nodes[12].y, nodes[13].x, nodes[13].y);
+    p.line(nodes[8].x, nodes[8].y, nodes[14].x, nodes[14].y);
+    p.line(nodes[14].x, nodes[14].y, nodes[15].x, nodes[15].y);
+    p.line(nodes[8].x, nodes[8].y, nodes[15].x, nodes[15].y);
+    p.line(nodes[12].x, nodes[12].y, nodes[16].x, nodes[16].y);
+    p.line(nodes[13].x, nodes[13].y, nodes[16].x, nodes[16].y);
+    p.line(nodes[12].x, nodes[12].y, nodes[17].x, nodes[17].y);
+    p.line(nodes[20].x, nodes[20].y, nodes[17].x, nodes[17].y);
+    p.line(nodes[20].x, nodes[20].y, nodes[4].x, nodes[4].y);
+    p.line(nodes[20].x, nodes[20].y, nodes[7].x, nodes[7].y);
+    p.line(nodes[18].x, nodes[18].y, nodes[1].x, nodes[1].y);
+    p.line(nodes[18].x, nodes[18].y, nodes[8].x, nodes[8].y);
+  p.line(nodes[18].x, nodes[18].y, nodes[5].x, nodes[5].y);
+    p.line(nodes[19].x, nodes[19].y, nodes[4].x, nodes[4].y);
+    p.line(nodes[4].x, nodes[4].y, nodes[5].x, nodes[5].y);
+    p.line(nodes[6].x, nodes[6].y, nodes[8].x, nodes[8].y);
+    p.line(nodes[3].x, nodes[3].y, nodes[8].x, nodes[8].y);
+    p.line(nodes[4].x, nodes[4].y, nodes[8].x, nodes[8].y);
+    p.line(nodes[9].x, nodes[9].y, nodes[3].x, nodes[3].y);
+    p.line(nodes[6].x, nodes[6].y, nodes[9].x, nodes[9].y);
+    p.line(nodes[4].x, nodes[4].y, nodes[3].x, nodes[3].y);
+    p.line(nodes[5].x, nodes[5].y, nodes[8].x, nodes[8].y);
+
+
 
   // p.update(line1);
-
   if (myBoolean) {
         myBoolean = false;
         p.println('saving to pdf – finishing');
@@ -768,81 +441,81 @@ if (node20posX === 1865 || node20posY === p.height ){ nodes[20] =  new Node(node
 
 
 p.strokeWeight(2);
-p.fill(8,26,73);
+p.fill(0,7,142);
 
 // p.stroke(91,21,15);
 // p.noStroke();
-p.ellipse(node8posX, node8posY, nodeDiameterxe, nodeDiameterye);
-p.ellipse(node4posX, node4posY, nodeDiameterxe, nodeDiameterye);
+p.ellipse(nodes[8].x, nodes[8].y, nodeDiameterxe, nodeDiameterye);
+p.ellipse(nodes[4].x, nodes[4].y, nodeDiameterxe, nodeDiameterye);
 
 // p.stroke(78,25,20);
-p.ellipse(node1posX, node1posY, nodeDiameterxa, nodeDiameterya);
-p.ellipse(node6posX, node6posY, nodeDiameterxa, nodeDiameterya);
-p.ellipse(node9posX, node9posY, nodeDiameterxa, nodeDiameterya);
-p.ellipse(node3posX, node3posY, nodeDiameterxa, nodeDiameterya);
-p.ellipse(node0posX, node0posY, nodeDiameterxa, nodeDiameterya);
-p.ellipse(node5posX, node5posY, nodeDiameterxa, nodeDiameterya);
+p.ellipse(nodes[1].x, nodes[1].y, nodeDiameterxa, nodeDiameterya);
+p.ellipse(nodes[6].x, nodes[6].y, nodeDiameterxa, nodeDiameterya);
+p.ellipse(nodes[9].x, nodes[9].y, nodeDiameterxa, nodeDiameterya);
+p.ellipse(nodes[3].x, nodes[3].y, nodeDiameterxa, nodeDiameterya);
+p.ellipse(nodes[0].x, nodes[0].y, nodeDiameterxa, nodeDiameterya);
+p.ellipse(nodes[5].x, nodes[5].y, nodeDiameterxa, nodeDiameterya);
 
 // p.stroke(67,26,20);
-p.ellipse(node18posX, node18posY, nodeDiameterxb, nodeDiameteryb);
-p.ellipse(node12posX, node12posY, nodeDiameterxb, nodeDiameteryb);
-p.ellipse(node20posX, node20posY, nodeDiameterxb, nodeDiameteryb);
-p.ellipse(node7posX, node7posY, nodeDiameterxb, nodeDiameteryb);
-p.ellipse(node2posX, node2posY, nodeDiameterxb, nodeDiameteryb);
+p.ellipse(nodes[18].x, nodes[18].y, nodeDiameterxb, nodeDiameteryb);
+p.ellipse(nodes[12].x, nodes[12].y, nodeDiameterxb, nodeDiameteryb);
+p.ellipse(nodes[20].x, nodes[20].y, nodeDiameterxb, nodeDiameteryb);
+p.ellipse(nodes[7].x, nodes[7].y, nodeDiameterxb, nodeDiameteryb);
+p.ellipse(nodes[2].x, nodes[2].y, nodeDiameterxb, nodeDiameteryb);
 
 // p.stroke(55,23,18);
-p.ellipse(node11posX, node11posY, nodeDiameterxc, nodeDiameteryc);
-p.ellipse(node13posX, node13posY, nodeDiameterxc, nodeDiameteryc);
-p.ellipse(node16posX, node16posY, nodeDiameterxc, nodeDiameteryc);
-p.ellipse(node17posX, node17posY, nodeDiameterxc, nodeDiameteryc);
-p.ellipse(node14posX, node14posY, nodeDiameterxc, nodeDiameteryc);
-p.ellipse(node15posX, node15posY, nodeDiameterxc, nodeDiameteryc);
+p.ellipse(nodes[11].x, nodes[11].y, nodeDiameterxc, nodeDiameteryc);
+p.ellipse(nodes[13].x, nodes[13].y, nodeDiameterxc, nodeDiameteryc);
+p.ellipse(nodes[16].x, nodes[16].y, nodeDiameterxc, nodeDiameteryc);
+p.ellipse(nodes[17].x, nodes[17].y, nodeDiameterxc, nodeDiameteryc);
+p.ellipse(nodes[14].x, nodes[14].y, nodeDiameterxc, nodeDiameteryc);
+p.ellipse(nodes[15].x, nodes[15].y, nodeDiameterxc, nodeDiameteryc);
 
 // p.stroke(21,19,12);
-p.ellipse(node19posX, node19posY, nodeDiameterxd, nodeDiameteryd);
-p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
+p.ellipse(nodes[19].x, nodes[19].y, nodeDiameterxd, nodeDiameteryd);
+p.ellipse(nodes[10].x, nodes[10].y, nodeDiameterxd, nodeDiameteryd);
 
 
     p.fill(back);
 
   p.noStroke();
-  p.ellipse(node8posX, node8posY, nodeDiameterxe+strokenode, nodeDiameterye+strokenode);
-  p.ellipse(node4posX, node4posY, nodeDiameterxe+strokenode, nodeDiameterye+strokenode);
+  p.ellipse(nodes[8].x, nodes[8].y, nodeDiameterxe+strokenode, nodeDiameterye+strokenode);
+  p.ellipse(nodes[4].x, nodes[4].y, nodeDiameterxe+strokenode, nodeDiameterye+strokenode);
 
   p.noStroke();
-  p.ellipse(node1posX, node1posY, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
-  p.ellipse(node6posX, node6posY, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
-  p.ellipse(node9posX, node9posY, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
-  p.ellipse(node0posX, node0posY, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
-  p.ellipse(node3posX, node3posY, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
-  p.ellipse(node5posX, node5posY, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
+  p.ellipse(nodes[1].x, nodes[1].y, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
+  p.ellipse(nodes[6].x, nodes[6].y, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
+  p.ellipse(nodes[9].x, nodes[9].y, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
+  p.ellipse(nodes[0].x, nodes[0].y, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
+  p.ellipse(nodes[3].x, nodes[3].y, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
+  p.ellipse(nodes[5].x, nodes[5].y, nodeDiameterxa+strokenode, nodeDiameterya+strokenode);
 
   p.noStroke();
-  p.ellipse(node18posX, node18posY, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
-  p.ellipse(node12posX, node12posY, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
-  p.ellipse(node20posX, node20posY, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
-  p.ellipse(node7posX, node7posY, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
-  p.ellipse(node2posX, node2posY, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
+  p.ellipse(nodes[18].x, nodes[18].y, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
+  p.ellipse(nodes[12].x, nodes[12].y, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
+  p.ellipse(nodes[20].x, nodes[20].y, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
+  p.ellipse(nodes[7].x, nodes[7].y, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
+  p.ellipse(nodes[2].x, nodes[2].y, nodeDiameterxb+strokenode, nodeDiameteryb+strokenode);
   p.noStroke();
-  p.ellipse(node11posX, node11posY, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
-  p.ellipse(node13posX, node13posY, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
-  p.ellipse(node16posX, node16posY, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
-  p.ellipse(node17posX, node17posY, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
-  p.ellipse(node14posX, node14posY, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
-  p.ellipse(node15posX, node15posY, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
+  p.ellipse(nodes[11].x, nodes[11].y, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
+  p.ellipse(nodes[13].x, nodes[13].y, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
+  p.ellipse(nodes[16].x, nodes[16].y, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
+  p.ellipse(nodes[17].x, nodes[17].y, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
+  p.ellipse(nodes[14].x, nodes[14].y, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
+  p.ellipse(nodes[15].x, nodes[15].y, nodeDiameterxc+strokenode, nodeDiameteryc+strokenode);
 
   p.noStroke();
-  p.ellipse(node19posX, node19posY, nodeDiameterxd+strokenode, nodeDiameteryd+strokenode);
-  p.ellipse(node10posX, node10posY, nodeDiameterxd+strokenode, nodeDiameteryd+strokenode);
+  p.ellipse(nodes[19].x, nodes[19].y, nodeDiameterxd+strokenode, nodeDiameteryd+strokenode);
+  p.ellipse(nodes[10].x, nodes[10].y, nodeDiameterxd+strokenode, nodeDiameteryd+strokenode);
 
   p.textSize(20);
   p.textFont(font1);
   p.textAlign(p.CENTER, p.CENTE);
 
-           if ((node0posX-50 < p.mouseX && node0posX+50 > p.mouseX) && (node0posY-50 < p.mouseY && node0posY+50 > p.mouseY)) {
+           if ((nodes[0].x-50 < p.mouseX && nodes[0].x+50 > p.mouseX) && (nodes[0].y-50 < p.mouseY && nodes[0].y+50 > p.mouseY)) {
             p.fill(textvuconcept);
             p.textSize(textsize+10);
-            p.text(auxétisme, node0posX, node0posY);
+            p.text(auxétisme, nodes[0].x, nodes[0].y);
             if (p.mouseIsPressed == true){
               if(p.keyIsPressed == true){
                 for (let a = 0; a < images.length; a++){
@@ -852,7 +525,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.noStroke();
               p.fill(back,500);
               p.rect(0,0,p.windowWidth,p.windowHeight);
-              p.image(delate2,65,65);
+              p.image(delate2,p.width/2,65);
               p.noStroke();
               p.noLoop();
             p.fill(bleu);
@@ -868,16 +541,13 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-              p.text(auxétisme, node0posX, node0posY);
+              p.text(auxétisme, nodes[0].x, nodes[0].y);
            }
 
-
-
-
-            if ((node1posX-50 < p.mouseX && node1posX+50 > p.mouseX) && (node1posY-50 < p.mouseY && node1posY+50 > p.mouseY)) {
+            if ((nodes[1].x-50 < p.mouseX && nodes[1].x+50 > p.mouseX) && (nodes[1].y-50 < p.mouseY && nodes[1].y+50 > p.mouseY)) {
             p.fill(textvuconcept);
             p.textSize(textsize+10);
-            p.text(tenségrité, node1posX, node1posY);
+            p.text(tenségrité, nodes[1].x, nodes[1].y);
             if (p.mouseIsPressed == true){
               if(p.keyIsPressed == true){
                 for (let a = 0; a < images.length; a++){
@@ -887,7 +557,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               p.noStroke();
               p.fill(back,500);
               p.rect(0,0,p.windowWidth,p.windowHeight);
-              p.image(delate2,65,65);
+              p.image(delate2,p.width/2,65);
               p.noStroke();
               p.noLoop();
             p.fill(bleu);
@@ -902,16 +572,13 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
            p.fill(texthideconcept);
            p.textSize(textsize+10);
-           p.text(tenségrité, node1posX, node1posY);
+           p.text(tenségrité, nodes[1].x, nodes[1].y);
            }
 
-
-
-
-          if ((node2posX-50 < p.mouseX && node2posX+50 > p.mouseX) && (node2posY-50 < p.mouseY && node2posY+50 > p.mouseY)) {
+          if ((nodes[2].x-50 < p.mouseX && nodes[2].x+50 > p.mouseX) && (nodes[2].y-50 < p.mouseY && nodes[2].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-               p.text(jamming, node2posX, node2posY);
+               p.text(jamming, nodes[2].x, nodes[2].y);
                if (p.mouseIsPressed == true){
                  if(p.keyIsPressed == true){
                    for (let a = 0; a < images.length; a++){
@@ -921,7 +588,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                  p.noStroke();
                  p.fill(back,500);
                  p.rect(0,0,p.windowWidth,p.windowHeight);
-                 p.image(delate2,65,65);
+                 p.image(delate2,p.width/2,65);
                  p.noStroke();
                  p.noLoop();
                p.fill(bleu);
@@ -937,17 +604,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-               p.text(jamming, node2posX, node2posY);
+               p.text(jamming, nodes[2].x, nodes[2].y);
             }
 
 
-
-
-          if ((node3posX-50 < p.mouseX && node3posX+50 > p.mouseX) && (node3posY-50 < p.mouseY && node3posY+50 > p.mouseY)) {
+          if ((nodes[3].x-50 < p.mouseX && nodes[3].x+50 > p.mouseX) && (nodes[3].y-50 < p.mouseY && nodes[3].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                p.text(système, node3posX, node3posY-10);
-              p.text(pneumatique, node3posX , node3posY+10);
+                p.text(système, nodes[3].x, nodes[3].y-10);
+              p.text(pneumatique, nodes[3].x , nodes[3].y+10);
               if (p.mouseIsPressed == true){
                 if(p.keyIsPressed == true){
                   for (let a = 0; a < images.length; a++){
@@ -957,7 +622,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 p.noStroke();
                 p.fill(back,500);
                 p.rect(0,0,p.windowWidth,p.windowHeight);
-                p.image(delate2,65,65);
+                p.image(delate2,p.width/2,65);
                 p.noStroke();
                 p.noLoop();
               p.fill(bleu);
@@ -973,18 +638,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(système, node3posX, node3posY-10);
-              p.text(pneumatique, node3posX , node3posY+10);
+                p.text(système, nodes[3].x, nodes[3].y-10);
+              p.text(pneumatique, nodes[3].x , nodes[3].y+10);
             }
 
-
-
-
-              if ((node4posX-50 < p.mouseX && node4posX+50 > p.mouseX) && (node4posY-50 < p.mouseY && node4posY+50 > p.mouseY)) {
+              if ((nodes[4].x-50 < p.mouseX && nodes[4].x+50 > p.mouseX) && (nodes[4].y-50 < p.mouseY && nodes[4].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                p.text(motif, node4posX, node4posY -10);
-             p.text(procédural, node4posX , node4posY +10);
+                p.text(motif, nodes[4].x, nodes[4].y -10);
+             p.text(procédural, nodes[4].x , nodes[4].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -994,15 +656,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
                  p.text('Système procédural def. :',150,190);
                p.fill(textvu);
                  p.text("Un système (formel) procédural est un ensemble de formes jamais identiques mais dont les lois qui régissent sa gènese sont toujours vérifiées et respéctées.",200,190+60);
-                 p.text("Ces motifs sont souvent issues de recherche des formes de génèse dans la nature. Un des précurseurs de ces systèmes reste Alan turring sur ces simulations de motifs dynamiques.",200,190+60+30);
-                 p.text("Les systèmes-L en sont aussi un bon éxemple.",200,190+60+30+30);
+                 p.text("Ces motifs sont souvent issues de recherche des formes de génèse dans la nature. Un des précurseurs de ces systèmes reste Alan turring sur ces simulations",200,190+60+30);
+                 p.text("de motifs dynamiques. Les systèmes-L en sont aussi un bon éxemple.",200,190+60+30+30);
                p.drawingContext.filter = 'Blur(8px)';
            //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
            }
@@ -1010,15 +672,14 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(motif, node4posX, node4posY -10);
-             p.text(procédural, node4posX , node4posY +10);
+                p.text(motif, nodes[4].x, nodes[4].y -10);
+             p.text(procédural, nodes[4].x , nodes[4].y +10);
             }
 
-
-              if ((node5posX-50 < p.mouseX && node5posX+50 > p.mouseX) && (node5posY-50 < p.mouseY && node5posY+50 > p.mouseY)) {
+              if ((nodes[5].x-50 < p.mouseX && nodes[5].x+50 > p.mouseX) && (nodes[5].y-50 < p.mouseY && nodes[5].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                p.text(mémoire, node5posX, node5posY);
+                p.text(mémoire, nodes[5].x, nodes[5].y);
                 if (p.mouseIsPressed == true){
                   if(p.keyIsPressed == true){
                     for (let a = 0; a < images.length; a++){
@@ -1028,7 +689,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                   p.noStroke();
                   p.fill(back,500);
                   p.rect(0,0,p.windowWidth,p.windowHeight);
-                  p.image(delate2,65,65);
+                  p.image(delate2,p.width/2,65);
                   p.noStroke();
                   p.noLoop();
                 p.fill(bleu);
@@ -1044,15 +705,14 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(mémoire, node5posX, node5posY);
+                p.text(mémoire, nodes[5].x, nodes[5].y);
             }
 
-
-              if ((node6posX-50 < p.mouseX && node6posX+50 > p.mouseX) && (node6posY-50 < p.mouseY && node6posY+50 > p.mouseY)) {
+              if ((nodes[6].x-50 < p.mouseX && nodes[6].x+50 > p.mouseX) && (nodes[6].y-50 < p.mouseY && nodes[6].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                p.text(surface, node6posX, node6posY -10);
-             p.text(entension, node6posX, node6posY +10);
+                p.text(surface, nodes[6].x, nodes[6].y -10);
+             p.text(entension, nodes[6].x, nodes[6].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -1062,7 +722,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
@@ -1078,16 +738,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-               p.text(surface, node6posX, node6posY -10);
-             p.text(entension, node6posX, node6posY +10);
+               p.text(surface, nodes[6].x, nodes[6].y -10);
+             p.text(entension, nodes[6].x, nodes[6].y +10);
             }
 
-
-             if ((node7posX-50 < p.mouseX && node7posX+50 > p.mouseX) && (node7posY-50 < p.mouseY && node7posY+50 > p.mouseY)) {
+             if ((nodes[7].x-50 < p.mouseX && nodes[7].x+50 > p.mouseX) && (nodes[7].y-50 < p.mouseY && nodes[7].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                p.text(motif, node7posX, node7posY -10);
-             p.text(céllulaire, node7posX , node7posY +10);
+                p.text(motif, nodes[7].x, nodes[7].y -10);
+             p.text(céllulaire, nodes[7].x , nodes[7].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -1097,7 +756,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
@@ -1113,16 +772,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-               p.text(motif, node7posX, node7posY -10);
-             p.text(céllulaire, node7posX , node7posY +10);
+               p.text(motif, nodes[7].x, nodes[7].y -10);
+             p.text(céllulaire, nodes[7].x , nodes[7].y +10);
             }
 
-
-           if ((node8posX-50 < p.mouseX && node8posX+50 > p.mouseX) && (node8posY-50 < p.mouseY && node8posY+50 > p.mouseY)) {
+           if ((nodes[8].x-50 < p.mouseX && nodes[8].x+50 > p.mouseX) && (nodes[8].y-50 < p.mouseY && nodes[8].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                p.text(courbes, node8posX, node8posY -10);
-             p.text(polynomiales, node8posX , node8posY +10);
+                p.text(courbes, nodes[8].x, nodes[8].y -10);
+             p.text(polynomiales, nodes[8].x , nodes[8].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -1132,7 +790,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
@@ -1147,16 +805,16 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-               p.text(courbes, node8posX, node8posY -10);
-             p.text(polynomiales, node8posX , node8posY +10);
+               p.text(courbes, nodes[8].x, nodes[8].y -10);
+             p.text(polynomiales, nodes[8].x , nodes[8].y +10);
             }
 
 
-            if ((node9posX-50 < p.mouseX && node9posX+50 > p.mouseX) && (node9posY-50 < p.mouseY && node9posY+50 > p.mouseY)) {
+            if ((nodes[9].x-50 < p.mouseX && nodes[9].x+50 > p.mouseX) && (nodes[9].y-50 < p.mouseY && nodes[9].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(déformation, node9posX, node9posY -10);
-             p.text(différentielle, node9posX , node9posY +10);
+                 p.text(déformation, nodes[9].x, nodes[9].y -10);
+             p.text(différentielle, nodes[9].x , nodes[9].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -1166,7 +824,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
@@ -1180,17 +838,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(déformation, node9posX, node9posY -10);
-             p.text(différentielle, node9posX , node9posY +10);
+                p.text(déformation, nodes[9].x, nodes[9].y -10);
+             p.text(différentielle, nodes[9].x , nodes[9].y +10);
             }
 
-
-
-           if ((node10posX-50 < p.mouseX && node10posX+50 > p.mouseX) && (node10posY-50 < p.mouseY && node10posY+50 > p.mouseY)) {
+           if ((nodes[10].x-50 < p.mouseX && nodes[10].x+50 > p.mouseX) && (nodes[10].y-50 < p.mouseY && nodes[10].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(matière, node10posX, node10posY -10);
-             p.text(granulaire, node10posX, node10posY +10);
+                 p.text(matière, nodes[10].x, nodes[10].y -10);
+             p.text(granulaire, nodes[10].x, nodes[10].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -1200,7 +856,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
@@ -1216,16 +872,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(matière, node10posX, node10posY -10);
-             p.text(granulaire, node10posX , node10posY +10);
+                p.text(matière, nodes[10].x, nodes[10].y -10);
+             p.text(granulaire, nodes[10].x , nodes[10].y +10);
             }
 
 
-
-           if ((node11posX-50 < p.mouseX && node11posX+50 > p.mouseX) && (node11posY-50 < p.mouseY && node11posY+50 > p.mouseY)) {
+           if ((nodes[11].x-50 < p.mouseX && nodes[11].x+50 > p.mouseX) && (nodes[11].y-50 < p.mouseY && nodes[11].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(abrasion, node11posX, node11posY );
+                 p.text(abrasion, nodes[11].x, nodes[11].y );
                  if (p.mouseIsPressed == true){
                    if(p.keyIsPressed == true){
                      for (let a = 0; a < images.length; a++){
@@ -1235,7 +890,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                    p.noStroke();
                    p.fill(back,500);
                    p.rect(0,0,p.windowWidth,p.windowHeight);
-                   p.image(delate2,65,65);
+                   p.image(delate2,p.width/2,65);
                    p.noStroke();
                    p.noLoop();
                  p.fill(bleu);
@@ -1249,14 +904,14 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(abrasion, node11posX, node11posY );
+                p.text(abrasion, nodes[11].x, nodes[11].y );
             }
 
 
-            if ((node12posX-50 < p.mouseX && node12posX+50 > p.mouseX) && (node12posY-50 < p.mouseY && node12posY+50 > p.mouseY)) {
+            if ((nodes[12].x-50 < p.mouseX && nodes[12].x+50 > p.mouseX) && (nodes[12].y-50 < p.mouseY && nodes[12].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(turbulence, node12posX, node12posY);
+                 p.text(turbulence, nodes[12].x, nodes[12].y);
                  if (p.mouseIsPressed == true){
                    if(p.keyIsPressed == true){
                      for (let a = 0; a < images.length; a++){
@@ -1266,7 +921,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                    p.noStroke();
                    p.fill(back,500);
                    p.rect(0,0,p.windowWidth,p.windowHeight);
-                   p.image(delate2,65,65);
+                   p.image(delate2,p.width/2,65);
                    p.noStroke();
                    p.noLoop();
                  p.fill(bleu);
@@ -1282,15 +937,13 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(turbulence, node12posX, node12posY);
+                p.text(turbulence, nodes[12].x, nodes[12].y);
             }
 
-
-
-             if ((node13posX-50 < p.mouseX && node13posX+50 > p.mouseX) && (node13posY-50 < p.mouseY && node13posY+50 > p.mouseY)) {
+             if ((nodes[13].x-50 < p.mouseX && nodes[13].x+50 > p.mouseX) && (nodes[13].y-50 < p.mouseY && nodes[13].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(réflexion, node13posX, node13posY);
+                 p.text(réflexion, nodes[13].x, nodes[13].y);
                  if (p.mouseIsPressed == true){
                    if(p.keyIsPressed == true){
                      for (let a = 0; a < images.length; a++){
@@ -1300,14 +953,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                    p.noStroke();
                    p.fill(back,500);
                    p.rect(0,0,p.windowWidth,p.windowHeight);
-                   p.image(delate2,65,65);
+                   p.image(delate2,p.width/2,65);
                    p.noStroke();
                    p.noLoop();
                  p.fill(bleu);
                      p.text('Réflexion def. :',150,190);
                    p.fill(textvu);
-                   p.text("Le phénomène de réfléxion est un phénomène physique qui se joue entre la lumière et les aspects de surface de la matière plus ou moins lisse, irrisée ou autre.",200,190+60);
-                   p.text("L'organisation des derniers élèments en surface déterminent largement l'effet de réfléxion. C'est en partie avec ce phénomène omniprésent autour de nous que le monde nous émerveille.",200,190+60+30);
+                   p.text("Le phénomène de réfléxion est un phénomène physique qui se joue entre la lumière et les aspects de surface de la matière plus ou moins lisse,",200,190+60);
+                   p.text("irrisée ou autre. L'organisation des derniers élèments en surface déterminent largement l'effet de réfléxion. C'est en partie avec ce phénomène",200,190+60+30);
+                   p.text("omniprésent autour de nous que le monde nous émerveille.",200,190+60+30+30);
                    p.drawingContext.filter = 'Blur(8px)';
                //     // window.open("https://www.cjoint.com/doc/22_07/LGrrsuBy4Rf_demande-convention-stage-107758-7-1-.pdf");
                }
@@ -1315,14 +969,14 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(réflexion, node13posX, node13posY);
+                p.text(réflexion, nodes[13].x, nodes[13].y);
             }
 
 
-            if ((node14posX-50 < p.mouseX && node14posX+50 > p.mouseX) && (node14posY-50 < p.mouseY && node14posY+50 > p.mouseY)) {
+            if ((nodes[14].x-50 < p.mouseX && nodes[14].x+50 > p.mouseX) && (nodes[14].y-50 < p.mouseY && nodes[14].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(portance, node14posX, node14posY);
+                 p.text(portance, nodes[14].x, nodes[14].y);
                  if (p.mouseIsPressed == true){
                    if(p.keyIsPressed == true){
                      for (let a = 0; a < images.length; a++){
@@ -1332,7 +986,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                    p.noStroke();
                    p.fill(back,500);
                    p.rect(0,0,p.windowWidth,p.windowHeight);
-                   p.image(delate2,65,65);
+                   p.image(delate2,p.width/2,65);
                    p.noStroke();
                    p.noLoop();
                  p.fill(bleu);
@@ -1347,16 +1001,15 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(portance, node14posX, node14posY);
+                p.text(portance, nodes[14].x, nodes[14].y);
             }
 
 
-
-            if ((node15posX-50 < p.mouseX && node15posX+50 > p.mouseX) && (node15posY-50 < p.mouseY && node15posY+50 > p.mouseY)) {
+            if ((nodes[15].x-50 < p.mouseX && nodes[15].x+50 > p.mouseX) && (nodes[15].y-50 < p.mouseY && nodes[15].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(écoulement, node15posX, node15posY -10);
-             p.text(laminaire, node15posX , node15posY +10);
+                 p.text(écoulement, nodes[15].x, nodes[15].y -10);
+             p.text(laminaire, nodes[15].x , nodes[15].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -1366,7 +1019,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
@@ -1382,16 +1035,16 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(écoulement, node15posX, node15posY -10);
-             p.text(laminaire, node15posX, node15posY +10);
+                p.text(écoulement, nodes[15].x, nodes[15].y -10);
+             p.text(laminaire, nodes[15].x, nodes[15].y +10);
             }
 
 
-            if ((node16posX-50 < p.mouseX && node16posX+50 > p.mouseX) && (node16posY-50 < p.mouseY && node16posY+50 > p.mouseY)) {
+            if ((nodes[16].x-50 < p.mouseX && nodes[16].x+50 > p.mouseX) && (nodes[16].y-50 < p.mouseY && nodes[16].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(réaction, node16posX, node16posY -10);
-             p.text(chimique, node16posX , node16posY +10);
+                 p.text(réaction, nodes[16].x, nodes[16].y -10);
+             p.text(chimique, nodes[16].x , nodes[16].y +10);
              if (p.mouseIsPressed == true){
                if(p.keyIsPressed == true){
                  for (let a = 0; a < images.length; a++){
@@ -1401,7 +1054,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                p.noStroke();
                p.fill(back,500);
                p.rect(0,0,p.windowWidth,p.windowHeight);
-               p.image(delate2,65,65);
+               p.image(delate2,p.width/2,65);
                p.noStroke();
                p.noLoop();
              p.fill(bleu);
@@ -1417,15 +1070,14 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(réaction, node16posX, node16posY -10);
-             p.text(chimique, node16posX, node16posY +10);
+                p.text(réaction, nodes[16].x, nodes[16].y -10);
+             p.text(chimique, nodes[16].x, nodes[16].y +10);
             }
 
-
-            if ((node17posX-50 < p.mouseX && node17posX+50 > p.mouseX) && (node17posY-50 < p.mouseY && node17posY+50 > p.mouseY)) {
+            if ((nodes[17].x-50 < p.mouseX && nodes[17].x+50 > p.mouseX) && (nodes[17].y-50 < p.mouseY && nodes[17].y+50 > p.mouseY)) {
                 p.fill(textvuconcept);
               p.textSize(textsize+10);
-                 p.text(réacdif, node17posX, node17posY);
+                 p.text(réacdif, nodes[17].x, nodes[17].y);
                  if (p.mouseIsPressed == true){
                    if(p.keyIsPressed == true){
                      for (let a = 0; a < images.length; a++){
@@ -1435,7 +1087,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                    p.noStroke();
                    p.fill(back,500);
                    p.rect(0,0,p.windowWidth,p.windowHeight);
-                   p.image(delate2,65,65);
+                   p.image(delate2,p.width/2,65);
                    p.noStroke();
                    p.noLoop();
                  p.fill(bleu);
@@ -1451,14 +1103,14 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
             } else {
               p.fill(texthideconcept);
               p.textSize(textsize+10);
-                p.text(réacdif, node17posX, node17posY);
+                p.text(réacdif, nodes[17].x, nodes[17].y);
             }
 
 
-              if ((node20posX-50 < p.mouseX && node20posX+50 > p.mouseX) && (node20posY-50 < p.mouseY && node20posY+50 > p.mouseY)) {
+              if ((nodes[20].x-50 < p.mouseX && nodes[20].x+50 > p.mouseX) && (nodes[20].y-50 < p.mouseY && nodes[20].y+50 > p.mouseY)) {
                   p.fill(textvuconcept);
                 p.textSize(textsize+10);
-                   p.text(morphing, node20posX, node20posY);
+                   p.text(morphing, nodes[20].x, nodes[20].y);
                    if (p.mouseIsPressed == true){
                      if(p.keyIsPressed == true){
                        for (let a = 0; a < images.length; a++){
@@ -1468,7 +1120,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                      p.noStroke();
                      p.fill(back,500);
                      p.rect(0,0,p.windowWidth,p.windowHeight);
-                     p.image(delate2,65,65);
+                     p.image(delate2,p.width/2,65);
                      p.noStroke();
                      p.noLoop();
                    p.fill(bleu);
@@ -1484,15 +1136,14 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
               } else {
                 p.fill(texthideconcept);
                 p.textSize(textsize+10);
-                  p.text(morphing, node20posX, node20posY);
+                  p.text(morphing, nodes[20].x, nodes[20].y);
               }
 
 
-
-                if ((node18posX-50 < p.mouseX && node18posX+50 > p.mouseX) && (node18posY-50 < p.mouseY && node18posY+50 > p.mouseY)) {
+                if ((nodes[18].x-50 < p.mouseX && nodes[18].x+50 > p.mouseX) && (nodes[18].y-50 < p.mouseY && nodes[18].y+50 > p.mouseY)) {
                     p.fill(textvuconcept);
                   p.textSize(textsize+10);
-                     p.text(compliance, node18posX, node18posY);
+                     p.text(compliance, nodes[18].x, nodes[18].y);
                      if (p.mouseIsPressed == true){
                        if(p.keyIsPressed == true){
                          for (let a = 0; a < images.length; a++){
@@ -1502,7 +1153,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                        p.noStroke();
                        p.fill(back,500);
                        p.rect(0,0,p.windowWidth,p.windowHeight);
-                       p.image(delate2,65,65);
+                       p.image(delate2,p.width/2,65);
                        p.noStroke();
                        p.noLoop();
                      p.fill(bleu);
@@ -1518,14 +1169,13 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                 } else {
                   p.fill(texthideconcept);
                   p.textSize(textsize+10);
-                    p.text(compliance, node18posX, node18posY);
+                    p.text(compliance, nodes[18].x, nodes[18].y);
                 }
 
-
-                  if ((node19posX-50 < p.mouseX && node19posX+50 > p.mouseX) && (node19posY-50 < p.mouseY && node19posY+50 > p.mouseY)) {
+                  if ((nodes[19].x-50 < p.mouseX && nodes[19].x+50 > p.mouseX) && (nodes[19].y-50 < p.mouseY && nodes[19].y+50 > p.mouseY)) {
                       p.fill(textvuconcept);
                     p.textSize(textsize+10);
-                       p.text(systmL, node19posX, node19posY);
+                       p.text(systmL, nodes[19].x, nodes[19].y);
                        if (p.mouseIsPressed == true){
                          if(p.keyIsPressed == true){
                            for (let a = 0; a < images.length; a++){
@@ -1535,7 +1185,7 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                          p.noStroke();
                          p.fill(back,500);
                          p.rect(0,0,p.windowWidth,p.windowHeight);
-                         p.image(delate2,65,65);
+                         p.image(delate2,p.width/2,65);
                          p.noStroke();
                          p.noLoop();
                        p.fill(bleu);
@@ -1550,704 +1200,87 @@ p.ellipse(node10posX, node10posY, nodeDiameterxd, nodeDiameteryd);
                   } else {
                     p.fill(texthideconcept);
                     p.textSize(textsize+10);
-                      p.text(systmL, node19posX, node19posY);
+                      p.text(systmL, nodes[19].x, nodes[19].y);
                   }
 
+                  // interactivity menu
 
-
-
-
-
-
-
-
-
+for (let a = 0; a < images.length; a++){
+if(scroll = -341-71-71){
+images[a].showclay();
+p.stroke(bleu);
+p.strokeWeight(1);
+p.line(nodes[12].x, nodes[12].y, nodes[8].x, nodes[8].y);
+p.noStroke();
+p.textAlign(p.CENTER,p.CENTER);
+  p.textSize(20);
+p.fill(textvu);
+p.textSize(textsize2);
 p.textFont(font2);
-
-          if ((node0posX*0.5+node1posX*0.5-50 < p.mouseX && node0posX*0.5+node1posX*0.5+50 > p.mouseX) && ( node0posY*0.5+node1posY*0.5-50 < p.mouseY &&  node0posY*0.5+node1posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7, node0posX*0.5+node1posX*0.5, node0posY*0.5+node1posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7, node0posX*0.5+node1posX*0.5, node0posY*0.5+node1posY*0.5);
-         }
-
-
-          if ((node0posX*0.5+node2posX*0.5-50 < p.mouseX && node0posX*0.5+node2posX*0.5+50 > p.mouseX) && (  node0posY*0.5+node2posY*0.5-50 < p.mouseY &&   node0posY*0.5+node2posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr6, node0posX*0.5+node2posX*0.5,  node0posY*0.5+node2posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr6, node0posX*0.5+node2posX*0.5,  node0posY*0.5+node2posY*0.5);
-         }
-
-
-
-          if ((node0posX*0.5+node3posX*0.5-50 < p.mouseX && node0posX*0.5+node3posX*0.5+50 > p.mouseX) && (node0posY*0.5+node3posY*0.5-50 < p.mouseY && node0posY*0.5+node3posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr6, node0posX*0.5+node3posX*0.5,  node0posY*0.5+node3posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr6, node0posX*0.5+node3posX*0.5,  node0posY*0.5+node3posY*0.5);
-         }
-
-
-
-          if (( node0posX*0.5+node4posX*0.5 < p.mouseX &&  node0posX*0.5+node4posX*0.5+50 > p.mouseX) && ( node0posY*0.5+node4posY*0.5-50 < p.mouseY &&  node0posY*0.5+node4posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7, node0posX*0.5+node4posX*0.5+15,   node0posY*0.5+node4posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7, node0posX*0.5+node4posX*0.5+15,   node0posY*0.5+node4posY*0.5);
-         }
-
-
-
-          if (( node0posX*0.5+node4posX*0.5-50 < p.mouseX &&   node0posX*0.5+node4posX*0.5 > p.mouseX) && (  node0posY*0.5+node4posY*0.5-50 < p.mouseY &&   node0posY*0.5+node4posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr6,  node0posX*0.5+node4posX*0.5-15,   node0posY*0.5+node4posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr6, node0posX*0.5+node4posX*0.5-15,   node0posY*0.5+node4posY*0.5);
-         }
-
-
-
-          if (( node0posX*0.5+node5posX*0.5 < p.mouseX &&  node0posX*0.5+node5posX*0.5+50 > p.mouseX) && ( node0posY*0.5+node5posY*0.5-50 < p.mouseY &&  node0posY*0.5+node5posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7, node0posX*0.5+node5posX*0.5+15, node0posY*0.5+node5posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7, node0posX*0.5+node5posX*0.5+15, node0posY*0.5+node5posY*0.5);
-         }
-
-
-
-
-          if ((  node1posX*0.5+node5posX*0.5 < p.mouseX &&   node1posX*0.5+node5posX*0.5+50 > p.mouseX) && ( node1posY*0.5+node5posY*0.5-50 < p.mouseY &&  node1posY*0.5+node5posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7,  node1posX*0.5+node5posX*0.5+15, node1posY*0.5+node5posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7,  node1posX*0.5+node5posX*0.5+15, node1posY*0.5+node5posY*0.5);
-         }
-
-
-
-          if ((node1posX*0.5+node5posX*0.5-50 < p.mouseX &&  node1posX*0.5+node5posX*0.5 > p.mouseX) && (  node1posY*0.5+node5posY*0.5-50 < p.mouseY &&  node1posY*0.5+node5posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr3,node1posX*0.5+node5posX*0.5-15, node1posY*0.5+node5posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr3,node1posX*0.5+node5posX*0.5-15, node1posY*0.5+node5posY*0.5);
-         }
-
-
-
-          if ((  node8posX*0.5+node9posX*0.5 < p.mouseX &&   node8posX*0.5+node9posX*0.5+50 > p.mouseX) && (  node8posY*0.5+node9posY*0.5-50 < p.mouseY &&  node8posY*0.5+node9posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7,  node8posX*0.5+node9posX*0.5+15, node8posY*0.5+node9posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7,  node8posX*0.5+node9posX*0.5+15, node8posY*0.5+node9posY*0.5);
-         }
-
-
-
-          if ((node8posX*0.5+node9posX*0.5-50 < p.mouseX &&  node8posX*0.5+node9posX*0.5 > p.mouseX) && ( node8posY*0.5+node9posY*0.5-50 < p.mouseY && node8posY*0.5+node9posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr8,node8posX*0.5+node9posX*0.5-15, node8posY*0.5+node9posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr8,node8posX*0.5+node9posX*0.5-15, node8posY*0.5+node9posY*0.5);
-         }
-
-
-
-          if (( node2posX*0.5+node10posX*0.5-50 < p.mouseX && node2posX*0.5+node10posX*0.5+50 > p.mouseX) && ( node2posY*0.5+node10posY*0.5-50 < p.mouseY &&  node2posY*0.5+node10posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr8, node2posX*0.5+node10posX*0.5+15, node2posY*0.5+node10posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr8, node2posX*0.5+node10posX*0.5+15, node2posY*0.5+node10posY*0.5);
-         }
-
-
-
-          if ((node2posX*0.5+node10posX*0.5-50 < p.mouseX &&  node2posX*0.5+node10posX*0.5 > p.mouseX) && ( node2posY*0.5+node10posY*0.5-50 < p.mouseY && node2posY*0.5+node10posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr6,node2posX*0.5+node10posX*0.5-15, node2posY*0.5+node10posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr6,node2posX*0.5+node10posX*0.5-15, node2posY*0.5+node10posY*0.5);
-         }
-
-
-          if (( node1posX*0.5+node6posX*0.5-50 < p.mouseX &&  node1posX*0.5+node6posX*0.5+50 > p.mouseX) && ( node1posY*0.5+node6posY*0.5-50 < p.mouseY && node1posY*0.5+node6posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7,  node1posX*0.5+node6posX*0.5, node1posY*0.5+node6posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7,  node1posX*0.5+node6posX*0.5, node1posY*0.5+node6posY*0.5);
-         }
-
-
-
-
-          if ((  node6posX*0.5+node7posX*0.5-50 < p.mouseX &&   node6posX*0.5+node7posX*0.5+50 > p.mouseX) && (node6posY*0.5+node7posY*0.5-50 < p.mouseY && node6posY*0.5+node7posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr5,  node6posX*0.5+node7posX*0.5,node6posY*0.5+node7posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr5,  node6posX*0.5+node7posX*0.5,node6posY*0.5+node7posY*0.5);
-         }
-
-
-
-          if (( node2posX*0.5+node8posX*0.5-50 < p.mouseX && node2posX*0.5+node8posX*0.5+50 > p.mouseX) && ( node2posY*0.5+node8posY*0.5-50 < p.mouseY &&  node2posY*0.5+node8posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr8,node2posX*0.5+node8posX*0.5, node2posY*0.5+node8posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr8,node2posX*0.5+node8posX*0.5, node2posY*0.5+node8posY*0.5);
-         }
-
-
-
-          if ((  node1posX*0.5+node9posX*0.5-50 < p.mouseX &&  node1posX*0.5+node9posX*0.5+50 > p.mouseX) && ( node1posY*0.5+node9posY*0.5-50 < p.mouseY && node1posY*0.5+node9posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7, node1posX*0.5+node9posX*0.5, node1posY*0.5+node9posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7, node1posX*0.5+node9posX*0.5, node1posY*0.5+node9posY*0.5);
-         }
-
-
-          if ((node5posX*0.5+node9posX*0.5-50 < p.mouseX && node5posX*0.5+node9posX*0.5+50 > p.mouseX) && ( node5posY*0.5+node9posY*0.5-50 < p.mouseY && node5posY*0.5+node9posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr7,node5posX*0.5+node9posX*0.5,node5posY*0.5+node9posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr7,node5posX*0.5+node9posX*0.5,node5posY*0.5+node9posY*0.5);
-         }
-
-
-
-          if ((node2posX*0.5+node9posX*0.5-50 < p.mouseX && node2posX*0.5+node9posX*0.5+50 > p.mouseX) && (node2posY*0.5+node9posY*0.5-50 < p.mouseY && node2posY*0.5+node9posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr8,node2posX*0.5+node9posX*0.5,node2posY*0.5+node9posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr8,node2posX*0.5+node9posX*0.5,node2posY*0.5+node9posY*0.5);
-         }
-
-
-          if ((node10posX*0.5+node11posX*0.5-50 < p.mouseX && node10posX*0.5+node11posX*0.5+50 > p.mouseX) && (node10posY*0.5+node11posY*0.5-50 < p.mouseY && node10posY*0.5+node11posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr6,node10posX*0.5+node11posX*0.5,node10posY*0.5+node11posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr6,node10posX*0.5+node11posX*0.5,node10posY*0.5+node11posY*0.5);
-         }
-
-
-          if ((node8posX*0.5+node12posX*0.5-50 < p.mouseX && node8posX*0.5+node12posX*0.5+50 > p.mouseX) && ( node8posY*0.5+node12posY*0.5-50 < p.mouseY &&  node8posY*0.5+node12posY*0.5+50 > p.mouseY)) {
-            p.fill(textvu);
-          p.textSize(textsize2);
-          p.textFont(font2);
-          p.text(spr2,node8posX*0.5+node12posX*0.5,node8posY*0.5+node12posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.textFont(font2);
-          p.text(spr2,node8posX*0.5+node12posX*0.5,node8posY*0.5+node12posY*0.5);
-         }
-
-
-
-
-          if (( node12posX*0.5+node13posX*0.5-50 < p.mouseX &&  node12posX*0.5+node13posX*0.5 > p.mouseX) && ( node12posY*0.5+node13posY*0.5-50 < p.mouseY &&  node12posY*0.5+node13posY*0.5+50 > p.mouseY)) {
-            p.fill(textvu);
-          p.textSize(textsize2);
-          p.textFont(font2);
-          p.text(spr1, node12posX*0.5+node13posX*0.5-15,node12posY*0.5+node13posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.textFont(font2);
-          p.text(spr1, node12posX*0.5+node13posX*0.5-15,node12posY*0.5+node13posY*0.5);
-         }
-
-
-
-          if (( node12posX*0.5+node13posX*0.5 < p.mouseX &&  node12posX*0.5+node13posX*0.5+50 > p.mouseX) && ( node12posY*0.5+node13posY*0.5-50 < p.mouseY &&  node12posY*0.5+node13posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr9, node12posX*0.5+node13posX*0.5+15,node12posY*0.5+node13posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr9, node12posX*0.5+node13posX*0.5+15,node12posY*0.5+node13posY*0.5);
-         }
-
-
-
-
-          if ((  node8posX*0.5+node14posX*0.5-50 < p.mouseX &&  node8posX*0.5+node14posX*0.5+50 > p.mouseX) && ( node8posY*0.5+node14posY*0.5-50 < p.mouseY &&  node8posY*0.5+node14posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr4,  node8posX*0.5+node14posX*0.5,node8posY*0.5+node14posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr4,  node8posX*0.5+node14posX*0.5,node8posY*0.5+node14posY*0.5);
-         }
-
-
-
-
-                   if ((  node15posX*0.5+node14posX*0.5-50 < p.mouseX &&  node15posX*0.5+node14posX*0.5+50 > p.mouseX) && ( node15posY*0.5+node14posY*0.5-50 < p.mouseY &&  node15posY*0.5+node14posY*0.5+50 > p.mouseY)) {
-                   p.fill(textvu);
-                   p.textSize(textsize2);
-                   p.text(spr4,  node15posX*0.5+node14posX*0.5,node15posY*0.5+node14posY*0.5);
-                   } else {
-                     p.fill(texthide);
-                   p.textSize(textsize2);
-                   p.text(spr4,  node15posX*0.5+node14posX*0.5,node15posY*0.5+node14posY*0.5);
-                  }
-
-
-
-          if (( node8posX*0.5+node15posX*0.5-50 < p.mouseX &&   node8posX*0.5+node15posX*0.5+50 > p.mouseX) && (node8posY*0.5+node15posY*0.5-50 < p.mouseY && node8posY*0.5+node15posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr4, node8posX*0.5+node15posX*0.5,node8posY*0.5+node15posY*0.5);
-          } else {
-            p.fill(texthide);
-          p.textSize(textsize2);
-          p.text(spr4, node8posX*0.5+node15posX*0.5,node8posY*0.5+node15posY*0.5);
-         }
-
-
-           if (( node12posX*0.5+node16posX*0.5-50 < p.mouseX &&   node12posX*0.5+node16posX*0.5+50 > p.mouseX) && (node12posY*0.5+node16posY*0.5-50 < p.mouseY && node12posY*0.5+node16posY*0.5+50 > p.mouseY)) {
-           p.fill(textvu);
-           p.textSize(textsize2);
-           p.text(spr9, node12posX*0.5+node16posX*0.5,node12posY*0.5+node16posY*0.5);
-           } else {
-             p.fill(texthide);
-           p.textSize(textsize2);
-           p.text(spr9, node12posX*0.5+node16posX*0.5,node12posY*0.5+node16posY*0.5);
-          }
-
-
-
-          if (( node13posX*0.5+node16posX*0.5-50 < p.mouseX &&   node13posX*0.5+node16posX*0.5+50 > p.mouseX) && (node13posY*0.5+node16posY*0.5-50 < p.mouseY && node13posY*0.5+node16posY*0.5+50 > p.mouseY)) {
-          p.fill(textvu);
-          p.textSize(textsize2);
-          p.text(spr9, node13posX*0.5+node16posX*0.5,node13posY*0.5+node16posY*0.5);
-          } else {
-            p.fill(texthide);
-            p.textSize(textsize2);
-            p.text(spr9, node13posX*0.5+node16posX*0.5,node13posY*0.5+node16posY*0.5);
-          }
-
-
-
-            if (( node12posX*0.5+node17posX*0.5-50 < p.mouseX &&   node12posX*0.5+node17posX*0.5+50 > p.mouseX) && (node12posY*0.5+node17posY*0.5-50 < p.mouseY && node12posY*0.5+node17posY*0.5+50 > p.mouseY)) {
-            p.fill(textvu);
-            p.textSize(textsize2);
-            p.text(spr10, node12posX*0.5+node17posX*0.5,node12posY*0.5+node17posY*0.5);
-            } else {
-              p.fill(texthide);
-              p.textSize(textsize2);
-              p.text(spr10, node12posX*0.5+node17posX*0.5,node12posY*0.5+node17posY*0.5);
-            }
-
-
-
-              if (( node20posX*0.5+node17posX*0.5-50 < p.mouseX &&   node20posX*0.5+node17posX*0.5+50 > p.mouseX) && (node20posY*0.5+node17posY*0.5-50 < p.mouseY && node20posY*0.5+node17posY*0.5+50 > p.mouseY)) {
-              p.fill(textvu);
-              p.textSize(textsize2);
-              p.text(spr10, node20posX*0.5+node17posX*0.5,node20posY*0.5+node17posY*0.5);
-              } else {
-                p.fill(texthide);
-                p.textSize(textsize2);
-                p.text(spr10, node20posX*0.5+node17posX*0.5,node20posY*0.5+node17posY*0.5);
-              }
-
-
-
-                if (( node20posX*0.5+node7posX*0.5-50 < p.mouseX &&   node20posX*0.5+node7posX*0.5+50 > p.mouseX) && (node20posY*0.5+node7posY*0.5-50 < p.mouseY && node20posY*0.5+node7posY*0.5+50 > p.mouseY)) {
-                p.fill(textvu);
-                p.textSize(textsize2);
-                p.text(spr16, node20posX*0.5+node7posX*0.5,node20posY*0.5+node7posY*0.5);
-                } else {
-                  p.fill(texthide);
-                  p.textSize(textsize2);
-                  p.text(spr16, node20posX*0.5+node7posX*0.5,node20posY*0.5+node7posY*0.5);
-                }
-
-
-                  if (( node20posX*0.5+node4posX*0.5-50 < p.mouseX &&   node20posX*0.5+node4posX*0.5+50 > p.mouseX) && (node20posY*0.5+node4posY*0.5-50 < p.mouseY && node20posY*0.5+node4posY*0.5+50 > p.mouseY)) {
-                  p.fill(textvu);
-                  p.textSize(textsize2);
-                  p.text(spr16, node20posX*0.5+node4posX*0.5,node20posY*0.5+node4posY*0.5);
-                  } else {
-                    p.fill(texthide);
-                    p.textSize(textsize2);
-                    p.text(spr16, node20posX*0.5+node4posX*0.5,node20posY*0.5+node4posY*0.5);
-                  }
-
-
-
-                    if (( node18posX*0.5+node1posX*0.5-50 < p.mouseX &&   node18posX*0.5+node1posX*0.5+50 > p.mouseX) && (node18posY*0.5+node1posY*0.5-50 < p.mouseY && node18posY*0.5+node1posY*0.5+50 > p.mouseY)) {
-                    p.fill(textvu);
-                    p.textSize(textsize2);
-                    p.text(spr11, node18posX*0.5+node1posX*0.5,node18posY*0.5+node1posY*0.5);
-                    } else {
-                      p.fill(texthide);
-                      p.textSize(textsize2);
-                      p.text(spr11, node18posX*0.5+node1posX*0.5,node18posY*0.5+node1posY*0.5);
-                    }
-
-
-
-                      if (( node18posX*0.5+node8posX*0.5-50 < p.mouseX &&   node18posX*0.5+node8posX*0.5+50 > p.mouseX) && (node18posY*0.5+node8posY*0.5-50 < p.mouseY && node18posY*0.5+node8posY*0.5+50 > p.mouseY)) {
-                      p.fill(textvu);
-                      p.textSize(textsize2);
-                      p.text(spr11, node18posX*0.5+node8posX*0.5,node18posY*0.5+node8posY*0.5);
-                      } else {
-                        p.fill(texthide);
-                        p.textSize(textsize2);
-                        p.text(spr11, node18posX*0.5+node8posX*0.5,node18posY*0.5+node8posY*0.5);
-                      }
-
-
-
-
-                        if ((  node18posX*0.5+node5posX*0.5 < p.mouseX &&   node18posX*0.5+node5posX*0.5+50 > p.mouseX) && (  node18posY*0.5+node5posY*0.5-50 < p.mouseY &&  node18posY*0.5+node5posY*0.5+50 > p.mouseY)) {
-                        p.fill(textvu);
-                        p.textSize(textsize2);
-                        p.text(spr12,  node18posX*0.5+node5posX*0.5+15, node18posY*0.5+node5posY*0.5);
-                        } else {
-                          p.fill(texthide);
-                        p.textSize(textsize2);
-                        p.text(spr12,  node18posX*0.5+node5posX*0.5+15, node18posY*0.5+node5posY*0.5);
-                       }
-
-
-                        if ((node18posX*0.5+node5posX*0.5-50 < p.mouseX &&  node18posX*0.5+node5posX*0.5 > p.mouseX) && ( node18posY*0.5+node5posY*0.5-50 < p.mouseY && node18posY*0.5+node5posY*0.5+50 > p.mouseY)) {
-                        p.fill(textvu);
-                        p.textSize(textsize2);
-                        p.text(spr11,node18posX*0.5+node5posX*0.5-15, node18posY*0.5+node5posY*0.5);
-                        } else {
-                          p.fill(texthide);
-                        p.textSize(textsize2);
-                        p.text(spr11,node18posX*0.5+node5posX*0.5-15, node18posY*0.5+node5posY*0.5);
-                       }
-
-
-                        if (( node19posX*0.5+node4posX*0.5-50 < p.mouseX &&   node19posX*0.5+node4posX*0.5+50 > p.mouseX) && (node19posY*0.5+node4posY*0.5-50 < p.mouseY && node19posY*0.5+node4posY*0.5+50 > p.mouseY)) {
-                        p.fill(textvu);
-                        p.textSize(textsize2);
-                        p.text(spr15, node19posX*0.5+node4posX*0.5,node19posY*0.5+node4posY*0.5);
-                        } else {
-                          p.fill(texthide);
-                          p.textSize(textsize2);
-                          p.text(spr15, node19posX*0.5+node4posX*0.5,node19posY*0.5+node4posY*0.5);
-                        }
-
-
-
-                          if ((  node4posX*0.5+node5posX*0.5 < p.mouseX &&   node4posX*0.5+node5posX*0.5+50 > p.mouseX) && (  node4posY*0.5+node5posY*0.5-50 < p.mouseY &&  node4posY*0.5+node5posY*0.5+50 > p.mouseY)) {
-                          p.fill(textvu);
-                          p.textSize(textsize2);
-                          p.text(spr12,  node4posX*0.5+node5posX*0.5+15, node4posY*0.5+node5posY*0.5);
-                          } else {
-                            p.fill(texthide);
-                          p.textSize(textsize2);
-                          p.text(spr12,  node4posX*0.5+node5posX*0.5+15, node4posY*0.5+node5posY*0.5);
-                         }
-
-
-
-                          if ((node4posX*0.5+node5posX*0.5-50 < p.mouseX &&  node4posX*0.5+node5posX*0.5 > p.mouseX) && ( node4posY*0.5+node5posY*0.5-50 < p.mouseY && node4posY*0.5+node5posY*0.5+50 > p.mouseY)) {
-                          p.fill(textvu);
-                          p.textSize(textsize2);
-                          p.text(spr14,node4posX*0.5+node5posX*0.5-15, node4posY*0.5+node5posY*0.5);
-                          } else {
-                            p.fill(texthide);
-                          p.textSize(textsize2);
-                          p.text(spr14,node4posX*0.5+node5posX*0.5-15, node4posY*0.5+node5posY*0.5);
-                         }
-
-
-
-                          if (( node6posX*0.5+node8posX*0.5-50 < p.mouseX &&   node6posX*0.5+node8posX*0.5+50 > p.mouseX) && (node6posY*0.5+node8posY*0.5-50 < p.mouseY && node6posY*0.5+node8posY*0.5+50 > p.mouseY)) {
-                          p.fill(textvu);
-                          p.textSize(textsize2);
-                          p.text(spr13, node6posX*0.5+node8posX*0.5,node6posY*0.5+node8posY*0.5);
-                          } else {
-                            p.fill(texthide);
-                            p.textSize(textsize2);
-                            p.text(spr13, node6posX*0.5+node8posX*0.5,node6posY*0.5+node8posY*0.5);
-                          }
-
-
-
-                            if ((  node3posX*0.5+node8posX*0.5 < p.mouseX &&   node3posX*0.5+node8posX*0.5+80 > p.mouseX) && (  node3posY*0.5+node8posY*0.5-80 < p.mouseY &&  node3posY*0.5+node8posY*0.5+80 > p.mouseY)) {
-                            p.fill(textvu);
-                            p.textSize(textsize2);
-                            p.text(spr13,  node3posX*0.5+node8posX*0.5+18, node3posY*0.5+node8posY*0.5);
-                            } else {
-                              p.fill(texthide);
-                            p.textSize(textsize2);
-                            p.text(spr13,  node3posX*0.5+node8posX*0.5+18, node3posY*0.5+node8posY*0.5);
-                           }
-
-
-
-                            if ((node3posX*0.5+node8posX*0.5-80 < p.mouseX &&  node3posX*0.5+node8posX*0.5 > p.mouseX) && ( node3posY*0.5+node8posY*0.5-80 < p.mouseY && node3posY*0.5+node8posY*0.5+80 > p.mouseY)) {
-                            p.fill(textvu);
-                            p.textSize(textsize2);
-                            p.text(spr14,node3posX*0.5+node8posX*0.5-18, node3posY*0.5+node8posY*0.5);
-                            } else {
-                              p.fill(texthide);
-                            p.textSize(textsize2);
-                            p.text(spr14,node3posX*0.5+node8posX*0.5-18, node3posY*0.5+node8posY*0.5);
-                           }
-
-
-
-                            if (( node9posX*0.5+node3posX*0.5-50 < p.mouseX &&   node9posX*0.5+node3posX*0.5+50 > p.mouseX) && (node9posY*0.5+node3posY*0.5-50 < p.mouseY && node9posY*0.5+node3posY*0.5+50 > p.mouseY)) {
-                            p.fill(textvu);
-                            p.textSize(textsize2);
-                            p.text(spr13, node9posX*0.5+node3posX*0.5,node9posY*0.5+node3posY*0.5);
-                            } else {
-                              p.fill(texthide);
-                              p.textSize(textsize2);
-                              p.text(spr13, node9posX*0.5+node3posX*0.5,node9posY*0.5+node3posY*0.5);
-                            }
-
-
-
-                              if (( node8posX*0.5+node4posX*0.5-50 < p.mouseX &&   node8posX*0.5+node4posX*0.5+50 > p.mouseX) && (node8posY*0.5+node4posY*0.5-50 < p.mouseY && node8posY*0.5+node4posY*0.5+50 > p.mouseY)) {
-                              p.fill(textvu);
-                              p.textSize(textsize2);
-                              p.text(spr14, node8posX*0.5+node4posX*0.5,node8posY*0.5+node4posY*0.5);
-                              } else {
-                                p.fill(texthide);
-                                p.textSize(textsize2);
-                                p.text(spr14, node8posX*0.5+node4posX*0.5,node8posY*0.5+node4posY*0.5);
-                              }
-
-
-
-                                if (( node9posX*0.5+node6posX*0.5-50 < p.mouseX &&   node9posX*0.5+node6posX*0.5+50 > p.mouseX) && (node9posY*0.5+node6posY*0.5-50 < p.mouseY && node9posY*0.5+node6posY*0.5+50 > p.mouseY)) {
-                                p.fill(textvu);
-                                p.textSize(textsize2);
-                                p.text(spr13, node9posX*0.5+node6posX*0.5,node9posY*0.5+node6posY*0.5);
-                                } else {
-                                  p.fill(texthide);
-                                  p.textSize(textsize2);
-                                  p.text(spr13, node9posX*0.5+node6posX*0.5,node9posY*0.5+node6posY*0.5);
-                                }
-
-
-  if (( node3posX*0.5+node4posX*0.5-50 < p.mouseX &&   node3posX*0.5+node4posX*0.5+50 > p.mouseX) && (node3posY*0.5+node4posY*0.5-50 < p.mouseY && node3posY*0.5+node4posY*0.5+50 > p.mouseY)) {
-  p.fill(textvu);
-  p.textSize(textsize2);
-  p.text(spr14, node3posX*0.5+node4posX*0.5,node3posY*0.5+node4posY*0.5);
-  } else {
-  p.fill(texthide);
-  p.textSize(textsize2);
-  p.text(spr14, node3posX*0.5+node4posX*0.5,node3posY*0.5+node4posY*0.5);
-  }
-
-
-
-
-    if ((  node3posX*0.5+node6posX*0.5 < p.mouseX &&   node3posX*0.5+node6posX*0.5+50 > p.mouseX) && ( node3posY*0.5+node6posY*0.5-50 < p.mouseY &&  node3posY*0.5+node6posY*0.5 > p.mouseY)) {
-    p.fill(textvu);
-    p.textSize(textsize2);
-    p.text(spr6,  node3posX*0.5+node6posX*0.5+30, node3posY*0.5+node6posY*0.5-10);
-    } else {
-      p.fill(texthide);
-    p.textSize(textsize2);
-    p.text(spr6,  node3posX*0.5+node6posX*0.5+30, node3posY*0.5+node6posY*0.5-10);
-   }
-
-
-
-
-             if ((node3posX*0.5+node6posX*0.5-50 < p.mouseX &&  node3posX*0.5+node6posX*0.5+50 > p.mouseX) && (  node3posY*0.5+node6posY*0.5+10 < p.mouseY &&  node3posY*0.5+node6posY*0.5+80> p.mouseY)) {
-             p.fill(textvu);
-             p.textSize(textsize2);
-             p.text(spr8, node3posX*0.5+node6posX*0.5, node3posY*0.5+node6posY*0.5+30);
-             } else {
-               p.fill(texthide);
-             p.textSize(textsize2);
-             p.text(spr8, node3posX*0.5+node6posX*0.5, node3posY*0.5+node6posY*0.5+30);
-            }
-
-
-
-    if ((node3posX*0.5+node6posX*0.5-50 < p.mouseX &&  node3posX*0.5+node6posX*0.5 > p.mouseX) && (  node3posY*0.5+node6posY*0.5-50 < p.mouseY &&  node3posY*0.5+node6posY*0.5 > p.mouseY)) {
-    p.fill(textvu);
-    p.textSize(textsize2);
-    p.text(spr13, node3posX*0.5+node6posX*0.5-30, node3posY*0.5+node6posY*0.5-10);
-    } else {
-      p.fill(texthide);
-    p.textSize(textsize2);
-    p.text(spr13, node3posX*0.5+node6posX*0.5-30, node3posY*0.5+node6posY*0.5-10);
-   }
-
-
-
-      if ((  node4posX*0.5+node7posX*0.5 < p.mouseX &&   node4posX*0.5+node7posX*0.5+50 > p.mouseX) && (  node4posY*0.5+node7posY*0.5-50 < p.mouseY &&  node4posY*0.5+node7posY*0.5+50 > p.mouseY)) {
-      p.fill(textvu);
-      p.textSize(textsize2);
-      p.text(spr5,  node4posX*0.5+node7posX*0.5+17, node4posY*0.5+node7posY*0.5);
-      } else {
-        p.fill(texthide);
-      p.textSize(textsize2);
-      p.text(spr5,  node4posX*0.5+node7posX*0.5+17, node4posY*0.5+node7posY*0.5);
-     }
-
-
-
-      if ((node4posX*0.5+node7posX*0.5-50 < p.mouseX &&  node4posX*0.5+node7posX*0.5 > p.mouseX) && ( node4posY*0.5+node7posY*0.5-50 < p.mouseY && node4posY*0.5+node7posY*0.5+50 > p.mouseY)) {
-      p.fill(textvu);
-      p.textSize(textsize2);
-      p.text(spr16,node4posX*0.5+node7posX*0.5-17, node4posY*0.5+node7posY*0.5);
-      } else {
-        p.fill(texthide);
-      p.textSize(textsize2);
-      p.text(spr16,node4posX*0.5+node7posX*0.5-17, node4posY*0.5+node7posY*0.5);
-     }
-
-
-
-      if ((  node5posX*0.5+node8posX*0.5 < p.mouseX &&   node5posX*0.5+node8posX*0.5+50 > p.mouseX) && (  node5posY*0.5+node8posY*0.5-50 < p.mouseY &&  node5posY*0.5+node8posY*0.5+50 > p.mouseY)) {
-      p.fill(textvu);
-      p.textSize(textsize2);
-      p.text(spr11,  node5posX*0.5+node8posX*0.5+15, node5posY*0.5+node8posY*0.5);
-      } else {
-        p.fill(texthide);
-      p.textSize(textsize2);
-      p.text(spr11,  node5posX*0.5+node8posX*0.5+15, node5posY*0.5+node8posY*0.5);
-     }
-
-
-
-      if ((node5posX*0.5+node8posX*0.5-50 < p.mouseX &&  node5posX*0.5+node8posX*0.5 > p.mouseX) && ( node5posY*0.5+node8posY*0.5-50 < p.mouseY && node5posY*0.5+node8posY*0.5+50 > p.mouseY)) {
-      p.fill(textvu);
-      p.textSize(textsize2);
-      p.text(spr14,node5posX*0.5+node8posX*0.5-15, node5posY*0.5+node8posY*0.5);
-      } else {
-        p.fill(texthide);
-      p.textSize(textsize2);
-      p.text(spr14,node5posX*0.5+node8posX*0.5-15, node5posY*0.5+node8posY*0.5);
-     }
-
-
-
-//interactivity menu
-
-
-     for (let a = 0; a < images.length; a++){
-         images[a].show();
-         p.stroke(bleu);
-         p.strokeWeight(1);
-         p.line(node12posX, node12posY, node8posX, node8posY);
-         p.noStroke();
-        p.textAlign(p.CENTER,p.CENTER);
-         p.textSize(20);
-        p.fill(textvu);
-        p.textSize(textsize2);
-        p.textFont(font2);
-        p.text(spr2,node8posX*0.5+node12posX*0.5,node8posY*0.5+node12posY*0.5);
-        p.fill(textvuconcept);
-        p.textSize(textsize+10);
-        p.textFont(font1);
-        p.text(turbulence, node12posX, node12posY);
-        p.text(courbes, node8posX, node8posY-10);
-        p.text(polynomiales, node8posX , node8posY +10);
-
-       }
-
-     for (let i = 0; i < buttons.length; i++){
-      buttons[i].showbutton();
-      }
-
-
-
+p.text(spr2,nodes[8].x*0.5+nodes[12].x*0.5,nodes[8].y*0.5+nodes[12].y*0.5);
+p.fill(textvuconcept);
+p.textSize(textsize+10);
+p.textFont(font1);
+p.text(turbulence, nodes[12].x, nodes[12].y);
+p.text(courbes, nodes[8].x, nodes[8].y-10);
+p.text(polynomiales, nodes[8].x , nodes[8].y +10);
+}
+// if(scroll = -341-71-71){
+// images[a].showvoronoi();
+// p.stroke(bleu);
+// p.strokeWeight(1);
+// p.line(nodes[12].x, nodes[12].y, nodes[8].x, nodes[8].y);
+// p.noStroke();
+// p.textAlign(p.CENTER,p.CENTER);
+//   p.textSize(20);
+// p.fill(textvu);
+// p.textSize(textsize2);
+// p.textFont(font2);
+// p.text(spr2,nodes[8].x*0.5+nodes[12].x*0.5,nodes[8].y*0.5+nodes[12].y*0.5);
+// p.fill(textvuconcept);
+// p.textSize(textsize+10);
+// p.textFont(font1);
+// p.text(turbulence, nodes[12].x, nodes[12].y);
+// p.text(courbes, nodes[8].x, nodes[8].y-10);
+// p.text(polynomiales, nodes[8].x , nodes[8].y +10);
+// }
+}
+
+for (let i = 0; i < buttons.length; i++){
+buttons[i].showbutton();
+}
 
 //identifier projet scroller
     if (scroll === -341+71 ) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node13posX, node13posY, node12posX, node12posY);
-      p.noStroke();
+      p.line(nodes[13].x, nodes[13].y, nodes[12].x, nodes[12].y);
+
+      p.stroke(177,60,90);
+      p.strokeWeight(2);
       p.textAlign(p.LEFT);
       p.fill(textvu);
       p.textSize(69);
       p.textFont(font2);
       p.text(spr1, 65, -173-37, p.width, 970);
+
+p.noStroke();
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr1,node13posX*0.5+node12posX*0.5-15,node13posY*0.5+node12posY*0.5);
+    p.text(spr1,nodes[13].x*0.5+nodes[12].x*0.5-15,nodes[13].y*0.5+nodes[12].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(turbulence, node12posX, node12posY);
-    p.text(réflexion, node13posX, node13posY);
+    p.text(turbulence, nodes[12].x, nodes[12].y);
+    p.text(réflexion, nodes[13].x, nodes[13].y);
     }
     if (scroll === -341 ) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node12posX, node12posY, node8posX, node8posY);
+      p.line(nodes[12].x, nodes[12].y, nodes[8].x, nodes[8].y);
       p.noStroke();
       p.textAlign(p.LEFT);
       p.fill(textvu);
@@ -2257,20 +1290,20 @@ p.textFont(font2);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr2,node8posX*0.5+node12posX*0.5,node8posY*0.5+node12posY*0.5);
+    p.text(spr2,nodes[8].x*0.5+nodes[12].x*0.5,nodes[8].y*0.5+nodes[12].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(turbulence, node12posX, node12posY);
-    p.text(courbes, node8posX, node8posY-10);
-    p.text(polynomiales, node8posX , node8posY +10);
+    p.text(turbulence, nodes[12].x, nodes[12].y);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x , nodes[8].y +10);
     }
     if (scroll === -341-71 ) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node1posX, node1posY, node5posX, node5posY);
+      p.line(nodes[1].x, nodes[1].y, nodes[5].x, nodes[5].y);
       p.noStroke();
       p.textAlign(p.LEFT);
       p.fill(textvu);
@@ -2280,22 +1313,22 @@ p.textFont(font2);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr3,node5posX*0.5+node1posX*0.5-15,node5posY*0.5+node1posY*0.5);
+    p.text(spr3,nodes[5].x*0.5+nodes[1].x*0.5-15,nodes[5].y*0.5+nodes[1].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(tenségrité, node1posX, node1posY);
-    p.text(mémoire, node5posX, node5posY);
+    p.text(tenségrité, nodes[1].x, nodes[1].y);
+    p.text(mémoire, nodes[5].x, nodes[5].y);
     }
     if (scroll === -483 ) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node12posX, node12posY, node15posX, node15posY);
-      p.line(node15posX, node15posY, node8posX, node8posY);
-      p.line(node14posX, node14posY, node8posX, node8posY);
-      p.line(node15posX, node15posY, node14posX, node14posY);
+      p.line(nodes[12].x, nodes[12].y, nodes[15].x, nodes[15].y);
+      p.line(nodes[15].x, nodes[15].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[14].x, nodes[14].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[15].x, nodes[15].y, nodes[14].x, nodes[14].y);
       p.noStroke();
       p.textAlign(p.LEFT);
       p.fill(textvu);
@@ -2305,27 +1338,27 @@ p.textFont(font2);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr4,node15posX*0.5+node12posX*0.5,node15posY*0.5+node12posY*0.5);
-    p.text(spr4,node15posX*0.5+node8posX*0.5,node15posY*0.5+node8posY*0.5);
-    p.text(spr4,node14posX*0.5+node8posX*0.5,node14posY*0.5+node8posY*0.5);
-    p.text(spr4,node15posX*0.5+node14posX*0.5,node15posY*0.5+node14posY*0.5);
+    p.text(spr4,nodes[15].x*0.5+nodes[12].x*0.5,nodes[15].y*0.5+nodes[12].y*0.5);
+    p.text(spr4,nodes[15].x*0.5+nodes[8].x*0.5,nodes[15].y*0.5+nodes[8].y*0.5);
+    p.text(spr4,nodes[14].x*0.5+nodes[8].x*0.5,nodes[14].y*0.5+nodes[8].y*0.5);
+    p.text(spr4,nodes[15].x*0.5+nodes[14].x*0.5,nodes[15].y*0.5+nodes[14].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(portance, node14posX, node14posY);
-    p.text(écoulement, node15posX, node15posY-10);
-    p.text(laminaire, node15posX, node15posY+10);
-    p.text(turbulence, node12posX, node12posY);
-    p.text(courbes, node8posX, node8posY-10);
-    p.text(polynomiales, node8posX , node8posY +10);
+    p.text(portance, nodes[14].x, nodes[14].y);
+    p.text(écoulement, nodes[15].x, nodes[15].y-10);
+    p.text(laminaire, nodes[15].x, nodes[15].y+10);
+    p.text(turbulence, nodes[12].x, nodes[12].y);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x , nodes[8].y +10);
     }
     if (scroll === -483-71 ) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node6posX, node6posY, node7posX, node7posY);
-      p.line(node4posX, node4posY, node7posX, node7posY);
+      p.line(nodes[6].x, nodes[6].y, nodes[7].x, nodes[7].y);
+      p.line(nodes[4].x, nodes[4].y, nodes[7].x, nodes[7].y);
       p.noStroke();
       p.textAlign(p.LEFT);
       p.fill(textvu);
@@ -2335,28 +1368,28 @@ p.textFont(font2);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr5,node6posX*0.5+node7posX*0.5,node6posY*0.5+node7posY*0.5);
-    p.text(spr5,node4posX*0.5+node7posX*0.5+15,node4posY*0.5+node7posY*0.5);
+    p.text(spr5,nodes[6].x*0.5+nodes[7].x*0.5,nodes[6].y*0.5+nodes[7].y*0.5);
+    p.text(spr5,nodes[4].x*0.5+nodes[7].x*0.5+15,nodes[4].y*0.5+nodes[7].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(système, node4posX, node4posY-10);
-    p.text(procédural, node4posX, node4posY+10);
-    p.text(surface, node6posX, node6posY-10);
-    p.text(entension, node6posX, node6posY+10);
-    p.text(système, node7posX, node7posY-10);
-    p.text(céllulaire, node7posX, node7posY+10);
+    p.text(système, nodes[4].x, nodes[4].y-10);
+    p.text(procédural, nodes[4].x, nodes[4].y+10);
+    p.text(surface, nodes[6].x, nodes[6].y-10);
+    p.text(entension, nodes[6].x, nodes[6].y+10);
+    p.text(système, nodes[7].x, nodes[7].y-10);
+    p.text(céllulaire, nodes[7].x, nodes[7].y+10);
     }
     if (scroll === -483-71-71 ) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node4posX, node4posY, node0posX, node0posY);
-      p.line(node0posX, node0posY, node3posX, node3posY);
-      p.line(node0posX, node0posY, node2posX, node2posY);
-      p.line(node10posX, node10posY, node2posX, node2posY);
-      p.line(node11posX, node11posY, node10posX, node10posY);
+      p.line(nodes[4].x, nodes[4].y, nodes[0].x, nodes[0].y);
+      p.line(nodes[0].x, nodes[0].y, nodes[3].x, nodes[3].y);
+      p.line(nodes[0].x, nodes[0].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[10].x, nodes[10].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[11].x, nodes[11].y, nodes[10].x, nodes[10].y);
       p.noStroke();
       p.textAlign(p.LEFT);
       p.fill(textvu);
@@ -2366,38 +1399,38 @@ p.textFont(font2);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr6,node4posX*0.5+node0posX*0.5-15,node4posY*0.5+node0posY*0.5);
-    p.text(spr6,node0posX*0.5+node3posX*0.5,node0posY*0.5+node3posY*0.5);
-    p.text(spr6,node0posX*0.5+node2posX*0.5,node0posY*0.5+node2posY*0.5);
-    p.text(spr6,node10posX*0.5+node2posX*0.5-15,node10posY*0.5+node2posY*0.5);
-    p.text(spr6,node10posX*0.5+node11posX*0.5,node10posY*0.5+node11posY*0.5);
+    p.text(spr6,nodes[4].x*0.5+nodes[0].x*0.5-15,nodes[4].y*0.5+nodes[0].y*0.5);
+    p.text(spr6,nodes[0].x*0.5+nodes[3].x*0.5,nodes[0].y*0.5+nodes[3].y*0.5);
+    p.text(spr6,nodes[0].x*0.5+nodes[2].x*0.5,nodes[0].y*0.5+nodes[2].y*0.5);
+    p.text(spr6,nodes[10].x*0.5+nodes[2].x*0.5-15,nodes[10].y*0.5+nodes[2].y*0.5);
+    p.text(spr6,nodes[10].x*0.5+nodes[11].x*0.5,nodes[10].y*0.5+nodes[11].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(système, node4posX, node4posY-10);
-    p.text(procédural, node4posX, node4posY+10);
-    p.text(système, node3posX, node3posY-10);
-    p.text(pneumatique, node3posX, node3posY+10);
-    p.text(auxétisme, node0posX, node0posY);
-    p.text(jamming, node2posX, node2posY);
-    p.text(matière, node10posX, node10posY-10);
-    p.text(granulaire, node10posX, node10posY+10);
-    p.text(abrasion, node11posX, node11posY);
+    p.text(système, nodes[4].x, nodes[4].y-10);
+    p.text(procédural, nodes[4].x, nodes[4].y+10);
+    p.text(système, nodes[3].x, nodes[3].y-10);
+    p.text(pneumatique, nodes[3].x, nodes[3].y+10);
+    p.text(auxétisme, nodes[0].x, nodes[0].y);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(abrasion, nodes[11].x, nodes[11].y);
 
     }
     if (scroll === -483-71-71-71 ) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node4posX, node4posY, node0posX, node0posY);
-      p.line(node6posX, node6posY, node1posX, node1posY);
-      p.line(node5posX, node5posY, node1posX, node1posY);
-      p.line(node8posX, node8posY, node1posX, node1posY);
-      p.line(node9posX, node9posY, node1posX, node1posY);
-      p.line(node0posX, node0posY, node1posX, node1posY);
-      p.line(node5posX, node5posY, node9posX, node9posY);
-      p.line(node8posX, node8posY, node9posX, node9posY);
+      p.line(nodes[4].x, nodes[4].y, nodes[0].x, nodes[0].y);
+      p.line(nodes[6].x, nodes[6].y, nodes[1].x, nodes[1].y);
+      p.line(nodes[5].x, nodes[5].y, nodes[1].x, nodes[1].y);
+      p.line(nodes[8].x, nodes[8].y, nodes[1].x, nodes[1].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[1].x, nodes[1].y);
+      p.line(nodes[0].x, nodes[0].y, nodes[1].x, nodes[1].y);
+      p.line(nodes[5].x, nodes[5].y, nodes[9].x, nodes[9].y);
+      p.line(nodes[8].x, nodes[8].y, nodes[9].x, nodes[9].y);
       p.noStroke();
       p.textAlign(p.LEFT);
       p.fill(textvu);
@@ -2407,39 +1440,39 @@ p.textFont(font2);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr7,node4posX*0.5+node0posX*0.5+15,node4posY*0.5+node0posY*0.5);
-    p.text(spr7,node6posX*0.5+node1posX*0.5,node6posY*0.5+node1posY*0.5);
-    p.text(spr7,node5posX*0.5+node1posX*0.5+15,node5posY*0.5+node1posY*0.5);
-    p.text(spr7,node1posX*0.5+node8posX*0.5,node1posY*0.5+node8posY*0.5);
-    p.text(spr7,node9posX*0.5+node1posX*0.5,node9posY*0.5+node1posY*0.5);
-    p.text(spr7,node0posX*0.5+node1posX*0.5,node0posY*0.5+node1posY*0.5);
-    p.text(spr7,node9posX*0.5+node5posX*0.5,node9posY*0.5+node5posY*0.5);
-    p.text(spr7,node9posX*0.5+node8posX*0.5+15,node9posY*0.5+node8posY*0.5);
+    p.text(spr7,nodes[4].x*0.5+nodes[0].x*0.5+15,nodes[4].y*0.5+nodes[0].y*0.5);
+    p.text(spr7,nodes[6].x*0.5+nodes[1].x*0.5,nodes[6].y*0.5+nodes[1].y*0.5);
+    p.text(spr7,nodes[5].x*0.5+nodes[1].x*0.5+15,nodes[5].y*0.5+nodes[1].y*0.5);
+    p.text(spr7,nodes[1].x*0.5+nodes[8].x*0.5,nodes[1].y*0.5+nodes[8].y*0.5);
+    p.text(spr7,nodes[9].x*0.5+nodes[1].x*0.5,nodes[9].y*0.5+nodes[1].y*0.5);
+    p.text(spr7,nodes[0].x*0.5+nodes[1].x*0.5,nodes[0].y*0.5+nodes[1].y*0.5);
+    p.text(spr7,nodes[9].x*0.5+nodes[5].x*0.5,nodes[9].y*0.5+nodes[5].y*0.5);
+    p.text(spr7,nodes[9].x*0.5+nodes[8].x*0.5+15,nodes[9].y*0.5+nodes[8].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(système, node4posX, node4posY-10);
-    p.text(procédural, node4posX, node4posY+10);
-    p.text(surface, node6posX, node6posY-10);
-    p.text(entension, node6posX, node6posY+10);
-    p.text(auxétisme, node0posX, node0posY);
-    p.text(tenségrité, node1posX, node1posY);
-    p.text(mémoire, node5posX, node5posY);
-    p.text(déformation, node9posX, node9posY-10);
-    p.text(différentielle, node9posX, node9posY+10);
-    p.text(courbes, node8posX, node8posY-10);
-    p.text(polynomiales, node8posX, node8posY+10);
+    p.text(système, nodes[4].x, nodes[4].y-10);
+    p.text(procédural, nodes[4].x, nodes[4].y+10);
+    p.text(surface, nodes[6].x, nodes[6].y-10);
+    p.text(entension, nodes[6].x, nodes[6].y+10);
+    p.text(auxétisme, nodes[0].x, nodes[0].y);
+    p.text(tenségrité, nodes[1].x, nodes[1].y);
+    p.text(mémoire, nodes[5].x, nodes[5].y);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
 
     }
     if (scroll === -483-71-71-71-71) {
       p.stroke(bleu);
       p.strokeWeight(1);
-      p.line(node9posX, node9posY, node2posX, node2posY);
-      p.line(node9posX, node9posY, node8posX, node8posY);
-      p.line(node2posX, node2posY, node8posX, node8posY);
-      p.line(node2posX, node2posY, node10posX, node10posY);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
       p.noStroke();
       p.textAlign(p.LEFT);
       p.fill(textvu);
@@ -2449,24 +1482,313 @@ p.textFont(font2);
       p.textAlign(p.CENTER,p.CENTER);
       p.textSize(20);
     p.fill(textvu);
-    p.textSize(textsize2);
+    p.textSize(textsize3);
     p.textFont(font2);
-    p.text(spr8,node9posX*0.5+node2posX*0.5,node9posY*0.5+node2posY*0.5);
-    p.text(spr8,node8posX*0.5+node9posX*0.5-15,node8posY*0.5+node9posY*0.5);
-    p.text(spr8,node2posX*0.5+node8posX*0.5,node2posY*0.5+node8posY*0.5);
-    p.text(spr8,node2posX*0.5+node10posX*0.5+15,node2posY*0.5+node10posY*0.5);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
     p.fill(textvuconcept);
-    p.textSize(textsize+10);
+    p.textSize(20);
     p.textFont(font1);
-    p.text(courbes, node8posX, node8posY-10);
-    p.text(polynomiales, node8posX, node8posY+10);
-    p.text(jamming, node2posX, node2posY);
-    p.text(matière, node10posX, node10posY-10);
-    p.text(granulaire, node10posX, node10posY+10);
-    p.text(déformation, node9posX, node9posY-10);
-    p.text(différentielle, node9posX, node9posY+10);
-    p.text(courbes, node8posX, node8posY-10);
-    p.text(polynomiales, node8posX, node8posY+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    //à éditer
+    if (scroll === -483-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr9, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    if (scroll === -483-71-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr10, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    if (scroll === -483-71-71-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr11, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    if (scroll === -483-71-71-71-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr12, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    if (scroll === -483-71-71-71-71-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr13, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    if (scroll === -483-71-71-71-71-71-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr14, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    if (scroll === -483-71-71-71-71-71-71-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr15, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+
+    }
+    if (scroll === -483-71-71-71-71-71-71-71-71-71-71-71-71) {
+      p.stroke(bleu);
+      p.strokeWeight(1);
+      p.line(nodes[9].x, nodes[9].y, nodes[2].x, nodes[2].y);
+      p.line(nodes[9].x, nodes[9].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[8].x, nodes[8].y);
+      p.line(nodes[2].x, nodes[2].y, nodes[10].x, nodes[10].y);
+      p.noStroke();
+      p.textAlign(p.LEFT);
+      p.fill(textvu);
+      p.textSize(69);
+      p.textFont(font2);
+      p.text(spr16, 65, -173-37, p.width, 970);
+      p.textAlign(p.CENTER,p.CENTER);
+      p.textSize(20);
+    p.fill(textvu);
+    p.textSize(textsize3);
+    p.textFont(font2);
+    p.text(spr8,nodes[9].x*0.5+nodes[2].x*0.5,nodes[9].y*0.5+nodes[2].y*0.5);
+    p.text(spr8,nodes[8].x*0.5+nodes[9].x*0.5-15,nodes[8].y*0.5+nodes[9].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[8].x*0.5,nodes[2].y*0.5+nodes[8].y*0.5);
+    p.text(spr8,nodes[2].x*0.5+nodes[10].x*0.5+15,nodes[2].y*0.5+nodes[10].y*0.5);
+    p.fill(textvuconcept);
+    p.textSize(20);
+    p.textFont(font1);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
+    p.text(jamming, nodes[2].x, nodes[2].y);
+    p.text(matière, nodes[10].x, nodes[10].y-10);
+    p.text(granulaire, nodes[10].x, nodes[10].y+10);
+    p.text(déformation, nodes[9].x, nodes[9].y-10);
+    p.text(différentielle, nodes[9].x, nodes[9].y+10);
+    p.text(courbes, nodes[8].x, nodes[8].y-10);
+    p.text(polynomiales, nodes[8].x, nodes[8].y+10);
 
     }
 // p.image(cursor,p.mouseX,p.mouseY);
@@ -2489,9 +1811,17 @@ p.text('on the words to learn more about theme',1220,63);
 
 
 
+for (let j = 0; j < imageintro.length; j++){
+ imageintro[j].showIntro();
+ }
+
+ for (let r = 0; r < intro.length; r++){
+  intro[r].showButtonIntro();
+  }
+
 };
 class Image {
-  show(){
+  showclay(){
 p.image(img1, 55, 35+scrollim, 870, 786);
 p.image(img2, 55, 35+796.5+scrollim, 870, 786);
 p.image(img3, 55, 35+796.5*2+scrollim, 870, 786);
@@ -2499,6 +1829,16 @@ p.image(img4, 55, 35+796.5*3+scrollim, 870, 786);
 p.image(img5, 55, 35+796.5*4+scrollim, 870, 786);
   p.image(delate1,15,23);
   }
+//   showvoronoi(){
+// p.image(img6, 55, 35+scrollim, 870, 786);
+// p.image(img7, 55, 35+796.5+scrollim, 870, 786);
+// p.image(img8, 55, 35+796.5*2+scrollim, 870, 786);
+// p.image(img9, 55, 35+796.5*3+scrollim, 870, 786);
+// p.image(img10, 55, 35+796.5*4+scrollim, 870, 786);
+// p.image(img11, 55, 35+796.5*5+scrollim, 870, 786);
+// p.image(img12, 55, 35+796.5*6+scrollim, 870, 786);
+//   p.image(delate1,15,23);
+//   }
 }
 class Button {
 
@@ -2509,8 +1849,8 @@ class Button {
     p.noFill();
     p.rect(50, 260-35, 102, 85,5);
     p.noStroke();
-    p.fill(87,15,17,50);
-    p.rect(30, 240, 790, 56, 10);
+    p.fill(87,15,17,90);
+    p.rect(30, 240, 810, 56, 10);
     p.strokeWeight(2);
     p.stroke(bleu);
     p.line(40,0,40,p.height);
@@ -2520,122 +1860,249 @@ class Button {
 
     p.textAlign(p.LEFT);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr1, 65, 60+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('Matière entre éclats et pénombre.', 160, 78-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('Expérimentations et études autour de concepts fondamentaux.',160,103-37+scroll, p.width, 970);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr2, 65, 97+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('La terre comme retour aux «sources».', 160, 78+71-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('Deux productions artisanales en terre cuite.',160,103+71-37+scroll, p.width, 970);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr3, 65, 97+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('Équilibre intérieur et volumétrie variable.', 160, 78+71+71-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('Production d’un saladier adaptatif.',160,103+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr4, 65, 97+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('Faire corps avec le flux.', 160, 78+71+71+71-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('Conception d’un «hydrofoil» optimisé.',160,103+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr5, 65, 97+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('Du hasard au procédé.', 160, 78+71+71+71+71-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('Conception d’une table basse.',160,103+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr6, 65, 97+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('Réactions de matières. De l’expérience ordinaire à l’innovation.', 160, 78+71+71+71+71+71-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('Hybridation de principes technologiques innovants.',160,103+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr7, 65, 97+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('Une concentration de procédés.', 160, 78+71+71+71+71+71+71-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('pour une micro-architecture cinématique.',160,103+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font2);
-    p.fill(texthide);
+    p.fill(bleu);
     p.textSize(69);
     p.text(spr8, 65, 97+71+71+71+71+71+71+71-37+scroll, p.width, 970);
     p.textFont(font1);
     p.textSize(20);
-    p.fill(textvuconcept);
+    p.fill(textsoustitre);
     p.textSize(textsize+10);
     p.text('Prométhée.', 160, 78+71+71+71+71+71+71+71-37+scroll, p.width, 970);
-    p.fill(rouge);
+    p.fill(bleu);
     p.text('Conception d’une assise évolutive.',160,103+71+71+71+71+71+71+71-37+scroll, p.width, 970);
-
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr9, 65, 97+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text('Entre aléatoire et méthode.', 160, 78+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Inclusions verre/métaux pour s’ouvrir des situations libres d’usages.',160,103+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr10, 65, 97+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text('Turing Clay.', 160, 78+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Rencontre entre la l’argile et le design génératif.',160,103+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr11, 65, 97+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text('Méta-méria.', 160, 78+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Jeux de construction pris dans la fluctuation.',160,103+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr12, 65, 97+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text('Dynashell.', 160, 78+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Grille modulaire à relief variable.',160,103+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr13, 65, 97+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text("Un maillage d'air.", 160, 78+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Découvertes des maillages de muscles artificielles.',160,103+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr14, 65, 97+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text("ResponsiveSkin.", 160, 78+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Pavillon de recherche/Air de jeux/Abris.',160,103+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr15, 65, 97+71+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text("Le Banc «L» (Coming soon).", 160, 78+71+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Banc en arboréscance généré par ordinateur.',160,103+71+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font2);
+    p.fill(bleu);
+    p.textSize(69);
+    p.text(spr16, 65, 97+71+71+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.textFont(font1);
+    p.textSize(20);
+    p.fill(textsoustitre);
+    p.textSize(textsize+10);
+    p.text("Pavillon hupersensible", 160, 78+71+71+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
+    p.fill(bleu);
+    p.text('Fiction pour une démocratrie participative de la technique.',160,103+71+71+71+71+71+71+71+71+71+71+71+71+71+71+71-37+scroll, p.width, 970);
   }
+}
+class Buttonintro {
+  showButtonIntro(){
+    p.noFill();
+    p.stroke(177,60,90);
+    p.strokeWeight(1);
+    p.textAlign(p.RIGHT);
+    p.image(imglogo,p.width-85,30,60,60);
+    p.fill(177,60,90);
+    p.textSize(20);
+    p.noStroke();
+    p.text('-About me',p.width-50,60);
+    }
+}
+class Intro {
+  showIntro(){
+    p.image(imgintro,0,0,p.width,p.height);
+       p.image(delate2,p.width-98,94);
+}
 }
 
 p.mousePressed = function(){
   if ((30 < p.mouseX && 30+790 > p.mouseX) && (240 < p.mouseY && 240+56 > p.mouseY)){
-    if(scroll = -341){
     images.push(new Image());
-      scroll = -341+71+71;
-      scrollim = -scroll-483+71+71+71+71;
+      scroll = 341;
+      scrollim = -341+483-71-71;
    for (let i = 0; i < buttons.length; i++){
    buttons.splice(i,50);
  }
- }
+ for (let q = 0; q < intro.length; q++){
+intro.splice(q,50);
+}
 }
   if ((15 < p.mouseX  && 65 > p.mouseX) && (23 < p.mouseY && 73 > p.mouseY)){
       if(scroll = -341+71+71){
    buttons.push(new Button());
-   scroll = -341;
-   scrollim = -scroll-483+71+71+71+71;
+intro.push(new Buttonintro());
+   scroll = -341-71-71;
+   scrollim = -scroll-483;
    for (let a = 0; a < images.length; a++){
  images.splice(a,50);
 }
 }
 }
 
+if ((p.width-170 < p.mouseX  && p.width-30 > p.mouseX) && (40 < p.mouseY && 90 > p.mouseY)){
+  imageintro.push(new Intro());
+  scroll = 341;
+  scrollim = -341+483-71-71;
+  for (let q = 0; q < intro.length; q++){
+intro.splice(q,50);
+}
+}
 
-  if ((65 < p.mouseX  && 105 > p.mouseX) && (65 < p.mouseY && 105 > p.mouseY)){
+
+  if ((p.width-98 < p.mouseX  && p.width-98+50 > p.mouseX) && (94 < p.mouseY && 144 > p.mouseY)){
 p.loop();
+buttons.push(new Button());
+intro.push(new Buttonintro());
+scroll = -341-71-71;
+   scrollim = -scroll-483;
+for (let i = 0; i < buttons.length; i++){
+buttons.splice(i,1);
+}
+for (let j = 0; j < imageintro.length; j++){
+imageintro.splice(j,50);
+}
         p.drawingContext.filter = 'none';
     }
 
